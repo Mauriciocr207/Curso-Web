@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 2](#sección-2-las-distintas-áreas-del-desarrollo-web---frontend-backend-y-full-stack)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 5](#sección-2-las-distintas-áreas-del-desarrollo-web---frontend-backend-y-full-stack)_
 
 ## Secciones del curso:
 
