@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 5](#sección-6-sitio-freelancer-creando-un-proyecto-paso-a-paso-css)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 6](#sección-6-sitio-freelancer-creando-un-proyecto-paso-a-paso-css)_
 
 ## Secciones del curso:
 
