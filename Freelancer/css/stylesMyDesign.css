@@ -226,7 +226,7 @@ a:hover {
 .contact form input,
 .contact form textarea {
     width: 100%;
-    color: var(--grey);
+    color: var(--green);
     background: none;
     border: none;
     padding: 1rem;
@@ -333,13 +333,19 @@ a:hover {
 }
 @media(min-width: 1200px) {
     h1 {
-        font-size: 9.5rem;
+        font-size: 10rem;
     }
     h2 {
         font-size: 6rem;
     }
+    h4 {
+        font-size: 2.3rem;
+    }
     p {
-        font-size: 1.7rem;
+        font-size: 2.5rem;
+    }
+    .button {
+        font-size: 2rem;
     }
     .presentation {
         position: relative;
