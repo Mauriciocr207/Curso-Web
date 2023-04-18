@@ -5,9 +5,8 @@ Aquí se verá el progreso de mi aprendizaje en desarrollo web.
 __Actualmente en:__ $\rightarrow$ _[Seccion 6](#sección-6-sitio-freelancer-creando-un-proyecto-paso-a-paso-css)_
 
 ## Proyectos en Netlify
-* Freelancer
-    * [Diseño 1](https://seccion-6--freelancer-diseno-1.netlify.app/)
-    * [Diseño 2]() 
+* [Freelancer](https://proyectos-freelancer.netlify.app/index.html) 
+    * para este proyecto, haz click en botón Mi Diseño, para ver el segundo proyecto que he realizado.
 
 <details open>
 <summary><h2 style="display:inline">Secciones del curso</h2></summary>
