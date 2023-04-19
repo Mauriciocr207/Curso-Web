@@ -1,0 +1,424 @@
+:root {
+    --black: #151515;
+    --white: #fff;
+    --green: #4DE19F;
+    --grey: #c7c7c7;
+    --greyBlack: #242424;
+    --transition: .4s background-color, 0.3s color;
+}
+/* ==== Generals ==== */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    /* scroll-snap-type: y mandatory; */
+}
+body {
+    font-size: 16px;
+    /* 1rem = 10px */
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white);
+    background-color: var(--black);
+}
+h1 {
+    font-weight: 700;
+    font-size: 3.5rem;
+}
+h2 {
+    font-weight: bold;
+    font-size: 3rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+h3 {
+    font-size: 2.5rem;
+}
+h4 {
+    color: var(--grey);
+    text-transform: uppercase;
+    font-weight: 400;
+}
+h1 span {
+    box-sizing: content-box;
+    box-shadow: inset 0 -.4rem var(--green);
+}
+h3 span {
+    display: block;
+    font-size: 1.3rem;
+}
+h1, h2, h3, h4 {
+    margin: 0;
+}
+p {
+    font-size: 1.5rem;
+    color: var(--grey);
+    text-align: center;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: var(--white);
+    transition: var(--transition);
+}
+a:hover {
+    color: var(--green);
+}
+.button {
+    color: var(--white);
+    border: none;
+    border-bottom: 2px solid var(--green);
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    padding: 1rem;
+    width: fit-content;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align:center;
+    display: flex;
+    align-items: center;
+}
+.button:hover {
+    background-color: var(--green);
+    color: var(--black);
+    /* border-bottom-color: var(--black); */
+    transition: var(--transition);
+}
+.back  {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 2.5rem;
+    transform: rotate(180deg);
+    z-index: 1000;
+}
+/* Presentation */
+.presentation {
+    height: 100vh;
+    border-bottom: .1rem solid var(--white);
+    width: 100%;
+    display: grid;
+    grid-template: 11rem 1fr / 1fr;
+    align-content: center;
+    background-color: var(--black);
+    padding: 3rem 2rem 0;
+}
+.presentation header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.presentation header .social {
+    display: flex;
+    justify-content: space-between;
+    width: 18rem;
+}
+.social .fa-brands {
+    font-size: 2.1rem;
+}
+.presentation .contentinfo {
+    display: grid;
+    justify-items: center;
+    grid-template: 1fr 1fr / 1fr;
+}
+.contentinfo img {
+    width: 18rem;
+}
+.contentinfo .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+}
+.info p {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+.info h1 span:hover {
+    color: var(--green);
+    transition: var(--transition);
+}
+.experience {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 5rem 7rem;
+    border-bottom: .1rem solid var(--white);
+    background-color: var(--black);
+}
+.experience .technology {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: .7rem;
+}
+.experience .technology h2 {
+    display: flex;
+    justify-content: center; 
+}
+.portfolio {
+    padding: 7rem 2rem;
+    background-color: var(--black);
+}
+.portfolio__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+.portfolio__projects {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.portfolio__projects .project {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.portfolio__projects .project img {
+    width: 100%;
+    align-self: center;
+}
+.portfolio__projects .project div {
+    display: flex;
+    gap: 2rem;
+}
+.contact {
+    background-color: var(--greyBlack);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    padding: 4rem 3rem;
+    border-bottom: .1rem solid var(--white);
+}
+.contact .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    color: var(--green);
+    background: none;
+    border: none;
+    padding: 1rem;
+    border-bottom: .1rem solid var(--white);
+    font-size: 1.4rem;
+    outline: none;
+}
+.footer {
+    background-color: var(--greyBlack);
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.footer header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.footer .social {
+    display: flex;
+    justify-content: space-between;
+    width: 18rem;
+}
+@media(min-width: 768px) {
+    h1 {
+        font-size: 7rem;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+    h2 {
+        font-size: 5rem;
+    }
+    h3 {
+        font-size: 3.4rem;
+    }
+    p {
+        font-size: 1.85rem;
+    }
+    .presentation {
+        padding: 3rem 5rem 0;
+        position: relative;
+        z-index: 0;
+    }
+    .presentation header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .presentation .social {
+        justify-content: start;
+        width: 20rem;
+    }
+    .social .fa-brands {
+        font-size: 2.8rem;
+    }
+    .presentation .contentinfo {
+        display: flex;
+    }
+    .presentation .contentinfo img{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 37rem;
+        z-index: -1;
+    }
+    .presentation .contentinfo .info {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 65%;
+        text-align: left;
+    }
+    .info p {
+        text-align: left;
+    }
+    .info .button {
+        margin-top: 3rem;
+    }
+    .experience {
+        display: grid;
+        grid-template: repeat(3, 1fr) / 1fr 1fr;
+    }
+    .experience .technology {
+        align-items: start;
+        gap: 1.5rem;
+    }
+    .portfolio__projects {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr
+    }
+    .contact {
+        padding-left: 20rem;
+        padding-right: 20rem;
+    }
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media(min-width: 1200px) {
+    h1 {
+        font-size: 10rem;
+    }
+    h2 {
+        font-size: 6rem;
+    }
+    h4 {
+        font-size: 2.3rem;
+    }
+    p {
+        font-size: 2.5rem;
+    }
+    .button {
+        font-size: 2rem;
+    }
+    .presentation {
+        position: relative;
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+    .presentation header .social {
+        width: 20rem;       
+    }
+    .presentation .contentinfo {
+        position: relative;
+    }
+    .presentation .contentinfo .info {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 70%;
+        text-align: left;
+    }
+    .presentation .contentinfo img{
+        position: absolute;
+        top: -15rem;
+        right: 0;
+        width: 46rem;
+        z-index: -1;
+    }
+    .contentinfo .info p {
+        width: 40rem;
+    }
+    .experience {
+        grid-template: repeat(2, 1fr) / repeat(3,1fr);
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+    .experience .technology p {
+        text-align: left;
+    }
+    .portfolio {
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+    .portfolio__projects {
+        row-gap: 3em;
+        column-gap: 5rem;
+    }
+    .contact{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        gap: 0rem;
+        padding-left: 15rem;
+        padding-right: 15rem;
+    } 
+    .contact .text {
+        flex-basis: 40%;
+        align-items: start;
+        margin-top: 5rem;
+    }
+    .text h2 {
+        font-size: 7rem;
+    }
+    .text p {
+        text-align: left;
+    }
+    .contact form {
+        flex-basis: 50%;
+        align-items: end;
+    }
+    .footer {
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+}
+
+
+
