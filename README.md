@@ -2,11 +2,13 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 6](#sección-6-sitio-freelancer-creando-un-proyecto-paso-a-paso-css)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 7](#sección-7-frontend-store---creando-un-segundo-proyecto-con-html-y-css)_
 
 ## Proyectos en Netlify
-* [Freelancer](https://proyectos-freelancer.netlify.app/index.html) 
-    * para este proyecto, haz click en botón Mi Diseño, para ver el segundo proyecto que he realizado.
+* [Freelancer](https://proyectos-freelancer.netlify.app/) 
+    * Para este proyecto, haz click en botón Mi Diseño, para ver el segundo proyecto que he realizado.
+* [FrontEnd Store](https://projects-frontend-store.netlify.app/)
+    * En este proyecto, opté por un diseño más minimaslita
 
 <details open>
 <summary><h2 style="display:inline">Secciones del curso</h2></summary>
