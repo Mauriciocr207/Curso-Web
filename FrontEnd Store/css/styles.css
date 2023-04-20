@@ -1,6 +1,7 @@
 :root {
     --black: #000;
     --white: #fff;
+    --grey: #797979;
 
     --font: 'Staatliches', cursive;
     --transition: 0.3s all; 
@@ -21,7 +22,7 @@ body {
 p {
     font-size: 1.8rem;
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--white);
+    color: var(--black);
 }
 img {
     max-width: 100%;
@@ -46,6 +47,7 @@ h3 {
     font-size: 2.4rem;
 }
 a {
+    text-decoration: none;
     font-family: var(--font);
 }
 video {
@@ -102,8 +104,9 @@ video {
     color: var(--black);
 }
 .header__text {
-    width: 75%;
-    height: 47rem;
+    width: 100%;
+    position: relative;
+    top: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -113,13 +116,42 @@ video {
 .header__text h1 {
     text-align: left;
     color: var(--white);
+    font-size: 5rem;
+    text-align: center;
+}
+@media(min-width:768px) {
+    .header__text {
+        width: 70%;
+    }
+    .header__text h1 {
+        font-size: 8rem;
+        text-align: left;
+    }
+} 
+.header__text p {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white);
+}
+/* MAIN */
+.main {
+    background-color: var(--white);
+}
+.main h1 {
+    line-height: 20rem;
+    border-bottom: 1rem solid var(--black);
+    transition: var(--transition);
+}
+.main h1:hover {
+    background-color: var(--black);
+    color: var(--white);
 }
 /* GRID */
 .grid {
     display: grid;
     padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 2rem;
 }
 @media (min-width: 768px) {
     .grid {
@@ -128,37 +160,246 @@ video {
 }
 /* PRODUCTOS */
 .product {
-    /* background-color: var(--black); */
+    background-color: var(--white);
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 3rem;
+    border: .1rem solid var(--black);
+    transition: var(--transition);
+}
+.product .product__container {
+    display: grid;
+    grid-template: 1fr 4rem/ 1fr;
+    height: 100%;
+    align-content: center;
+    justify-items: center;
+}
+.product:hover .product__img {
+    transform: scale(1.1);
+}
+.product:hover .product__info {
+    background-color: var(--black);
+    transition: var(--transition);
+}
+.product:hover .product__info p,
+.product:hover .product__info a{
+    color: var(--white);
+    transition: var(--transition);
 }
 .product__img {
-    border-radius: 2rem;
+    border-radius: 50%;
+    padding: 2rem;
+    transition: var(--transition);
 }
 .product__info{
     display: flex;
     justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
     align-items: center;
 }
 .product__name {
     font-size: 4rem;
-    color: var(--black);
     text-decoration: none;
+    padding-right: 4rem;
+    padding-left: 1rem;
+    border-right: .3rem solid var(--white);
 }
 .product__price {
     font-size: 2.8rem;
-    color: var(--black);
     font-weight: bold;
 }
-.product__name,
+.product__name a,
 .product__price {
     font-family: var(--font);
     margin: 1rem 0;
     text-align: center;
+    color: var(--grey);
 }
+/* GRAFICOS */
+.grafico {
+    min-height: 30rem;
+    background-size: cover;
+    background-position: center;
+    grid-column: 1 / 3;
+    border-radius: 2rem;
+}
+.grafico--camisas {
+    grid-row: 2 / 3;
+    background-image: url('../img/grafico1.jpg');
+}
+.grafico--node {
+    background-image: url('../img/grafico2.jpg');
+    grid-row: 8 / 9;
+}
+@media(min-width: 768px) {
+    .grafico--node {
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+    }
+}
+.about {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 4rem 5rem;
+    gap: 2rem;
+    transition: var(--transition)
+}
+@media(min-width: 768px) {
+    .about {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about__text {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    .about__img {
+        grid-column: 2 / 3;
+    }
+}
+.about:hover {
+    background-color: var(--black);
+}
+.about:hover .about__text{
+    transition: var(--transition);
+    color: var(--white);
+}
+.about__img {
+    display: flex;
+    justify-content: center;
+    flex-basis: 60%;
+    width: 40rem;
+    height: 40rem;
+   border-radius: 0rem;
+   padding: 1rem;
+
+}
+.about__img img {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 3rem;
+}
+.about__text {
+    flex-basis: 50%;
+    color: var(--black);
+    font-size: 2rem;
+    font-weight: bold;
+}
+@media(min-width: 768px) {
+    .about {
+        flex-flow: row-reverse;
+        justify-content: space-evenly;
+    }
+}
+/* ICONS */
+.section {
+    background-color: var(--black);
+    padding: 8rem 5rem;
+}
+.section h1,
+.section h2,
+.section h3,
+.section p {
+    color: var(--white);
+    text-align: center;
+    margin: 0;
+}
+.icons {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+}
+.icon__img {
+    width: 90%;
+}
+@media(min-width:768px) {
+    .icons {
+        grid-template: 1fr / repeat(4,1fr)
+    }
+}
+.shirt {
+    margin: 0 auto;
+    width: 70%;
+    display: grid;
+    gap: 2rem;
+    justify-items: center;
+    align-items: center;
+    padding: 2rem;
+    grid-column: 1fr;
+}
+@media(min-width:768px) {
+    .shirt {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.shirt__img {
+    object-fit: cover;
+    height: 100%;
+    transition: var(--transition);
+}
+.shirt__img:hover {
+    transform: scale(1.1);
+}
+.shirt__img img{
+    object-fit: cover;
+    height: 100%;
+}
+.shirt__content p{
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: justify;
+}
+.form {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    justify-items: center;
+    gap: 2rem 1rem; 
+}
+.form select,
+.form input {
+    outline: none;
+    border: .2rem solid var(--black);
+    color: var(--black);
+    padding: .5rem;
+    font-family: var(--font);
+    border-radius: 1rem;
+    transition: var(--transition);
+}
+.form select:hover,
+.form input:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+.form .form__submit {
+    cursor: pointer;
+    grid-column: span 2;
+    width: max-content;
+}
+
+
+
+
+
+
+
+.footer {
+    border-top: .2rem solid var(--white);
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+.footer p {
+    color: var(--white);
+    font-weight: bold;
+}
+
 
 
