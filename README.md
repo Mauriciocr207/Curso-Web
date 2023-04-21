@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 7](#sección-7-frontend-store---creando-un-segundo-proyecto-con-html-y-css)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 8](#sección-8-patrones-de-diseño-responsive-web-design-con-css-grid-y-flexbox)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyectos-freelancer.netlify.app/) 
@@ -20,5 +20,6 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 7](#sección-7-frontend-store---crea
 * #### Sección 5: SITIO FREELANCER: Creando un proyecto paso a paso: HTML
 * #### Sección 6: SITIO FREELANCER: Creando un proyecto paso a paso: CSS  
 * #### Sección 7: FRONTEND STORE - Creando un Segundo Proyecto con HTML y CSS
+* #### Sección 8: Patrones de Diseño Responsive Web Design con CSS Grid y Flexbox
 
 </details>
