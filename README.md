@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 8](#seccion-9-blog-café---creando-un-poryecto-con-html-y-css)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 9](#seccion-9-blog-café---creando-un-poryecto-con-html-y-css)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyectos-freelancer.netlify.app/) 
