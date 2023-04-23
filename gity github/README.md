@@ -4,7 +4,6 @@
 
 # Git y GitHub
 
-
 ## El control de versiones
 
 Git es un sistema de control de versiones distribuido. Un control de versiones es un sistema que registra los cambios realizados en un archivo o conjunto de archivos a lo largo del tiempo, de modo que puedas recuperar versiones específicas más adelante. Los sistemas de Control de Versiones Distribuidos (DVCS por sus siglas en inglés) ofrecen soluciones a algunos problemas. En un DVCS (como Git, Mercurial, Bazaar o Darcs), los clientes no solo descargan la última copia instantánea de los archivos, sino que se replica completamente el repositorio. De esta manera, si un servidor deja de funcionar y estos sistemas estaban colaborando a través de él, cualquiera de los repositorios disponibles en los clientes puede ser copiado al servidor 11 con el fin de restaurarlo. Cada clon es realmente una copia completa de todos los datos.
@@ -32,4 +31,6 @@ preparación y almacena esa copia instantánea de manera permanente en tu direct
 
 ## __! Importante__ 
 
-Para ver ejercicios y prácticas con git que he realizado revisa el siguiente [repositorio](https://github.com/Mauriciocr207/Curso-Git-y-GitHub.git)
+Para ver ejercicios y prácticas con git que he realizado revisa el siguiente [repositorio](https://github.com/Mauriciocr207/Curso-Git-y-GitHub.git) -> Actualmente en: [Práctica 2](https://github.com/Mauriciocr207/Curso-Git-y-GitHub.git)
+
+
