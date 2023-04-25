@@ -64,35 +64,64 @@ function qS() {
 
 
 // 149. Eventos con el Teclado
+// 150. Eventos en Formularios
+// 151. Creando un Validador de Fomrularios Parte 1 de 2
+// 152. Creando un Validador de Fomrularios Parte 2 de 2
     function eventos_con_teclado() {
+        // Datos que se guardarán del formulario
         const datos = {
-            nombre: '',
+            name: '',
             email: '',
-            mensaje: ''
+            message: ''
         }
-
+        // objetos del formulario
         const name = document.querySelector('#name');
         const email = document.querySelector('#email');
         const message = document.querySelector('#message');
-        // cuando se escibre en el input
-        name.addEventListener('input', printValue);
+        // const btn = document.querySelector('.field__input--submit');
+        const form = document.querySelector('.form');
+        // revisando inputs
+        function leerTexto(e) {
+            datos[e.target.id] = e.target.value;
+            console.log(datos);
+        };
+        name.addEventListener('input', leerTexto);
         name.addEventListener('change', () => {
             console.log('changed');
         });
-
-        email.addEventListener('input', printValue);
-        message.addEventListener('input', printValue);
-
-        function printValue(e) {
-            console.log(e.target.value);
-            datos;
-        }
-
+        email.addEventListener('input', leerTexto);
+        message.addEventListener('input', leerTexto);
+        // Validación del formulario
+        function formAlert(msg = "", sended = false) {
+            if(form.querySelector('.form-message') == null) {
+                const p = document.createElement('P');
+                p.classList.add('form-message');
+                if(sended) {
+                    p.classList.add('acept');
+                } else {
+                    p.classList.add('error');
+                }
+                p.textContent = msg;
+                form.appendChild(p);
+                setTimeout(() => {
+                    p.remove();
+                }, 3000);
+            };
+        };
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const { name, email, message } = datos;
+            if( name === '' || email === '' || message === '') {
+                formAlert('Todos los campos son obligatorios', false);
+                return; 
+            } else {
+                formAlert('Enviado', true);
+            }
+        });
     }; eventos_con_teclado();
 
-// 150. Eventos en Formularios
+ 
 
 
-// 151. Creando un Validador de Fomrularios Parte 1 de 2
-// 152. Creando un Validador de Fomrularios Parte 2 de 2
+    
 
