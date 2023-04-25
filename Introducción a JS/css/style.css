@@ -17,6 +17,7 @@ h1, p, a {
     color: white;
 }
 .contenido {
+
     width: 100%;
     max-width: 1200px;
     margin: 5rem auto 0 auto;
@@ -104,6 +105,7 @@ p {
     overflow-y: scroll;
     color: var(--green);
     background-color: var(--greyBlack);
+    box-sizing: content-box;
 }
 .buscador__content .resultado p {
     font-size: 1rem;

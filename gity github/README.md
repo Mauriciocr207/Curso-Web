@@ -1,6 +1,6 @@
 <!-- Imgagenes -->
 [DVCS]: ./img/DVCS.png "DVCS"
-[Estados]: ./img/Estados.png "Estados en git"
+<!-- [Estados]: ./img/Estados.png "Estados en git" -->
 
 # Git y GitHub
 

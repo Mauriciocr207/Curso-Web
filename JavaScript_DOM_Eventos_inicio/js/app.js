@@ -49,18 +49,46 @@ function qS() {
             console.log('el documento ha cargado');
         });
 
-        window.addEventListener('scroll', () => {
-            console.log('scrolling...')
+        window.addEventListener('scroll', (event) => {
+            console.log('scrolling...');
         });
 
 
         // Seleccionar elementos y asociarles un evento
-        const btn = document.querySelector('.button--primary')
-    }; eventos();
+        const btn = document.querySelector('.field__input--submit');
+        btn.addEventListener('click', event => {
+             event.preventDefault();
+             console.log('enviando formulario');
+        })
+    }; // eventos();
 
 
 // 149. Eventos con el Teclado
+    function eventos_con_teclado() {
+        const datos = {
+            nombre: '',
+            email: '',
+            mensaje: ''
+        }
 
+        const name = document.querySelector('#name');
+        const email = document.querySelector('#email');
+        const message = document.querySelector('#message');
+        // cuando se escibre en el input
+        name.addEventListener('input', printValue);
+        name.addEventListener('change', () => {
+            console.log('changed');
+        });
+
+        email.addEventListener('input', printValue);
+        message.addEventListener('input', printValue);
+
+        function printValue(e) {
+            console.log(e.target.value);
+            datos;
+        }
+
+    }; eventos_con_teclado();
 
 // 150. Eventos en Formularios
 
