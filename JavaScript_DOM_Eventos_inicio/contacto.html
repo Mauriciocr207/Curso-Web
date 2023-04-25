@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Café</title>
+    <!-- PRELOADS -->
+    <link rel="preload" href="./css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="./css/styles.css">
+    <link rel="preload" as="video" href="./img/fondo.webm">
+
+    <!-- LOADS -->
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+</body>
+<!-- HEADER -->
+<header class="header">
+    <div class="video">
+        <video src="./img/fondo.webm" autoplay muted></video>
+    </div>
+    <div class="w-full header__content">
+        <div class="box">
+            <div class="bar">
+                <div class="logo">
+                    <a class="logo__name" href="index.html">
+                        <h1 class="m-0">
+                            Blog<span class="logo__name-bold">DeCafé</span>
+                        </h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <a href="nosotros.html" class="nav__link">Nosotros</a>
+                    <a href="cursos.html" class="nav__link">Cursos</a>
+                    <a href="contacto.html" class="nav__link">Contacto</a>
+                </nav>
+            </div>
+        </div>
+        <div class="header__text">
+            <h2 class="m-0">Elige un curso ahora mismo</h2>
+            <p class="m-0">Sigue aprendiendo</p>
+        </div>
+    </div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="box">
+    <h3 class="text-center">Contacto</h3>
+    <div class="contact__bg"></div>
+    
+
+    <form action="" class="form">
+        <div class="field">
+            <label class="field__label" for="name" >Name</label>
+            <input class="field__input" type="text" placeholder="Name" id="name">
+        </div>
+        <div class="field">
+            <label class="field__label" for="email" >Email</label>
+            <input class="field__input" type="email" placeholder="Email" id="email">
+        </div>
+        <div class="field">
+            <label class="field__label" for="name" >Message</label>
+            <textarea class="field__input" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+        </div>
+        <div class="field">
+            <input type="submit" id="name" placeholder="Enviar" class="field__input--submit button button--primary">
+        </div>
+    </form>
+</main>
+
+<footer class="footer">
+    <div class="box">
+        <div class="bar">
+            <div class="logo">
+                <a class="logo__name" href="index.html">
+                    <h1 class="m-0">
+                        Blog<span class="logo__name-bold">DeCafé</span>
+                    </h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="cursos.html" class="nav__link">Cursos</a>
+                <a href="contacto.html" class="nav__link">Contacto</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+</html>
