@@ -1,0 +1,7 @@
+// Forma antigua de importar archivos de .scss
+// @import './base/variables.scss';
+// @import './contenido/contenido';
+
+// Forma actual de importar archivos de .scss
+@use './base';
+@use './layout';
