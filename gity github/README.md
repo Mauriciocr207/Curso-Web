@@ -1,9 +1,8 @@
 <!-- Imgagenes -->
 [DVCS]: ./img/DVCS.png "DVCS"
-[Estados]: ./img/Estados.png "Estados en git"
+<!-- [Estados]: ./img/Estados.png "Estados en git" -->
 
 # Git y GitHub
-
 
 ## El control de versiones
 
@@ -32,4 +31,6 @@ preparación y almacena esa copia instantánea de manera permanente en tu direct
 
 ## __! Importante__ 
 
-Para ver ejercicios y prácticas con git que he realizado revisa el siguiente [repositorio](https://github.com/Mauriciocr207/Curso-Git-y-GitHub.git)
+Para ver ejercicios y prácticas con git que he realizado revisa el siguiente [repositorio](https://github.com/Mauriciocr207/Curso-Git-y-GitHub.git) -> Actualmente en: [Práctica 2](https://github.com/Mauriciocr207/Curso-Git-y-GitHub.git)
+
+

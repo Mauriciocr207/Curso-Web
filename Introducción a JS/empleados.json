@@ -1,0 +1,104 @@
+{
+    "empleados": [
+        {
+            "id": 56789,
+            "nombre": "Ana Gomez",
+            "puesto": "Analista de sistemas"
+        },
+        {
+            "id": 12345,
+            "nombre": "Luisa Rodriguez",
+            "puesto": "Contadora"
+        },
+        {
+            "id": 98765,
+            "nombre": "Juan Garcia",
+            "puesto": "Ingeniero de software"
+        },
+        {
+            "id": 54321,
+            "nombre": "Carlos Martinez",
+            "puesto": "Gerente de recursos humanos"
+        },
+        {
+            "id": 13579,
+            "nombre": "Fernando Lopez",
+            "puesto": "Marketing digital"
+        },
+        {
+            "id": 86420,
+            "nombre": "Mariana Sanchez",
+            "puesto": "Diseñadora gráfica"
+        },
+        {
+            "id": 24680,
+            "nombre": "Mauricio Carrillo",
+            "puesto": "Desarrollador de aplicaciones móviles"
+        },
+        {
+            "id": 98761,
+            "nombre": "Gabriela Flores",
+            "puesto": "Analista financiero"
+        },
+        {
+            "id": 24689,
+            "nombre": "Alejandro Mendez",
+            "puesto": "Ingeniero mecánico"
+        },
+        {
+            "id": 65432,
+            "nombre": "Patricia Nuñez",
+            "puesto": "Jefe de ventas"
+        },
+        {
+            "id": 13579,
+            "nombre": "Mauricio Carrillo",
+            "puesto": "Gerente de marketing"
+        },
+        {
+            "id": 86420,
+            "nombre": "Pedro Ramirez",
+            "puesto": "Abogado"
+        },
+        {
+            "id": 24680,
+            "nombre": "Lucia Morales",
+            "puesto": "Periodista"
+        },
+        {
+            "id": 98761,
+            "nombre": "Emilio Castro",
+            "puesto": "Ingeniero eléctrico"
+        },
+        {
+            "id": 24689,
+            "nombre": "Mauricio Carrillo",
+            "puesto": "Analista de datos"
+        },
+        {
+            "id": 65432,
+            "nombre": "Diego Fernandez",
+            "puesto": "Desarrollador de software"
+        },
+        {
+            "id": 13579,
+            "nombre": "Carolina Ramirez",
+            "puesto": "Diseñadora de interiores"
+        },
+        {
+            "id": 86420,
+            "nombre": "Josefina Torres",
+            "puesto": "Analista de recursos humanos"
+        },
+        {
+            "id": 24680,
+            "nombre": "Lorena Vargas",
+            "puesto": "Ejecutiva de cuentas"
+        },
+        {
+            "id": 98761,
+            "nombre": "Roberto Sanchez",
+            "puesto": "Gerente de operaciones"
+        }
+    ]
+}
