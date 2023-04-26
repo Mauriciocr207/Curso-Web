@@ -1,0 +1,75 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.gallery {
+    padding: 5rem 0;
+    h3 {
+        text-align: center;
+    }
+    .gallery__images {
+        @include m.resetList;
+        @include m.grid(2, 2rem);
+        @include m.phone {
+            @include m.grid(3, 2rem);
+        }
+        @include m.tablet {
+            @include m.grid(4, 2rem);
+        }
+        @include m.desktop {
+            @include m.grid(6, 2rem);
+        }
+
+        picture {
+            cursor: pointer;
+        }
+    }
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.508);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    picture {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: content-box;
+
+        @include m.phone {
+            width: 90%;
+        }
+        @include m.tablet {
+            width: 70rem;
+        }
+        @include m.desktop {
+            width: 75rem;
+        }
+        
+    }
+    
+    .btn-close-overlay {
+        background-color: v.$white;
+        position: absolute;
+        bottom: 5rem;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 6rem;
+        height: 6rem;
+        text-align: center;
+        padding: 2rem;
+        font-size: 2rem;
+        font-weight: bold;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}

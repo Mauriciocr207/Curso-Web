@@ -1,0 +1,94 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.lineup {
+    background-color: v.$pink;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5rem;
+
+    h3, p {
+        text-align: center;
+        color: v.$white;
+        margin: 0;
+    }
+    .day {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+
+.escenarios-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    @include m.tablet {
+        @include m.grid(2, 5rem);
+    }
+
+    .escenario {
+        flex-basis: 100%;
+        padding: 5rem 0;
+        border-radius: v.$border;
+
+
+        .escenario__name {
+            font-weight: bold;
+            color: v.$black;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 20rem;
+                height: 10rem;
+                background-size: 15rem;
+                background-repeat: no-repeat;
+                background-position: center center;
+                margin: 2rem auto;
+            }
+        }
+    }
+    
+    .bg-yellow {
+        background-color: v.$yellow;
+        li:nth-child(odd) {
+            background-color: darken(v.$yellow, 30%);
+        }
+    }
+    .bg-green {
+        background-color: v.$green;
+        li:nth-child(odd) {
+            background-color: darken(v.$green, 15%);
+        }
+    }
+}
+
+.rock .escenario__name::after {
+    background-image: url('../img/icono_rock.png');
+}
+.edm .escenario__name::after {
+    background-image: url('../img/icono_edm.png');
+}
+
+.calendary {
+    @include m.resetList;
+
+    li {
+        padding: 2.5rem 5rem;
+        font-weight: bold;
+        &:last-of-type {
+            padding-top: 2.5rem;
+            padding-bottom: 1rem;
+        }
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    
+    
+}
+

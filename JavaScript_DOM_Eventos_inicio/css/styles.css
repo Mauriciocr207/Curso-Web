@@ -329,3 +329,17 @@ video {
     margin: 0 auto;
     cursor: pointer;
 }
+/* MENSAJE DE ERROR */
+.form-message {
+    text-align: center;
+    font-weight: bold;
+}
+.error {
+    background-color: red;
+    color: white;
+}
+.acept {
+    background-color: rgb(74, 185, 0);
+    color: white;
+}
+

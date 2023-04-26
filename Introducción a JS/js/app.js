@@ -893,7 +893,7 @@ console.log('hola mundo!');
     function fetch_API() {
         /*async*/ function obtenerEmpleados() {
             const url = 'empleados.json';
-            // Con promises
+            //== Con promises ==//
             fetch(url)
                 .then( res => res.json() )
                 .then( data => {
@@ -905,7 +905,7 @@ console.log('hola mundo!');
 
                     console.log(cliente);
                 });
-            // Con async / await 
+            //== Con async / await ==//
             // try {
             //     const res = await fetch(url);
             //     const data = await res.json();
@@ -916,7 +916,7 @@ console.log('hola mundo!');
         }; obtenerEmpleados();
     }; // fetch_API();
 
-    // == PRÁCTICA CON FETCH API ==//
+    //== PRÁCTICA CON FETCH API ==//
     function practicaFetch() {
         const url = 'empleados.json';
         const toAppend = document.querySelector('#resultado');
