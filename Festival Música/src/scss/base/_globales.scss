@@ -1,18 +1,28 @@
-@use './variables' as var;
+@use './variables' as v;
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 *, *::after, *::before {
     box-sizing: inherit;
 }
 body {
-    font-family: var.$font-primary;
+    font-family: v.$font-primary;
     font-size: 1.6rem;
+
+    &.fixed {
+        overflow: hidden;
+    }
+    
+}
+.body-isHeaderFixed {
+    padding-top: 13rem;
 }
 p {
     font-size: 2rem;
-    color: var.$black;
+    color: v.$black;
+    line-height: 1.5;
 }
 .box {
     width: 95%;
@@ -33,4 +43,9 @@ h2 {
 }
 h3 {
     font-size: 3rem;
+}
+img {
+    width: 100%;
+    height: auto;
+    border-radius: v.$border;
 }

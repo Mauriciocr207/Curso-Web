@@ -8,7 +8,7 @@
         text-align: center;
         margin: 0;
     }
-    .header__content {
+    &__content {
         padding: 2rem;
         @include m.tablet {
             display: flex;
@@ -16,8 +16,16 @@
             align-items: center;
         }
     }
-
-
+    @include m.tablet {
+        &-fixed {
+            position: fixed;
+            width: 100%;
+            box-shadow: .3rem .3rem .3rem #666;
+            left: 0;
+            top: 0;
+        }
+    }
+    
 }
 .nav {
     margin: 4rem 0;
