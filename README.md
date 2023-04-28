@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 15](#sección-15-festival-música---creando-un-proyecto-con-sass-y-gulp)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 15](#sección-22-sql-intermedio---aplicando-normalización-y-otros-temas)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyectos-freelancer.netlify.app/) 
@@ -28,5 +28,12 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 15](#sección-15-festival-música---
 * #### Seccion 13: Windows - Instalando Node, NPM, Chocolatey
 * #### Seccion 14: Mac - Instalando Node.js
 * #### Sección 15: FESTIVAL MÚSICA - Creando un Proyecto con SASS y Gulp
+* #### Seccion 16: Introducción a Bases de Datos
+* #### Sección 17: Ambientes de Desarrollo - AMP Stack - Apache MySQL y PHP
+* #### Sección 18: WINDOWS - Ambiente de Desarrollo - Composer PHP8 MySQL y más
+* #### Sección 19: MAC - Ambiente de Desarrollo - Composer PHP8 MySQL y más
+* #### Sección 20: SQL - Comandos SQL que debes Conocer y operaciones CRUD
+* #### Sección 21: BASES DE DATOS - Reglas de Normalización o Formas Normales
+* #### Sección 22: SQL INTERMEDIO - Aplicando Normalización y otros temas
 
 </details>
