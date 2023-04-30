@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 15](#sección-22-sql-intermedio---aplicando-normalización-y-otros-temas)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 23](#sección-22-sql-intermedio---aplicando-normalización-y-otros-temas)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyectos-freelancer.netlify.app/) 
@@ -35,5 +35,8 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 15](#sección-22-sql-intermedio---ap
 * #### Sección 20: SQL - Comandos SQL que debes Conocer y operaciones CRUD
 * #### Sección 21: BASES DE DATOS - Reglas de Normalización o Formas Normales
 * #### Sección 22: SQL INTERMEDIO - Aplicando Normalización y otros temas
+* #### Seccion 23: Introducción a PHP
+* #### Seccion 24: PHP - Sintaxis, Funciones y Mucho más
+* #### Seccion 25: PHP y BASES DE DATOS - Introducción básica
 
 </details>
