@@ -1,0 +1,48 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+// HEADER PRINCIPAL
+.header {
+    background-color: v.$grisOscuro;
+    padding: 1rem 0 3rem 0;
+
+    .header__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+        h1 {
+            
+        }
+    }
+    
+}
+
+// HEADER__BOX
+.header__box {
+    &-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        .bar__logo {
+            color: v.$blanco;
+            text-transform: uppercase;
+        }
+
+        .bar__nav {
+
+        }
+    }
+}
+
+// LOGO
+.bar__logo {
+    h1 {
+        font-weight: v.$tiny;     
+        span {
+            font-weight: v.$bold;
+        }
+    }
+}
