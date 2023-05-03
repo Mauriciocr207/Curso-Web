@@ -7,38 +7,45 @@ html {
     box-sizing: inherit;
 }
 body {
-    font-family: v.$fuente_principal;
+    font-family: v.$font-principal;
     font-size: 1.6rem;
     line-height: 1.8;
+    box-sizing: content-box;
 }
 p {
-    color: v.$negro;
+    color: v.$black;
     font-size: 2rem;
+    margin: 0;
+}
+.section {
+    margin-bottom: 2rem;
+    &:last-of-type {
+        margin-bottom: none;
+    }
 }
 .box {
     width: 95%;
     max-width: 120rem;
     margin: 0 auto;
 }
-
 a {
     text-decoration: none;
 }
-
+li {
+    list-style: none;
+}
 img,
 picture {
     width: 100%;
     display: block;
 }
-
-h1, h2, h3 {
-    font-family: v.$fuente_principal;
-    margin: calc(v.$separacion / 2) 0;
+h1, h2, h3, h4 {
+    font-family: v.$font-principal;
+    margin: calc(v.$gap / 2) 0;
     font-weight: 300;
     text-align: center;
-    
+    margin: 0;
 }
-
 h1 {
     font-size: 3.8rem;
 }
@@ -50,4 +57,11 @@ h3 {
 }
 h4 {
     font-size: 2.6rem;
+}
+.button, button {
+    padding: 1.2rem;
+    border-radius: .5rem;
+    transition: background-color .3s ease;
+    font-weight: bold;
+    display: inline-block;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,14 @@
     <title>Bienes Raíces</title>
     <link rel="stylesheet" href="build/css/app.css">
 </head>
+
 <body>
     <!-- HEADER -->
-    <header class="header">
+    <header class="header home">
         <div class="box header__box">
-            <div class="header__box-bar">
-                <a class="bar__logo" href="/">
-                    <h1>Bienes<span>Raíces</span></h1>
+            <div class="header__box--bar ">
+                <a class="bar__logo" href="./">
+                    <img src="build/img/logo.svg" alt="">
                 </a>
                 <nav class="bar__nav">
                     <a href="nosotros.html">Nosotros</a>
@@ -26,11 +28,208 @@
         </div>
     </header>
     <!-- MAIN -->
-    <main class="box seccion">
-        <h1>Título Página</h1>
+    <main class="box">
+        <div class="section">
+            <h1>Más sobre Nosotros</h1>
+            <div class="about__icons">
+                <div class="icon">
+                    <img src="build/img/icono1.svg" alt="Ícono Seguridad" loading="lazy">
+                    <h3>Seguridad</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repudiandae iure quae unde ab,
+                        ea nostrum atque facilis totam voluptatem.</p>
+                </div>
+                <div class="icon">
+                    <img src="build/img/icono2.svg" alt="Ícono Precio" loading="lazy">
+                    <h3>Precio</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repudiandae iure quae unde ab,
+                        ea nostrum atque facilis totam voluptatem.</p>
+                </div>
+                <div class="icon">
+                    <img src="build/img/icono3.svg" alt="Ícono Tiempo" loading="lazy">
+                    <h3>A Tiempo</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repudiandae iure quae unde ab,
+                        ea nostrum atque facilis totam voluptatem.</p>
+                </div>
+            </div>
+        </div>
     </main>
+    <!-- SECTION -->
+    <section class="box">
+        <div class="section section__anuncios">
+            <h2 class="section__anuncios--title">Casas y Depas en Venta</h2>
+            <div class="section__anuncios--content">
+                <div class="anuncio">
+                    <picture class="anuncio__img">
+                        <source srcset="build/img/anuncio1.avif" type="image/avif">
+                        <source srcset="build/img/anuncio1.webp" type="image/webp">
+                        <img loading="lazy" src="build/img/anuncio1.jpg" alt="">
+                    </picture>
+                    <div class="anuncio__content">
+                        <h3>Casa en el Lago</h3>
+                        <p>Casa con excelente vista, acabados de lujo a un excelente precio</p>
+                        <p class="anuncio__content--precio">
+                            $3,000,000
+                        </p>
+                        <ul class="anuncio__content--icons">
+                            <li>
+                                <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
+                                <p>3</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="build/img/icono_estacionamiento.svg"
+                                    alt="Ícono estacionamiento">
+                                <p>3</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
+                                <p>4</p>
+                            </li>
+                        </ul>
+                        <a href="anuncio.html" class="button">
+                            Ver Propiedad
+                        </a>
+                    </div>
+                </div>
+                <div class="anuncio">
+                    <picture class="anuncio__img">
+                        <source srcset="build/img/anuncio2.avif" type="image/avif">
+                        <source srcset="build/img/anuncio2.webp" type="image/webp">
+                        <img loading="lazy" src="build/img/anuncio2.jpg" alt="">
+                    </picture>
+                    <div class="anuncio__content">
+                        <h3>Casa Terminados</h3>
+                        <p>Casa con excelente vista, acabados de lujo a un excelente precio</p>
+                        <p class="anuncio__content--precio">
+                            $3,000,000
+                        </p>
+                        <ul class="anuncio__content--icons">
+                            <li>
+                                <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
+                                <p>3</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="build/img/icono_estacionamiento.svg"
+                                    alt="Ícono estacionamiento">
+                                <p>3</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
+                                <p>4</p>
+                            </li>
+                        </ul>
+                        <a href="anuncio.html" class="button">
+                            Ver Propiedad
+                        </a>
+                    </div>
+                </div>
+                <div class="anuncio">
+                    <picture class="anuncio__img">
+                        <source srcset="build/img/anuncio3.avif" type="image/avif">
+                        <source srcset="build/img/anuncio3.webp" type="image/webp">
+                        <img loading="lazy" src="build/img/anuncio3.jpg" alt="">
+                    </picture>
+                    <div class="anuncio__content">
+                        <h3>Casa con Alberca</h3>
+                        <p>Casa con excelente vista, acabados de lujo a un excelente precio</p>
+                        <p class="anuncio__content--precio">
+                            $3,000,000
+                        </p>
+                        <ul class="anuncio__content--icons">
+                            <li>
+                                <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
+                                <p>3</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="build/img/icono_estacionamiento.svg"
+                                    alt="Ícono estacionamiento">
+                                <p>3</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
+                                <p>4</p>
+                            </li>
+                        </ul>
+                        <a href="anuncio.html" class="button">
+                            Ver Propiedad
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="anuncios.html" class="button">
+                    Ver Todas
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- SECTION CONTACTO -->
+    <section class="contact">
+        <h2>Encuentra la casa de tus sueños</h2>
+        <p>Llena el formulario de contacto y un asesor se pondrá en conctacto contigo a la brevedad</p>
+        <a href="contacto.html" class="button">Contáctanos</a>
+    </section>
+    <!-- SECTION BLOG -->
+    <section class="box">
+        <div class="section section__blog">
+            <section class="section__blog--content">
+                <h3>Nuestro Blog</h3>
+                <!-- ENTRADA 1 -->
+                <article class="content__article">
+                    <div class="content__article--img">
+                        <picture>
+                            <source srcset="build/img/blog1.avif" type="image/avif">
+                            <source srcset="build/img/blog1.webp" type="image/webp">
+                            <img loading="lazy" src="build/img/blog1" alt="Entrada de blog 1">
+                        </picture>
+                    </div>
+                    <div class="content__article--entrada">
+                        <h4>Terraza en el techo de tu casa</h4>
+                        <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
+                        <p>Consejos para construir una terraza en el techo de tu casa, con los mejores materiales y
+                            ahorrando dinero</p>
+                        <div class="view-entrada">
+                            <a href="entrada.html" class="button">
+                                Leer entrada
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- ENTRADA 2 -->
+                <article class="content__article">
+                    <div class="content__article--img">
+                        <picture>
+                            <source srcset="build/img/blog2.avif" type="image/avif">
+                            <source srcset="build/img/blog2.webp" type="image/webp">
+                            <img loading="lazy" src="build/img/blog2" alt="Entrada de blog 2">
+                        </picture>
+                    </div>
+                    <div class="content__article--entrada">
+                        <h4>Guía para la decoración de tu hogar</h4>
+                        <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
+                        <p>Maximiza el espacio en tu hogar con esta guía, aprende a combinar muebles y colores para
+                            darle vida a tu hogar</p>
+                        <div class="view-entrada">
+                            <a href="entrada.html" class="button">
+                                Leer entrada
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+            <section class="section__blog--testimoniales">
+                <h3>Testimoniales</h3>
+                <div class="testimonial">
+                    <blockquote>
+                        asa
+                    </blockquote>
+                    <p>-Mauricio Carrillo</p>
+                </div>
+            </section>
+        </div>
+    </section>
     <!-- FOOTER -->
-    <footer class="footer section">
+    <footer class="footer">
         <div class="box footer__box">
             <nav class="footer__box-nav">
                 <a href="nosotros.html">Nosotros</a>
@@ -46,4 +245,5 @@
 
     <script src="build/js/modernizr.js"></script>
 </body>
+
 </html>
