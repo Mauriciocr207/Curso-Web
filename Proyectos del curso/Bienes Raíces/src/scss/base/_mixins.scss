@@ -22,3 +22,11 @@
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
 }
+@mixin button($color, $colorHover) {
+    background-color: $color;
+    color: v.$white;
+    &:hover {
+        background-color: $colorHover;
+    }
+    @content;
+}

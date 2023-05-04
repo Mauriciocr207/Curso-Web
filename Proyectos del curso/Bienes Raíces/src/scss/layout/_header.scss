@@ -1,38 +1,84 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+// HEADER HOME
+.no-webp .home {
+    background-image: url('../img/header.jpg');
+}
+
+.webp .home {
+    background-image: url('../img/header.webp');
+}
+
 // HEADER PRINCIPAL
 .header {
-    background-color: v.$grisOscuro;
+    background-color: v.$greyBlack;
     padding: 1rem 0 3rem 0;
 
     .header__box {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        
+    }
 
+    &.home {
+         background-position: center;
+         background-size: cover;
 
-        h1 {
-            
+        @include m.tablet {
+            min-height: 70rem;
+        }
+
+        .header__box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @include m.tablet {
+                min-height: 70rem;
+            }
+
+            h1 {
+                color: v.$white;
+                text-align: left;
+                font-weight: v.$tiny;
+                font-size: 2rem;
+                max-width: 30rem;
+                @include m.tablet {
+                    font-size: 4rem;
+                    max-width: 60rem;
+                }
+            }
         }
     }
     
 }
 
-// HEADER__BOX
+// HEADER BOX
 .header__box {
-    &-bar {
+    &--bar {
         display: flex;
+        padding-top: 3rem;
         justify-content: space-between;
-        align-items: center;
-        width: 90%;
-        .bar__logo {
-            color: v.$blanco;
-            text-transform: uppercase;
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
+    }
+}
 
-        .bar__nav {
-
+// HEADER BOX BAR
+.header__box--bar {
+    .bar__logo {
+        min-width: 25rem;
+        width: 40%;
+        color: v.$white;
+        text-transform: uppercase;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+    .bar__nav {
+        @include m.tablet {
+            display: flex;
         }
     }
 }
@@ -43,6 +89,48 @@
         font-weight: v.$tiny;     
         span {
             font-weight: v.$bold;
+        }
+    }
+}
+
+// NAVEGACION
+.bar__nav {
+    a {
+        color: v.$white;
+        font-size: 2.2rem;
+        display: block;
+        transition: color .3s;
+
+        @include m.tablet {
+            margin-right: 2rem;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        &:hover {
+            color: v.$green;
+        }
+    }
+    &-responsive {
+        background-color: v.$greyBlack;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: v.$gap * 2;
+
+        a {
+            font-size: 4rem;
+            margin: 0;
         }
     }
 }

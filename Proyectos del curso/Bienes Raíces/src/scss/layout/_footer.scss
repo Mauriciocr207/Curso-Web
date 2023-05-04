@@ -1,2 +1,39 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
+
+.footer {
+    background-color: v.$greyBlack;
+    padding: calc(v.$gap / 2) 0;
+
+    &__box {
+        padding-top: calc(v.$gap / 2);
+    }
+
+    .copyrigth {
+        color: v.$white;
+        text-align: center;
+    }
+}
+
+.footer__box {
+    &-nav {
+        @include m.tablet {
+            display: flex;
+        }
+        a {
+            color: v.$white;
+            font-size: 2.2rem;
+            display: block;
+    
+            @include m.tablet {
+                margin-right: 2rem;
+    
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+        }
+
+    }
+    
+}

@@ -1,0 +1,32 @@
+@use '../../base/variables' as v;
+@use '../../base/mixins' as m;
+
+.about__icons {
+    display: flex;
+    flex-direction: column;
+    @include m.tablet {
+        @include m.grid(3, 2rem);
+    }
+}
+
+.icon {
+    text-align: center;
+    border-bottom: .1rem solid v.$greyBlack;
+    margin-top: 4rem;
+    &:first-of-type {
+        margin-top: 0;
+    }
+    @include m.tablet {
+        margin: 0;
+        border-bottom: none;
+    }
+    img {
+        height: 10rem;
+        width: auto;
+        margin: 0 auto;
+    }
+    h3 {
+        text-transform: uppercase;
+    }
+
+}

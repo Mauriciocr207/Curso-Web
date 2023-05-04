@@ -2,13 +2,17 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 23](#sección-22-sql-intermedio---aplicando-normalización-y-otros-temas)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 26](#sección-26-bienes-raices---creando-un-proyecto-paso-a-paso-de-forma-profesional)_
 
 ## Proyectos en Netlify
-* [Freelancer](https://proyectos-freelancer.netlify.app/) 
+* [Freelancer](https://proyects-freelancer.netlify.app/) 
     * Para este proyecto, haz click en botón Mi Diseño, para ver el segundo proyecto que he realizado.
 * [FrontEnd Store](https://projects-frontend-store.netlify.app/)
     * En este proyecto, opté por un diseño más minimaslita
+* [Blog Café](https://proyects-blog-cafe.netlify.app/)
+    * Aplicando los principios de html y css
+* [Festival Música](https://proyects-festival-musica.netlify.app/)
+    * Este proyecto estuvo enfocado a las buenas prácticas de html, css y orientación al performance con herramientas como SASS y Gulp
 
 <details open>
 <summary><h2 style="display:inline">Secciones del curso</h2></summary>
@@ -37,6 +41,7 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 23](#sección-22-sql-intermedio---ap
 * #### Sección 22: SQL INTERMEDIO - Aplicando Normalización y otros temas
 * #### Seccion 23: Introducción a PHP
 * #### Seccion 24: PHP - Sintaxis, Funciones y Mucho más
-* #### Seccion 25: PHP y BASES DE DATOS - Introducción básica
+* #### Seccion 25: PHP y BASES DE DATOS - Introducción práctica
+* #### Sección 26: BIENES RAICES - Creando un Proyecto paso a paso de forma profesional
 
 </details>
