@@ -31,7 +31,7 @@
   
   h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    // margin: 0.67em 0;
   }
   
   /* Grouping content
@@ -339,4 +339,13 @@
   [hidden] {
     display: none;
   }
+
+  /**
+   * Add margin 0 to blockquote
+  */
+  blockquote {
+    margin: 0;
+  }
+
+
   

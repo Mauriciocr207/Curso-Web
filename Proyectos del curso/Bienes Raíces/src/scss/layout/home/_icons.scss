@@ -1,15 +1,20 @@
 @use '../../base/variables' as v;
 @use '../../base/mixins' as m;
 
-.about__icons {
-    display: flex;
-    flex-direction: column;
-    @include m.tablet {
-        @include m.grid(3, 2rem);
+.about {
+    &__title {
+        margin-bottom: 3rem;
+    }
+    &__icons {
+        display: flex;
+        flex-direction: column;
+        @include m.tablet {
+            @include m.grid(3, 2rem);
+        }
     }
 }
 
-.icon {
+.about__icons .icon {
     text-align: center;
     border-bottom: .1rem solid v.$greyBlack;
     margin-top: 4rem;
