@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienes Raíces</title>
     <link rel="stylesheet" href="build/css/app.css">
+    <script src="https://kit.fontawesome.com/d10d1e89d5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,15 +23,23 @@
                     <a href="anuncios.html">Anuncios</a>
                     <a href="blog.html">Blog</a>
                     <a href="contacto.html">Contacto</a>
+                    <div class="theme__button">
+                        <i class="icon fa-solid fa-sun"></i>
+                        <input class="checkbox" type="checkbox">
+                    </div>
+                    <div class="responsive__button">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                        <input class="checkbox" type="checkbox">
+                    </div>
                 </nav>
             </div>
             <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
         </div>
     </header>
-    <!-- MAIN -->
+    <!-- MAIN ICONOS NOSOTROS -->
     <main class="box">
-        <div class="section">
-            <h1>Más sobre Nosotros</h1>
+        <div class="section about">
+            <h1 class="about__title">Más sobre Nosotros</h1>
             <div class="about__icons">
                 <div class="icon">
                     <img src="build/img/icono1.svg" alt="Ícono Seguridad" loading="lazy">
@@ -53,7 +62,7 @@
             </div>
         </div>
     </main>
-    <!-- SECTION -->
+    <!-- SECTION ANUNCIOS -->
     <section class="box">
         <div class="section section__anuncios">
             <h2 class="section__anuncios--title">Casas y Depas en Venta</h2>
@@ -172,7 +181,7 @@
     <section class="box">
         <div class="section section__blog">
             <section class="section__blog--content">
-                <h3>Nuestro Blog</h3>
+                <h3 class="content__title">Nuestro Blog</h3>
                 <!-- ENTRADA 1 -->
                 <article class="content__article">
                     <div class="content__article--img">
@@ -218,12 +227,14 @@
 
             </section>
             <section class="section__blog--testimoniales">
-                <h3>Testimoniales</h3>
-                <div class="testimonial">
-                    <blockquote>
-                        asa
-                    </blockquote>
-                    <p>-Mauricio Carrillo</p>
+                <h3 class="testimoniales__title">Testimoniales</h3>
+                <div class="testimoniales__content">
+                    <div class="testimonial">
+                        <blockquote>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. A quis at vitae animi itaque, facere aperiam officiis fugiat consectetur possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, quas?
+                        </blockquote>
+                        <p>- Mauricio Carrillo</p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -237,13 +248,12 @@
                 <a href="blog.html">Blog</a>
                 <a href="contacto.html">Contacto</a>
             </nav>
+            <p class="copyrigth">Todos los derechos reservados 2021 &copy; </p>
         </div>
-        <p class="copyrigth">Todos los derechos reservados 2021 &copy; </p>
     </footer>
-
-
-
+    <!-- SCRIPTS -->
     <script src="build/js/modernizr.js"></script>
+    <script src="build/js/app.js"></script>
 </body>
 
 </html>

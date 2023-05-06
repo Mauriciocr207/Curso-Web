@@ -41,7 +41,9 @@
                 font-weight: v.$tiny;
                 font-size: 2rem;
                 max-width: 30rem;
+                margin-top: 4rem;
                 @include m.tablet {
+                    margin-top: 0;
                     font-size: 4rem;
                     max-width: 60rem;
                 }
@@ -77,9 +79,9 @@
         }
     }
     .bar__nav {
-        @include m.tablet {
-            display: flex;
-        }
+        display: flex;
+        gap: 2rem;
+        align-items: center;
     }
 }
 
@@ -96,9 +98,13 @@
 // NAVEGACION
 .bar__nav {
     a {
+        
+        display: none;
+        @include m.tablet {
+            display: block;
+        }
         color: v.$white;
         font-size: 2.2rem;
-        display: block;
         transition: color .3s;
 
         @include m.tablet {
@@ -113,8 +119,7 @@
             color: v.$green;
         }
     }
-    &-responsive {
-        background-color: v.$greyBlack;
+    &--responsive {
         position: fixed;
         top: 0;
         left: 0;
@@ -127,10 +132,49 @@
         justify-content: center;
         align-items: center;
         gap: v.$gap * 2;
+        transition: background-color 0.3s ease;
+        background-color: v.$greyBlack;
 
         a {
+            transition: color 0.3s ease;
+            color: transparent;
+            color: v.$white;
             font-size: 4rem;
             margin: 0;
         }
+        .theme__button {
+            display: none;
+        }
+    }
+    .theme__button,
+    .responsive__button,
+    &--responsive .responsive__button {
+        cursor: pointer;
+        line-height: 0;
+        .checkbox {
+            display: none;
+        }
+    }
+    .theme__button {
+        color: v.$white;
+        font-size: 3.5rem;
+        @include m.tablet {
+            padding: 0 2rem;
+        }
+    }
+    .responsive__button,
+    &--responsive .responsive__button {
+        @include m.tablet {
+            display: none;
+        }
+        font-size: 3.5rem;
+        color: v.$white;
+        padding-right: 1rem;
+        margin: 0;
+    }
+    &--responsive .responsive__button {
+        position: absolute;
+        top: 4.3rem;
+        right: 1.4rem;
     }
 }

@@ -3,7 +3,7 @@
 
 .section__anuncios {
     &--title {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
     &--content {
@@ -28,9 +28,10 @@
     &__img {
         box-sizing: border-box;
         overflow: hidden;
+        
         &:hover img {
             transition: transform 0.3s ease;
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
     }
     &__content {

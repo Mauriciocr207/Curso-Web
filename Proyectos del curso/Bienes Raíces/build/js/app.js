@@ -1,2 +1,2 @@
-
+function e(e,c="",n=""){e.classList.remove(c),e.classList.add(n)}function c(){const c=document.querySelector(".theme__button .icon"),n=document.querySelector(".theme__button .checkbox");c.addEventListener("click",()=>{n.checked?(e(c,"fa-moon","fa-sun"),n.checked=!1):(n.checked,e(c,"fa-sun","fa-moon"),n.checked=!0)})}function n(){const c=document.querySelector(".bar__nav"),n=document.querySelector(".responsive__button"),o=document.querySelector(".responsive__button .checkbox");n.addEventListener("click",()=>{o.checked?(e(c,"bar__nav--responsive","bar__nav"),o.checked=!1):(e(c,"bar__nav","bar__nav--responsive"),o.checked=!0)})}function o(){n(),c()}window.addEventListener("load",()=>{o()});
 //# sourceMappingURL=app.js.map

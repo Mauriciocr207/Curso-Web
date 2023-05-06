@@ -2,17 +2,19 @@
 @use '../../base/mixins' as m;
 
 .section__blog {
-    margin-top: 2rem;
     @include m.tablet {
         display: grid;
         grid-template-columns: 2fr 1fr;
+        gap: 2rem;
     }
-    &--content {
-
+    &--content  {
+        
     }
     &--testimoniales {
 
     }
+
+
 }
 
 .section__blog--content {
@@ -37,10 +39,6 @@
 .content__article {
     &--img {
         height: 100%;
-        box-sizing: border-box;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
     }
     &--entrada {
         display: flex;
@@ -51,10 +49,15 @@
             text-align: left;
         }
         h4 {
+            margin-top: 1.3rem;
             line-height: 1.4;
             text-align: left;
             color: v.$black;
             font-weight: v.$bold;
+
+            @include m.tablet {
+                margin-top: 0;
+            }
 
             &::after {
                 content: '';
@@ -87,5 +90,45 @@
 }
 
 .section__blog--testimoniales {
+    .testimoniales__content {
+        box-sizing: border-box;
 
+        .testimonial {
+            background-color: v.$green;
+            width: 100%;
+            height: 100%;
+            padding: 3rem;
+            border-radius: 2rem;
+
+            blockquote, p {
+                color: v.$white;
+                font-size: 2.4rem;
+                font-weight: v.$bold;
+            }
+            blockquote {
+                --pl: 6rem;
+                position: relative;
+                padding-left: var(--pl);
+                &::after {
+                    position: absolute;
+                    content: '';
+                    background-image: url('../img/comilla.svg');
+                    background-repeat: no-repeat;
+                    width: var(--pl);
+                    height: var(--pl);
+                    display: block;
+                    top: 0;
+                    left: 0;
+                }
+            }
+            p {
+                text-align: right;
+            }
+        }
+    }
+}
+
+.content__title,
+.testimoniales__title {
+    margin-bottom: 1rem;
 }
