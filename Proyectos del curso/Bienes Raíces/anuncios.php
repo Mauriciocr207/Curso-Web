@@ -1,38 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncios</title>
-    <link rel="stylesheet" href="build/css/app.css">
-    <script src="https://kit.fontawesome.com/d10d1e89d5.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="box header__box">
-            <div class="header__box--bar">
-                <a class="bar__logo" href="./">
-                    <img src="build/img/logo.svg" alt="">
-                </a>
-                <nav class="bar__nav">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
-                    <div class="theme__button">
-                        <i class="icon fa-solid fa-sun"></i>
-                        <input class="checkbox" type="checkbox">
-                    </div>
-                    <div class="responsive__button">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        <input class="checkbox" type="checkbox">
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </header>
+<?php
+    require './includes/funciones.php';
+    setTemplate('header');
+?>
     <!-- MAIN -->
     <main class="box">
         <div class="section section__anuncios">
@@ -65,7 +34,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -97,7 +66,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -129,7 +98,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -161,7 +130,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -193,7 +162,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -225,7 +194,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -238,22 +207,6 @@
             </div>
         </div>
     </main>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="box footer__box">
-            <nav class="footer__box-nav">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-        <p class="copyrigth">Todos los derechos reservados 2021 &copy; </p>
-    </footer>
-
-
-
-    <script src="build/js/modernizr.js"></script>
-    <script src="build/js/app.js"></script>
-</body>
-</html>
+<?php
+    setTemplate('footer');
+?>

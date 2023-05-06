@@ -11,6 +11,7 @@ body {
     font-size: 1.6rem;
     line-height: 1.8;
     box-sizing: content-box;
+    transition: all 0.3s ease;
 }
 p {
     color: v.$black;
