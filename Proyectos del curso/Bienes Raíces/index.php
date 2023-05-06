@@ -1,42 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raíces</title>
-    <link rel="stylesheet" href="build/css/app.css">
-    <script src="https://kit.fontawesome.com/d10d1e89d5.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <!-- HEADER -->
-    <header class="header home">
-        <div class="box header__box">
-            <div class="header__box--bar ">
-                <a class="bar__logo" href="./">
-                    <img src="build/img/logo.svg" alt="">
-                </a>
-                <nav class="bar__nav">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
-                    <div class="theme__button">
-                        <i class="icon fa-solid fa-sun"></i>
-                        <input class="checkbox" type="checkbox">
-                    </div>
-                    <div class="responsive__button">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        <input class="checkbox" type="checkbox">
-                    </div>
-                </nav>
-            </div>
-            <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
-        </div>
-    </header>
-    <!-- MAIN ICONOS NOSOTROS -->
+<?php
+    require './includes/funciones.php';
+    setTemplate(template: "header", inHome: true);
+?>
+<!-- MAIN ICONOS NOSOTROS -->
     <main class="box">
         <div class="section about">
             <h1 class="about__title">Más sobre Nosotros</h1>
@@ -94,7 +60,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -126,7 +92,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -158,7 +124,7 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="button">
+                        <a href="anuncio.php" class="button">
                             Ver Propiedad
                         </a>
                     </div>
@@ -175,7 +141,7 @@
     <section class="contact">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Llena el formulario de contacto y un asesor se pondrá en conctacto contigo a la brevedad</p>
-        <a href="contacto.html" class="button">Contáctanos</a>
+        <a href="contacto.php" class="button">Contáctanos</a>
     </section>
     <!-- SECTION BLOG -->
     <section class="box">
@@ -197,7 +163,7 @@
                         <p>Consejos para construir una terraza en el techo de tu casa, con los mejores materiales y
                             ahorrando dinero</p>
                         <div class="view-entrada">
-                            <a href="entrada.html" class="button">
+                            <a href="entrada.php" class="button">
                                 Leer entrada
                             </a>
                         </div>
@@ -218,7 +184,7 @@
                         <p>Maximiza el espacio en tu hogar con esta guía, aprende a combinar muebles y colores para
                             darle vida a tu hogar</p>
                         <div class="view-entrada">
-                            <a href="entrada.html" class="button">
+                            <a href="entrada.php" class="button">
                                 Leer entrada
                             </a>
                         </div>
@@ -239,21 +205,6 @@
             </section>
         </div>
     </section>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="box footer__box">
-            <nav class="footer__box-nav">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-            <p class="copyrigth">Todos los derechos reservados 2021 &copy; </p>
-        </div>
-    </footer>
-    <!-- SCRIPTS -->
-    <script src="build/js/modernizr.js"></script>
-    <script src="build/js/app.js"></script>
-</body>
-
-</html>
+<?php
+    setTemplate('footer');
+?>
