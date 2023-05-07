@@ -5,6 +5,7 @@
     background-color: v.$greyBlack;
     padding: calc(v.$gap / 2) 0;
 
+
     &__box {
         padding-top: calc(v.$gap / 2);
     }
@@ -32,6 +33,7 @@
             font-weight: v.$bold;
             display: block;
             position: relative;
+            z-index: 0;
             
             border-bottom: 2px solid transparent;
             &:hover {
