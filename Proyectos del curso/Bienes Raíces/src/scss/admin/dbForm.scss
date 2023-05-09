@@ -1,0 +1,14 @@
+@use '../base/variables' as v;
+.DB__form {
+    .input {
+        --border: .3rem solid;
+        input, textarea {
+            border: var(--border) transparent;
+        }
+        .validate {
+            border: var(--border) v.$green;
+            
+        }
+    }
+    
+}

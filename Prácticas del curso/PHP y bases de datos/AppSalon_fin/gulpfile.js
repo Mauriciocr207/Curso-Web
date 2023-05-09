@@ -17,8 +17,7 @@ const avif = require('gulp-avif');
 // Javascript
 const terser = require('gulp-terser-js');
 const concat = require('gulp-concat');
-const rename = require('gulp-rename')
-
+const rename = require('gulp-rename');
 
 const paths = {
     scss: 'src/scss/**/*.scss',

@@ -8,7 +8,7 @@
         $root_to_css = str_repeat("../", $diference_dirs);
         return $root_to_css;
     };
-    function setTemplate(string $template, bool $inHome = false) {
+    function setTemplate(string $template, bool $inHome = false, bool $inAdmin = false) {
         include TEMPLATES_URL . "/$template.php";
     };
 
