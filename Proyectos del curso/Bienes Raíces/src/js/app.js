@@ -6,23 +6,25 @@ function darkTheme() {
     const themeButton = document.querySelector('.theme__button .icon');
     const themeCheck = document.querySelector('.theme__button .checkbox');
     const systemPreferences = window.matchMedia('(prefers-color-schema: dark)');
-    if(systemPreferences) {
+    function setDark() {
+        changeClass(themeButton, 'fa-sun', 'fa-moon');
+        themeCheck.checked = true;
         document.body.classList.add('dark');
-    };
+    }
+    function setLigth() {
+        changeClass(themeButton, 'fa-moon', 'fa-sun');
+        themeCheck.checked = false;
+        document.body.classList.remove('dark');
+    }
+    if(systemPreferences.matches) setDark();
     systemPreferences.addEventListener('change', () => {
-        document.body.classList.toggle('dark');
+        if(systemPreferences) setDark();
+        else setLigth();
     }) ;
 
     themeButton.addEventListener('click', () => {
-        if(!themeCheck.checked) {    
-            changeClass(themeButton, 'fa-sun', 'fa-moon');
-            themeCheck.checked = true;
-            document.body.classList.add('dark');
-        } else {
-            changeClass(themeButton, 'fa-moon', 'fa-sun');
-            themeCheck.checked = false;
-            document.body.classList.remove('dark');
-        }
+        if(!themeCheck.checked) setDark();
+        else setLigth();
     });
 }
 function showResponsiveMenu() {
