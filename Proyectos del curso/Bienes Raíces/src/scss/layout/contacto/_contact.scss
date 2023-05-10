@@ -67,7 +67,6 @@
     text-align: right;
     .button {
         margin-top: 1rem;
-        background-color: red;
         @include m.button(v.$green, v.$yellow);
     }
 }

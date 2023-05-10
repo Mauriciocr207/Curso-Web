@@ -1,2 +1,2 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");.DB__form .input{--border:.3rem solid}.DB__form .input input,.DB__form .input textarea{border:var(--border) transparent}.DB__form .input .validate{border:var(--border) #71b100}
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");.back{color:#71b100;font-size:2.5rem}.back i{transform:rotate(180deg)}.DB__form .input{--border:.3rem solid}.DB__form .input input,.DB__form .input textarea{border:var(--border) transparent}.DB__form .input .validate{border:var(--border) #71b100}.DB__form .submit .button{border:none;cursor:pointer}
 /*# sourceMappingURL=dbForm.css.map */

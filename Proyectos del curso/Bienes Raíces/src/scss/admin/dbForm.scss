@@ -1,4 +1,12 @@
 @use '../base/variables' as v;
+@use '../base/mixins' as m;
+.back {
+    font-size: 2.5rem;
+    color: v.$green;
+    i {
+        transform: rotate(180deg);
+    }
+}
 .DB__form {
     .input {
         --border: .3rem solid;
@@ -8,6 +16,13 @@
         .validate {
             border: var(--border) v.$green;
             
+        }
+    }
+
+    .submit {
+        .button {
+            border: none;
+            cursor: pointer;
         }
     }
     
