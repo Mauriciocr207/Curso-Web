@@ -36,7 +36,7 @@
             font-size: 1.5rem;
             font-weight: v.$bold;
         }
-        input, textarea {
+        input, textarea, select {
             transition: all 0.3s ease;
             background-color: v.$grey;
             font-weight: v.$normal;
@@ -44,6 +44,9 @@
             padding: .8rem;
             border: none;
             outline: none;
+        }
+        select {
+            width: auto;
         }
         textarea {
             width: 100%;

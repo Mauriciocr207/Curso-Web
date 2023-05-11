@@ -16,6 +16,5 @@
     <!-- SCRIPTS -->
     <script src=<?php echo $root . "build/js/modernizr.js" ?> ></script>
     <script src=<?php echo $root . "build/js/app.js" ?> ></script>
-    <?php if($inAdmin) echo "<script src=" . $root . "build/js/admin.js" . "></script>"; ?>
 </body>
 </html>
