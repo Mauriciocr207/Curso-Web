@@ -40,11 +40,11 @@ CREATE TABLE IF NOT EXISTS `bienesRaices_CRUD`.`propiedades` (
   `wc` INT(11) NULL,
   `estacionamiento` INT(1) NULL,
   `creado` DATE NULL,
-  `vendedores_id` INT(11) NOT NULL,
+  `vendedor_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_propiedades_vendedores_idx` (`vendedores_id` ASC) VISIBLE,
+  INDEX `fk_propiedades_vendedor_idx` (`vendedor_id` ASC) VISIBLE,
   CONSTRAINT `fk_propiedades_vendedores`
-    FOREIGN KEY (`vendedores_id`)
+    FOREIGN KEY (`vendedor_id`)
     REFERENCES `bienesRaices_CRUD`.`vendedores` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

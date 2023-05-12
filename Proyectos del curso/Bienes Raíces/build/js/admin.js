@@ -1,2 +1,0 @@
-function e(e){return result=!1,result=""!=e&&"@"!=e,result}function t(){[...document.querySelectorAll(".input input"),document.querySelector(".input textarea")].forEach(t=>{t.addEventListener("input",()=>{console.log(typeof t.value),e(t.value)?t.classList.add("validate"):t.classList.remove("validate")})})}function n(){t()}document.addEventListener("load",()=>{n()});
-//# sourceMappingURL=admin.js.map

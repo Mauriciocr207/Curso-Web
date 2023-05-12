@@ -1,2 +1,2 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");.create .button{background-color:#71b100;color:#fff}.create .button:hover{background-color:#e08709}
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");.create .alert{align-items:center;display:flex;flex-direction:column;gap:.5rem;justify-content:center}.create .alert .enviado,.create .alert .err{color:#fff;font-size:1.6rem;font-weight:700;padding:.7rem;text-align:center;width:100%}.create .alert .err{background-color:#ff2d2d}.create .alert .enviado,.create .button{background-color:#71b100}.create .button{color:#fff}.create .button:hover{background-color:#e08709}
 /*# sourceMappingURL=create.css.map */

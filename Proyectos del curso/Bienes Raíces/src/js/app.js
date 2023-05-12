@@ -29,6 +29,7 @@ function darkTheme() {
 }
 function showResponsiveMenu() {
     const nav = document.querySelector('.bar__nav');
+    
     const menuButton = document.querySelector('.responsive__button');
     const menuCheck = document.querySelector('.responsive__button .checkbox');
     menuButton.addEventListener('click', () => {
@@ -47,6 +48,6 @@ function app() {
     darkTheme();
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     app();
-});
+})
