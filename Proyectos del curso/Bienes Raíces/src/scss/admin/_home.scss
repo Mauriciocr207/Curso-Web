@@ -1,0 +1,77 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.admin {
+    .button {
+        @include m.button(v.$green, v.$yellow);
+    }
+    .propiedades {
+        margin-top: 3rem;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        .propiedad {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.propiedad {
+    margin: 0;
+    min-width: 35rem;
+    width: 35rem;
+    background-color: darken($color: v.$grey, $amount: 1);
+    overflow: hidden;
+    border-radius: 2rem;
+    &__img {
+        width: 100%;
+        height: 30rem;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &__content {
+        .campo {
+            p, h3 {
+                text-align: left;
+            }
+            h3 {
+                font-weight: bold;
+            }
+            &__nombre {
+                border: none;
+               padding: 0 2rem;
+            }
+            &__value {
+                background-color: darken(v.$grey, 20);
+                font-weight: normal;
+                color: v.$white;
+                padding: 0 2rem;
+            }
+        }
+        &--acciones {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+
+    }
+    .button {
+        text-align: center;
+        &.eliminar {
+            @include m.button(v.$red, v.$red);
+            border: none;
+            height: 3rem;
+            cursor: pointer;
+        }
+        &.actualizar {
+            @include m.button(v.$green, v.$green);
+        }
+    }
+}

@@ -1,6 +1,5 @@
 <?php 
     require '../includes/funciones.php';
-    require '../includes/config/database.php';
     require '../includes/manageDB/propiedades.php';
     require '../includes/manageDB/vendedores.php';
     setTemplate('header');
@@ -35,7 +34,7 @@
         // Revisar que no haya errores
         if(empty($errores)) {
             // Se envían los datos
-            $res = enviarDatos($campos);
+            $res = enviarPropiedad($campos);
             if($res) {
                 $respuesta = "Datos enviados correctamente";
                 foreach ($campos as $key => $value) {

@@ -10,5 +10,6 @@
                 "id" => $row["id"],
             ];
         }
+        $DB -> close();
         return $vendedores;
     }

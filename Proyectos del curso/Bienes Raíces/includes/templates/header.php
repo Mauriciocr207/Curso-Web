@@ -17,7 +17,7 @@
     <header class="header <?php echo $inHome ? 'home' : ''; ?>">
         <div class="box header__box">
             <div class="header__box--bar ">
-                <a class="bar__logo" href="./">
+                <a class="bar__logo" href="<?php echo $root; ?>">
                     <img src=<?php echo $root . "build/img/logo.svg" ?> alt="">
                 </a>
                 <nav class="bar__nav">
