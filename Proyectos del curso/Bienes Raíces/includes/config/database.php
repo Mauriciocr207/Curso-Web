@@ -12,6 +12,20 @@
         };
         return $DB;
     };
+    // function closeDB(mysqli $DB) : bool {
+    //     $resultado = false;
+    //     // try {
+    //     //     mysqli_close($DB);
+
+    //     // } catch (\Throwable $th) {
+            
+    //     // }
+    //     if(mysqli_close($DB)) {
+    //         $resultado = true;
+    //     }
+
+    //     return $resultado;
+    // }
 
 
     

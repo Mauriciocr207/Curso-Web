@@ -22,13 +22,11 @@
     flex-direction: column;
     background-color: v.$grey;
     border: 1px solid v.$grey;
-    border-radius: 1rem;
     overflow: hidden;
 
     &__img {
         box-sizing: border-box;
         overflow: hidden;
-        
         &:hover img {
             transition: transform 0.3s ease;
             transform: scale(1.15);
@@ -52,6 +50,13 @@
         font-weight: v.$bold;
         font-size: 3rem;
     }
+    &--descripcion {
+        width: 100%;
+        background-color: red;
+        text-justify: auto;
+        text-overflow: clip;
+        
+    }
 
     &--icons {
         display: flex;
@@ -74,6 +79,7 @@
             }
         }
     }
+    
 
     .button {
         @include m.button(v.$yellow, v.$green) {
@@ -88,8 +94,9 @@
     display: flex;
     margin-bottom: 2rem;
     justify-content: flex-end;
-
     .button {
         @include m.button(v.$green, v.$yellow);
+        border: none;
+        padding: 1.5rem;
     }
 }

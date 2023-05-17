@@ -1,105 +1,45 @@
 <?php 
     require '../includes/funciones.php';
+    require '../includes/manageDB/propiedades.php';
+    require '../includes/manageDB/vendedores.php';
     setTemplate('header');
-    require '../includes/config/database.php';
-    $db = connectDB();
-
-    // Consultar para obtener
-    $consulta = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($db, $consulta);
-
-
-    // Arreglo con mensajes de errores;
-    $errores = [];
-
     // Información ingresada
-    $titulo = "";
-    $precio = "";
-    $descripcion = "";
-    $habitaciones = "";
-    $wc = "";
-    $estacionamiento = "";
-    $vendedor_id = "";
-
-    // Verificamos la respuesta
-    $posted = "";
-
-
-    
+    $campos = [
+        "titulo" => "",
+        "precio" => "",
+        "descripcion" => "",
+        "habitaciones" => "",
+        "wc" => "",
+        "estacionamiento" => "",
+        "vendedor" => "",
+        "creado" => "",
+        "imagen" => "",
+    ]; 
+    $respuesta = "";
     // Ejecutar el código después de que el usuario envía el formulario
     if($_SERVER["REQUEST_METHOD"] === 'POST') {
-        // echo "<pre>";
-        // var_dump($_POST);
-        // echo "</pre>";
-
-        // echo "<pre>";
-        // var_dump($_FILES);
-        // echo "</pre>";
-
-        $titulo = mysqli_real_escape_string( $db, $_POST["titulo"] );
-        $precio = mysqli_real_escape_string( $db, $_POST["precio"] );
-        $descripcion = mysqli_real_escape_string( $db, $_POST["descripcion"] );
-        $habitaciones = mysqli_real_escape_string( $db, $_POST["habitaciones"] );
-        $wc = mysqli_real_escape_string( $db, $_POST["wc"] );
-        $estacionamiento = mysqli_real_escape_string( $db, $_POST["estacionamiento"] );
-        $vendedor_id = mysqli_real_escape_string( $db, $_POST["vendedor_id"] );
-        $creado = date('Y/m/d');
-
+        $campos["titulo"] = $_POST["titulo"];
+        $campos["precio"] = $_POST["precio"];
+        $campos["descripcion"] = $_POST["descripcion"];
+        $campos["habitaciones"] = $_POST["habitaciones"];
+        $campos["wc"] = $_POST["wc"];
+        $campos["estacionamiento"] = $_POST["estacionamiento"];
+        $campos["vendedor"] = $_POST["vendedor"];
+        $campos["creado"] = date('Y/m/d');
         // Asignar files hacia una variable
-        $imagen = $_FILES["imagen"];
-        // var_dump($imagen["name"]);
+        $campos["imagen"] = $_FILES["imagen"];
 
-        // Array de cada campo
-        $campos = [
-            "Titulo" => $titulo, 
-            "Precio" => $precio, 
-            "Descripcion" => $descripcion, 
-            "Habitaciones" => $habitaciones, 
-            "Baños" => $wc, 
-            "Estacionamiento" => $estacionamiento, 
-            "Vendedor" => $vendedor_id 
-        ];
-        foreach ($campos as $key => $value) {
-            if(!$value) {
-                $errores[] = "El campo " . $key . " es Obligatorio";
-            }
-        }
-        if(strlen($descripcion) < 50) {
-            $errores[] = "La Descripción es obligatoria y debe tener al menos 50 caracteres";
-        }
-        if(!$imagen["name"] || $imagen["error"]) {
-            $errores[] = "La imagen es Obligatoria";
-        }
-        $maxSizeImage = 1000 * 100;
-        if($imagen["size"] > $maxSizeImage) {
-            $errores[] = "El tamaño máximo de la imagen son 100kb";
-        }
-
-        // Mostrar errores
-        // echo "<pre>";
-        // var_dump($errores);
-        // echo "</pre>";
-
-
+        // Validamos datos
+        $errores = validarDatos($campos);
         // Revisar que no haya errores
         if(empty($errores)) {
-            // Insertar en la base de datos
-            $query = " INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedor_id) VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedor_id') ";
-
-            try {
-                $res = mysqli_query($db, $query);
-                if($res) {
-                    $titulo = "";
-                    $precio = "";
-                    $descripcion = "";
-                    $habitaciones = "";
-                    $wc = "";
-                    $estacionamiento = "";
-                    $vendedor_id = "";
+            // Se envían los datos
+            $res = enviarPropiedad($campos);
+            if($res) {
+                $respuesta = "Datos enviados correctamente";
+                foreach ($campos as $key => $value) {
+                    $campos[$key] = "";
                 }
-                $posted = "Enviado correctamente";
-            } catch (\Throwable $th) {
-                echo $th;
             }
         }
     }
@@ -121,8 +61,8 @@
                         </div>
                 <?php         
                     }
-                    if($posted != "") {
-                        echo "<div class='enviado'>" . $posted . "</div>";
+                    if($respuesta != "") {
+                        echo "<div class='enviado'>" . $respuesta . "</div>";
                     }
 
                 ?>
@@ -135,12 +75,12 @@
                     <!-- TITULO DE PROPIEDAD -->
                     <div class="input">
                         <label class="input__label" for="titulo">Título:</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Titulo de propiedad" require value=<?php echo $titulo; ?> >
+                        <input type="text" id="titulo" name="titulo" placeholder="Titulo de propiedad" require value=<?php echo $campos["titulo"]; ?> >
                     </div>
                     <!-- PRECIO -->
                     <div class="input">
                         <label class="input__label" for="precio">Precio:</label>
-                        <input type="number" id="precio"  name="precio" placeholder="Precio de propiedad" require value=<?php echo $precio; ?> >
+                        <input type="number" id="precio"  name="precio" placeholder="Precio de propiedad" require value=<?php echo $campos["precio"]; ?> >
                     </div>
                     <!-- IMAGENES -->
                     <div class="input">
@@ -152,7 +92,7 @@
                         <label for="" class="input__label">
                             Descripción: 
                         </label>
-                        <textarea name="descripcion" id="descripcion" cols="30" rows="10" ><?php echo $descripcion; ?></textarea>
+                        <textarea name="descripcion" id="descripcion" cols="30" rows="10" placeholder="Ingresa una descripcion"><?php echo $campos["descripcion"]; ?></textarea>
                     </div>
                 </fieldset>
                 <!-- INFORMACIÓN PROPIEDAD -->
@@ -162,21 +102,21 @@
                     <!-- HABITACIONES -->
                     <div class="input">
                         <label class="input__label" for="titulo">Habitaciones</label>
-                        <input type="number" id="habitaciones" name="habitaciones" placeholder="Titulo de propiedad" require value=<?php echo $habitaciones; ?> >
+                        <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 3" require value=<?php echo $campos["habitaciones"]; ?> >
                     </div>
                     <!-- BAÑOS -->
                     <div class="input">
                         <label for="" class="input__label">
                             Baños
                         </label>
-                        <input type="number" id="wc"  name="wc" placeholder="Ej: 3" min="1" max="9" value=<?php echo $wc; ?>>
+                        <input type="number" id="wc"  name="wc" placeholder="Ej: 3" min="1" max="9" value=<?php echo $campos["wc"]; ?>>
                     </div>
                     <!-- ESTACIONAMIENTO -->
                     <div class="input">
                         <label for="" class="input__label">
                             Estacionamiento
                         </label>
-                        <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9" value=<?php echo $estacionamiento; ?> >
+                        <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9" value=<?php echo $campos["estacionamiento"]; ?> >
                     </div>
 
                 </fieldset>
@@ -191,15 +131,18 @@
                         </label>
                         <select name="vendedor" id="vendedor">
                             <option selected  disabled >Selecciona un vendedor</option>
-                            <?php 
-                                while($row = mysqli_fetch_assoc($resultado) ) { ?>
-                                    <option 
-                                        <?php echo $vendedor_id === $row["id"] ? "selected" : ""; ?>
-                                        value="<?php echo $row["id"] ?>">
-                                             <?php echo $row["nombre"] . " " . $row["apellido"] ?> 
-                                    </option>    
-                                <?php } 
-
+                            <?php
+                                $vendedores = consultarVendedores();
+                                foreach( $vendedores as $vendedor ) { ?>
+                                    <?php  
+                                        echo $campos["vendedor"];
+                                    ?>
+                                     <option 
+                                        <?php echo $campos["vendedor"] == $vendedor["id"] ? "selected" : ""; ?>
+                                        value=<?php echo $vendedor["id"] ?>
+                                     > <?php echo $vendedor["nombre"]; ?> </option>
+                                <?php  
+                                }
                             ?>
                         </select>
                     </div>
