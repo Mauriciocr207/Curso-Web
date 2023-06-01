@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 26](#sección-26-bienes-raices---creando-un-proyecto-paso-a-paso-de-forma-profesional)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 31](#sección-31-bienes-raices---añadiendo-autenticación-de-usuarios)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyects-freelancer.netlify.app/) 
@@ -43,5 +43,9 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 26](#sección-26-bienes-raices---cre
 * #### Seccion 24: PHP - Sintaxis, Funciones y Mucho más
 * #### Seccion 25: PHP y BASES DE DATOS - Introducción práctica
 * #### Sección 26: BIENES RAICES - Creando un Proyecto paso a paso de forma profesional
-
+* #### Seccion 27: BIENES RAICES - Añadiendo Javascript
+* #### Seccion 28: BIENES RAICES - Configuración y Bases de Datos del Proyecto
+* #### Sección 29: BIENES RAICES - Creando Parciales de Código y Templates
+* #### Sección 30: BIENES RAICES - Creando un CRUD para Propiedades
+* #### Sección 31: BIENES RAICES - Añadiendo Autenticación de Usuarios
 </details>

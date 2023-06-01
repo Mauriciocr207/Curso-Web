@@ -21,11 +21,11 @@
             <?php
                 foreach ($propiedades as $propiedad) {
             ?>
-                    <div class="propiedad">
+                    <div class="propiedad_admin">
                         <div class="propiedad__img">
                             <img src="../imagenes/<?php echo $propiedad["imagen"]; ?>" alt="">
                         </div>
-                        <div class="propiedad__content">
+                        <div class="propiedad_admin__content">
                             <div class="campo">
                                 <div class="campo__nombre">
                                     <h3>Título:</h3>
@@ -50,7 +50,7 @@
                                     <p><?php echo $propiedad["id"]; ?></p>
                                 </div>
                             </div>
-                            <div class="propiedad__content--acciones">
+                            <div class="propiedad_admin__content--acciones">
                                 <a href="./admin/update.php?id=<?php echo $propiedad["id"]; ?>" class="button actualizar">
                                     Actualizar
                                 </a>

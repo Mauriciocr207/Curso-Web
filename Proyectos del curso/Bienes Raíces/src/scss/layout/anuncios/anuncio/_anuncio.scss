@@ -3,21 +3,30 @@
     max-width: 80rem;
     margin-left: auto;
     margin-right: auto;
+    background-color: darken($color: v.$grey, $amount: 1);
+    border-radius: 2rem;
+    overflow: hidden;
 
     &__title {
-        margin-bottom: 2rem;
+        margin-top: 1rem;
+        font-size: 4rem;
+        font-weight: bold;
     }
     &__resumen {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 1rem;
+    }
+    &__descripcion {
+        padding: 0 4rem 4rem;
+        // word-break: break-all;
+        text-align: justify;
     }
 }
 
 .propiedad__resumen {
     &--precio {
-        font-size: 3rem;
+        font-size: 3.5rem;
         font-weight: v.$bold;
         color: v.$yellow;
     }

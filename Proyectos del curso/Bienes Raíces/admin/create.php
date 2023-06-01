@@ -75,12 +75,12 @@
                     <!-- TITULO DE PROPIEDAD -->
                     <div class="input">
                         <label class="input__label" for="titulo">Título:</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Titulo de propiedad" require value=<?php echo $campos["titulo"]; ?> >
+                        <input type="text" id="titulo" name="titulo" placeholder="Titulo de propiedad" require value="<?php echo $campos["titulo"]; ?>" >
                     </div>
                     <!-- PRECIO -->
                     <div class="input">
                         <label class="input__label" for="precio">Precio:</label>
-                        <input type="number" id="precio"  name="precio" placeholder="Precio de propiedad" require value=<?php echo $campos["precio"]; ?> >
+                        <input type="number" id="precio"  name="precio" placeholder="Precio de propiedad" require value="<?php echo $campos["precio"]; ?>" >
                     </div>
                     <!-- IMAGENES -->
                     <div class="input">
@@ -102,21 +102,21 @@
                     <!-- HABITACIONES -->
                     <div class="input">
                         <label class="input__label" for="titulo">Habitaciones</label>
-                        <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 3" require value=<?php echo $campos["habitaciones"]; ?> >
+                        <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 3" require value="<?php echo $campos["habitaciones"]; ?>" >
                     </div>
                     <!-- BAÑOS -->
                     <div class="input">
                         <label for="" class="input__label">
                             Baños
                         </label>
-                        <input type="number" id="wc"  name="wc" placeholder="Ej: 3" min="1" max="9" value=<?php echo $campos["wc"]; ?>>
+                        <input type="number" id="wc"  name="wc" placeholder="Ej: 3" min="1" max="9" value="<?php echo $campos["wc"]; ?>" >
                     </div>
                     <!-- ESTACIONAMIENTO -->
                     <div class="input">
                         <label for="" class="input__label">
                             Estacionamiento
                         </label>
-                        <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9" value=<?php echo $campos["estacionamiento"]; ?> >
+                        <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9" value="<?php echo $campos["estacionamiento"]; ?>" >
                     </div>
 
                 </fieldset>
@@ -139,7 +139,7 @@
                                     ?>
                                      <option 
                                         <?php echo $campos["vendedor"] == $vendedor["id"] ? "selected" : ""; ?>
-                                        value=<?php echo $vendedor["id"] ?>
+                                        value="<?php echo $vendedor["id"] ?>"
                                      > <?php echo $vendedor["nombre"]; ?> </option>
                                 <?php  
                                 }
