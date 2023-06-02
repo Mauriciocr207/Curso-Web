@@ -32,7 +32,7 @@
                 foreach ($propiedades as $propiedad) {
             ?>
                     <div class="propiedad_admin">
-                        <div class="propiedad__img">
+                        <div class="propiedad_admin__img">
                             <img src="../imagenes/<?php echo $propiedad["imagen"]; ?>" alt="">
                         </div>
                         <div class="propiedad_admin__content">
