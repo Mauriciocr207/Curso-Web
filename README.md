@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 31](#sección-32-programación-orientada-a-objetos-poo-en-php)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 32](#sección-32-programación-orientada-a-objetos-poo-en-php)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyects-freelancer.netlify.app/) 
