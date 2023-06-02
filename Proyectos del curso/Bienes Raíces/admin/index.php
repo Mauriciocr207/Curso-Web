@@ -1,7 +1,15 @@
 <?php
     require '../includes/funciones.php';
     require '../includes/manageDB/propiedades.php';
-    setTemplate('header');
+    
+    // Validamos que haya una sesión iniciada
+    session_start();
+    $auth = $_SESSION["login"];
+    if( !$auth ) {
+        $_SESSION = [];
+        header("Location: ./");
+    }
+
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         $id = $_POST["id"];
         $imagen = $_POST["imagen"];
@@ -9,6 +17,8 @@
         eliminarArchivoImagen($imagen);
     }
     $propiedades = obtenerPropiedades();
+
+    setTemplate('header');
 ?>
 <main class="box">
     <section class="section admin">

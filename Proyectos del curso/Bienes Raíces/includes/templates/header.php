@@ -1,5 +1,10 @@
 <?php 
     $root = setRootUrl(__FILE__);
+    if(!isset($_SESSION)) session_start();
+    $logout = $_GET["logout"];
+    if($logout) {
+        $_SESSION = [];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +30,15 @@
                     <a href= <?php echo $root . "anuncios.php" ?> >Anuncios</a>
                     <a href= <?php echo $root . "blog.php" ?> >Blog</a>
                     <a href= <?php echo $root . "contacto.php" ?> >Contacto</a>
+                    <?php
+                        $auth = $_SESSION["login"];
+                        if(!$auth) { ?>
+                            <a href= <?php echo $root . "login.php" ?> >Iniciar Sesión</a>
+                        <?php }
+                        else { ?>
+                            <a href= <?php echo $root ."?logout=true" ?> >Cerrar Sesión</a>
+                        <?php }
+                    ?>
                     <div class="theme__button">
                         <i class="icon fa-solid fa-sun"></i>
                         <input class="checkbox" type="checkbox">

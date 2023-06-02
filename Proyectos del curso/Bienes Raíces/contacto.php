@@ -3,7 +3,7 @@
     setTemplate('header');
 ?>
     <!-- MAIN -->
-    <main class="box section">
+    <main class="box">
         <div class="section contact__form">
             <h1 class="contact__form--title">Contacto</h1>
             <h4>Llena el Formulario</h4>

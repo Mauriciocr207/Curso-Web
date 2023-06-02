@@ -66,3 +66,24 @@ h4 {
     font-weight: bold;
     display: inline-block;
 }
+.alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    .err, .enviado {
+        padding: .7rem;
+        color: v.$white;
+        font-size: 1.6rem;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+    }
+    .err {
+        background-color: v.$red;
+    }
+    .enviado {
+        background-color: v.$green;
+    }
+}

@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 31](#sección-31-bienes-raices---añadiendo-autenticación-de-usuarios)_
+__Actualmente en:__ $\rightarrow$ _[Seccion 31](#sección-32-programación-orientada-a-objetos-poo-en-php)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyects-freelancer.netlify.app/) 
@@ -48,4 +48,5 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 31](#sección-31-bienes-raices---añ
 * #### Sección 29: BIENES RAICES - Creando Parciales de Código y Templates
 * #### Sección 30: BIENES RAICES - Creando un CRUD para Propiedades
 * #### Sección 31: BIENES RAICES - Añadiendo Autenticación de Usuarios
+* #### Sección 32: Programación Orientada a Objetos (POO) en PHP
 </details>
