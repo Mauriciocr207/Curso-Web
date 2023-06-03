@@ -1,6 +1,11 @@
 <?php
     require './includes/funciones.php';
     require './includes/manageDB/usuario.php';
+    $errores = [];
+    $campos = [
+        "email" => "",
+        "password" => ""
+    ];
     // Autenticar usuario
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         $campos["email"] = $_POST["email"];

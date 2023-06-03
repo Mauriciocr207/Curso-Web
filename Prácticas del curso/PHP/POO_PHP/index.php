@@ -4,7 +4,6 @@ include 'includes/header.php';
 define("br", "</br>");
     // Se guardará todo el código en funciones, para una mejor organización
 
-
     // 344. Creando una Clase e instanciándola
     // 345. Atributos de la clase y Constructores
     function clases() {
@@ -64,6 +63,7 @@ define("br", "</br>");
     // metodos();
 
     // 348. Modificadores de Acceso public y protected
+    // 349. Métodos estáticos
     function modificadores() {
         class Motocicleta {
             public function __construct(public string $nombre, public int $precio, public bool $disponible)
@@ -84,8 +84,19 @@ define("br", "</br>");
         // -> protected : Se puede acceder únicamente en la clase
         //  -> private: Sólo miembros de la misma clase pueden acceder a él
         class Automovil {
-            public function __construct(protected string $nombre, public int $precio, public bool $disponible)
+            public $imagen;
+            public static $imagenPlacHolder = "imagen.jpg";
+
+            public function __construct(protected string $nombre, public int $precio, public bool $disponible, string $imagenPlacHolder)
             {    
+                if($imagen) {
+                    self::$imagenPlacHolder = $imagen;
+                }
+            }
+
+            // Los métodos estáticos no requieren instanciarse
+            public static function showImg() {
+                return self::$imagen;
             }
     
             public function mostrarProducto() {
@@ -99,7 +110,7 @@ define("br", "</br>");
             }
 
             // SETTERS
-            public function setName($nuevo_nombre) {
+            public function setName(string $nuevo_nombre) {
                 $this -> nombre = $nuevo_nombre;
             }
         }
@@ -130,6 +141,9 @@ define("br", "</br>");
         echo br;
         $atos -> mostrarProducto();
         echo br;
+
+        // para llamar métodos estáticos lo hacemos de la siguiente forma:
+        echo Automovil::showImg();
 
     }
     modificadores();

@@ -1,9 +1,12 @@
 <?php 
     $root = setRootUrl(__FILE__);
+    
     if(!isset($_SESSION)) session_start();
-    $logout = $_GET["logout"];
-    if($logout) {
-        $_SESSION = [];
+    if(isset($_GET["logout"])) {
+        $logout = $_GET["logout"];
+        if($logout) {
+            $_SESSION = [];
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -31,7 +34,7 @@
                     <a href= <?php echo $root . "blog.php" ?> >Blog</a>
                     <a href= <?php echo $root . "contacto.php" ?> >Contacto</a>
                     <?php
-                        $auth = $_SESSION["login"];
+                        $auth = isset($_SESSION["login"]) ? $_SESSION["login"] : false;
                         if(!$auth) { ?>
                             <a href= <?php echo $root . "login.php" ?> >Iniciar Sesión</a>
                         <?php }
