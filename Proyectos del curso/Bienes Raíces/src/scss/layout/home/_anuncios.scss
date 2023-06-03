@@ -22,11 +22,18 @@
     flex-direction: column;
     background-color: v.$grey;
     border: 1px solid v.$grey;
+    border-radius: 2rem;
     overflow: hidden;
 
     &__img {
         box-sizing: border-box;
+        height: 40%;
         overflow: hidden;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
         &:hover img {
             transition: transform 0.3s ease;
             transform: scale(1.15);
@@ -51,11 +58,8 @@
         font-size: 3rem;
     }
     &--descripcion {
-        width: 100%;
-        background-color: red;
-        text-justify: auto;
-        text-overflow: clip;
-        
+        word-wrap: break-word;
+
     }
 
     &--icons {

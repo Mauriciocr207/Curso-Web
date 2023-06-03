@@ -17,6 +17,7 @@
         "imagen" => $propiedad["imagen"],
     ]; 
     $respuesta = "";
+    $errores = [];
     // Ejecutar el código después de que el usuario envía el formulario
     if($_SERVER["REQUEST_METHOD"] === 'POST') {
         $campos["titulo"] = $_POST["titulo"];

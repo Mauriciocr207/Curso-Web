@@ -1,5 +1,9 @@
 <?php
     require './includes/funciones.php';
+    require './includes/manageDB/propiedades.php';
+    $propiedades = obtenerPropiedades();
+    $propiedadesContables = [];
+    $maxAnuncios = 3;
     setTemplate(template: "header", inHome: true);
 ?>
 <!-- MAIN ICONOS NOSOTROS -->
@@ -33,105 +37,58 @@
         <div class="section section__anuncios">
             <h2 class="section__anuncios--title">Casas y Depas en Venta</h2>
             <div class="section__anuncios--content">
-                <div class="anuncio">
-                    <picture class="anuncio__img">
-                        <source srcset="build/img/anuncio1.avif" type="image/avif">
-                        <source srcset="build/img/anuncio1.webp" type="image/webp">
-                        <img loading="lazy" src="build/img/anuncio1.jpg" alt="">
-                    </picture>
-                    <div class="anuncio__content">
-                        <h3>Casa en el Lago</h3>
-                        <p>Casa con excelente vista, acabados de lujo a un excelente precio</p>
-                        <p class="anuncio__content--precio">
-                            $3,000,000
-                        </p>
-                        <ul class="anuncio__content--icons">
-                            <li>
-                                <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
-                                <p>3</p>
-                            </li>
-                            <li>
-                                <img loading="lazy" src="build/img/icono_estacionamiento.svg"
-                                    alt="Ícono estacionamiento">
-                                <p>3</p>
-                            </li>
-                            <li>
-                                <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
-                                <p>4</p>
-                            </li>
-                        </ul>
-                        <a href="anuncio.php" class="button">
-                            Ver Propiedad
-                        </a>
-                    </div>
-                </div>
-                <div class="anuncio">
-                    <picture class="anuncio__img">
-                        <source srcset="build/img/anuncio2.avif" type="image/avif">
-                        <source srcset="build/img/anuncio2.webp" type="image/webp">
-                        <img loading="lazy" src="build/img/anuncio2.jpg" alt="">
-                    </picture>
-                    <div class="anuncio__content">
-                        <h3>Casa Terminados</h3>
-                        <p>Casa con excelente vista, acabados de lujo a un excelente precio</p>
-                        <p class="anuncio__content--precio">
-                            $3,000,000
-                        </p>
-                        <ul class="anuncio__content--icons">
-                            <li>
-                                <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
-                                <p>3</p>
-                            </li>
-                            <li>
-                                <img loading="lazy" src="build/img/icono_estacionamiento.svg"
-                                    alt="Ícono estacionamiento">
-                                <p>3</p>
-                            </li>
-                            <li>
-                                <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
-                                <p>4</p>
-                            </li>
-                        </ul>
-                        <a href="anuncio.php" class="button">
-                            Ver Propiedad
-                        </a>
-                    </div>
-                </div>
-                <div class="anuncio">
-                    <picture class="anuncio__img">
-                        <source srcset="build/img/anuncio3.avif" type="image/avif">
-                        <source srcset="build/img/anuncio3.webp" type="image/webp">
-                        <img loading="lazy" src="build/img/anuncio3.jpg" alt="">
-                    </picture>
-                    <div class="anuncio__content">
-                        <h3>Casa con Alberca</h3>
-                        <p>Casa con excelente vista, acabados de lujo a un excelente precio</p>
-                        <p class="anuncio__content--precio">
-                            $3,000,000
-                        </p>
-                        <ul class="anuncio__content--icons">
-                            <li>
-                                <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
-                                <p>3</p>
-                            </li>
-                            <li>
-                                <img loading="lazy" src="build/img/icono_estacionamiento.svg"
-                                    alt="Ícono estacionamiento">
-                                <p>3</p>
-                            </li>
-                            <li>
-                                <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
-                                <p>4</p>
-                            </li>
-                        </ul>
-                        <a href="anuncio.php" class="button">
-                            Ver Propiedad
-                        </a>
-                    </div>
-                </div>
+                <?php 
+                    if(!empty($propiedades)) {
+                        foreach ($propiedades as $propiedad) {
+                            $propiedadesContables[] = $propiedad;
+                        }
+                        $numPropiedades = count($propiedades);
+                        if($numPropiedades < $maxAnuncios) {
+                            $mostrarMaxPropiedades = $numPropiedades;
+                        } else {
+                            $mostrarMaxPropiedades = $maxAnuncios;
+                        }
+                        for ($i=0; $i < $mostrarMaxPropiedades; $i++) { 
+                ?>
+                        <div class="anuncio">
+                            <picture class="anuncio__img">
+                                <source srcset="./imagenes/<?php echo $propiedadesContables[$i]["imagen"] ?>" type="image/avif">
+                                <source srcset="./imagenes/<?php echo $propiedadesContables[$i]["imagen"] ?>" type="image/webp">
+                                <img loading="lazy" src="./imagenes/<?php echo $propiedadesContables[$i]["imagen"] ?>" alt="">
+                            </picture>
+                            <div class="anuncio__content">
+                                <h3><?php echo $propiedadesContables[$i]["titulo"] ?></h3>
+                                <p class="anuncio__content--descripcion"><?php echo substr($propiedadesContables[$i]["descripcion"],0, 30); ?>...</p>
+                                <p class="anuncio__content--precio">
+                                    $<?php echo $propiedadesContables[$i]["precio"] ?>
+                                </p>
+                                <ul class="anuncio__content--icons">
+                                    <li>
+                                        <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
+                                        <p><?php echo $propiedadesContables[$i]["wc"] ?></p>
+                                    </li>
+                                    <li>
+                                        <img loading="lazy" src="build/img/icono_estacionamiento.svg"
+                                            alt="Ícono estacionamiento">
+                                        <p><?php echo $propiedadesContables[$i]["estacionamiento"] ?></p>
+                                    </li>
+                                    <li>
+                                        <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
+                                        <p><?php echo $propiedadesContables[$i]["habitaciones"] ?></p>
+                                    </li>
+                                </ul>
+                                <a href="anuncio.php?id=<?php echo $propiedadesContables[$i]["id"] ?>" class="button">
+                                    Ver Propiedad
+                                </a>
+                            </div>
+                        </div>
+                <?php 
+                        }
+                    }
+                ?>
             </div>
             <div class="view-all">
-                <a href="anuncios.html" class="button">
+                <a href="./anuncios.php" class="button">
                     Ver Todas
                 </a>
             </div>

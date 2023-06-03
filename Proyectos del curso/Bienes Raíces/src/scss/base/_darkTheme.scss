@@ -42,6 +42,19 @@
             background-color: lighten(v.$greyBlack,4);
         }
     }
+    .propiedad_admin {
+        background-color: lighten(v.$greyBlack, 6);
+        &__content {
+            .campo {
+                &__nombre {
+                
+                }
+                &__value {
+                    background-color: lighten(v.$greyBlack, 12);
+                }
+            }
+        }
+    }
 
 
 }

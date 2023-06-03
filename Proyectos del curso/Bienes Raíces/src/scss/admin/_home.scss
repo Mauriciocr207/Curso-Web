@@ -10,16 +10,14 @@
         display: flex;
         align-items: center;
         gap: 3rem;
-        justify-content: space-evenly;
         flex-wrap: wrap;
-        .propiedad {
-            display: flex;
-            flex-direction: column;
-        }
     }
 }
 
-.propiedad {
+.propiedad_admin {
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
     margin: 0;
     min-width: 35rem;
     width: 35rem;
@@ -45,7 +43,7 @@
             }
             &__nombre {
                 border: none;
-               padding: 0 2rem;
+                padding: 0 2rem;
             }
             &__value {
                 background-color: darken(v.$grey, 20);

@@ -83,6 +83,17 @@
         gap: 2rem;
         align-items: center;
     }
+    .logout {
+        .button {
+            background: none;
+            border: none;
+            color: v.$white;
+            font-size: 2.2rem;
+            transition: color .3s;
+            font-weight: normal;
+            cursor: pointer;
+        }
+    }
 }
 
 // LOGO
