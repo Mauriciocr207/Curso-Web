@@ -84,19 +84,17 @@ define("br", "</br>");
         // -> protected : Se puede acceder únicamente en la clase
         //  -> private: Sólo miembros de la misma clase pueden acceder a él
         class Automovil {
-            public $imagen;
-            public static $imagenPlacHolder = "imagen.jpg";
+            public static $imagenPlaceHolder = "imagen.jpg";
 
-            public function __construct(protected string $nombre, public int $precio, public bool $disponible, string $imagenPlacHolder)
+            public function __construct(protected string $nombre, public int $precio, public bool $disponible, public string $imagen)
             {    
                 if($imagen) {
-                    self::$imagenPlacHolder = $imagen;
+                    self::$imagenPlaceHolder = $imagen;
                 }
             }
-
             // Los métodos estáticos no requieren instanciarse
             public static function showImg() {
-                return self::$imagen;
+                return self::$imagenPlaceHolder;
             }
     
             public function mostrarProducto() {
@@ -114,16 +112,16 @@ define("br", "</br>");
                 $this -> nombre = $nuevo_nombre;
             }
         }
-        $atos = new Automovil("Yamaha", 23000, true);
+        $atos = new Automovil("Yamaha", 23000, true, "");
         try {
-            $atos -> nombre = "nuevo nombre";   
+            // $atos -> nombre = "nuevo nombre";
         } catch (\Throwable $th) {
             echo $th; // Error: Cannot access protected property Automovil::$nombre     
             // El objeto no se puede modificar;
         }
         echo br;
         try {
-            echo $atos -> nombre;
+            // echo $atos -> nombre;
         } catch (\Throwable $th) {
             echo $th; // Error: Cannot access protected property Automovil::$nombre
         }
@@ -144,11 +142,196 @@ define("br", "</br>");
 
         // para llamar métodos estáticos lo hacemos de la siguiente forma:
         echo Automovil::showImg();
+        $versa = new Automovil("Versa", 20000, false, "versa.jpg");
+        echo br;
+        $city = new Automovil("City", 201020, true, "city.jpg");
+        echo $atos -> showImg();
+        echo $versa -> showImg();
+        echo $city -> showImg();
+        // Vemos que al modificar la variable static en la clase, no importa qué valor le pongamos a cada automóvil, el valor final de imagen en cada automóvil dependerá de la ultima modificación hecha. 
+        // Como el último que se creo y modificó fue city, entonces, los tres muestran "city.jpg";
+
+
+        
 
     }
-    modificadores();
+    // modificadores();
 
+    // 350. Herencia;
+    function herencia() {
+        class Transporte {
+            public function __construct(protected int $ruedas, protected int $capacidad)
+            {
+                
+            }
 
+            public function getInfo() : string {
+                return "El transporte tiene " . $this -> ruedas . " ruedas y una capacidad de " . $this -> capacidad;
+            }
+        }
+
+        class Bicicleta extends Transporte {
+
+            // Como nombramos una función con el mismo nombre en Bicicleta y en Transporte, tenemos un método que se repite, por lo tanto, el método en Bicicleta se sobreescribe
+            public function getInfo() : string {
+                return "El transporte tiene " . $this -> ruedas . " ruedas y una capacidad de " . $this -> capacidad . " Y NO GASTA GASOLINA.";
+            }
+        }
+
+        class Auto extends Transporte {
+            public function __construct(protected int $ruedas, protected int $capacidad, protected string $transmision)
+            {
+                
+            }
+
+            public function getTransmision() : string {
+                return $this -> transmision;
+            }
+        }
+
+        $bicicleta = new Bicicleta(2, 2);
+        echo $bicicleta -> getInfo();
+        echo br;
+        $auto = new Auto(4, 5, "Manual");
+        echo $auto -> getInfo();
+        echo $auto -> getTransmision();
+
+    }
+    // herencia();
+
+    // 351. Clases Abstractas
+    function clasesAbstractas() {
+        //== NOTA ==//
+        // Las Clases Abstractas son clases que no se pueden instansear, sólamente heredar
+        abstract class Transporte_ { // con abstract ya no podemos isntansear esta clase, sólamente heredarla.
+            public function __construct(protected int $ruedas, protected int $capacidad)
+            {
+                
+            }
+            public function getInfo() : string {
+                return "El transporte tiene " . $this -> ruedas . " ruedas y una capacidad de " . $this -> capacidad;
+            }
+        }
+
+        class Bicicleta_ extends Transporte_ {
+            // Como nombramos una función con el mismo nombre en Bicicleta y en Transporte, tenemos un método que se repite, por lo tanto, el método en Bicicleta se sobreescribe
+            public function getInfo() : string {
+                return "El transporte tiene " . $this -> ruedas . " ruedas y una capacidad de " . $this -> capacidad . " Y NO GASTA GASOLINA.";
+            }
+        }
+
+        class Auto_ extends Transporte_ {
+            public function __construct(protected int $ruedas, protected int $capacidad, protected string $transmision)
+            {
+                
+            }
+            public function getTransmision() : string {
+                return $this -> transmision;
+            }
+        }
+
+        // $transporte = new Transporte_(2, 5); // Error. Cannot instantiate abstract class Transporte_
+        // echo $transporte -> getInfo();
+        echo br;
+        $bicicleta = new Bicicleta_(3, 4);
+        echo br;
+        echo $bicicleta -> getInfo();
+        $auto = new Auto_(3,1,"Manual");
+        echo $auto -> getInfo();
+        echo $auto -> getTransmision();
+    }
+    // clasesAbstractas();
+
+    // 352. Interfaces
+    function interfaces() {
+        interface LibroeInterfaz {
+            public function getInfo() : string;
+            public function getNumPag() : int;
+        }
+        class Libro implements LibroeInterfaz {
+            public function __construct(protected string $nombre, protected int $numPag, protected int $isbn)
+            {
+            }
+
+            public function getInfo() : string {
+                return "Nombre: " . $this -> nombre . " NumPág: " . $this -> numPag . " ISBN: " . $this -> isbn;
+            }
+            public function getNumPag(): int {
+                return $this -> numPag;
+            }
+        }
+        $libro = new Libro("El principito", 100, 123128192);
+        echo $libro -> getInfo();
+    }
+    // interfaces();
+
+    //  353. Polimorfismo
+    function polimorfismo() {
+        // El polimorfismo es la capacidad de una clase abstracta o un objeto determinado para responder a un mismo método con su propio comportamiento
+        interface LibroeInterfaz_ {
+            public function getInfo() : string;
+            public function getNumPag() : int;
+        }
+        class Libro_ implements LibroeInterfaz_ {
+            public function __construct(protected string $nombre, protected int $numPag, protected int $isbn)
+            {
+            }
+
+            public function getInfo() : string {
+                return "Nombre: " . $this -> nombre . " NumPág: " . $this -> numPag . " ISBN: " . $this -> isbn;
+            }
+            public function getNumPag(): int {
+                return $this -> numPag;
+            }
+        }
+        $libro = new Libro_("El principito", 100, 123128192);
+        echo $libro -> getInfo();
+        
+        class Libreta extends Libro_ implements LibroeInterfaz_ {
+            public function __construct(protected string $nombre, protected int $numPag, protected int $isbn, private bool $cuadros, private string $color)
+            {
+            }
+
+            public function getInfo() : string {
+                return "Nombre: " . $this -> nombre . " NumPág: " . $this -> numPag . " ISBN: " . $this -> isbn . "Cuadros?: " . $this -> cuadros;
+            }
+
+            // Se pueden implementar métodos que no están definidos en la interfaz, siempre y cuando todos los métodos de la interfaz se estén implementando, de lo contrario, habrán errores
+            public function getColor() : string {
+                return "El color es: " . $this -> color;
+            }
+        }
+
+        $libreta = new Libreta("Z++", 100, 123123, true, "rojo");
+
+        echo "<pre>";
+        var_dump($libro);
+        var_dump($libreta);
+        echo "</pre>";
+        echo $libreta -> getColor();
+    }
+    // polimorfismo();
+
+    // 354. Autoload de clases
+    function autoLoad() {
+        // require './Classes/Clientes.php';
+        // require './Classes/Detalles.php';   
+        // En vez de utilizar require podemos utilizar AutoLoad
+        function mi_autoload($clase) {
+            require __DIR__ . "/Classes/" . $clase . ".php";
+        }
+        spl_autoload_register('mi_autoload');
+        // El código anterior, carga las clases conforme se van requiriendo
+        $detalles = new Detalles();
+        $clientes = new Clientes();
+    }
+    // autoLoad();
+
+    // 355. Namespaces
+    function nameSpaces() {
+        
+    }
+    nameSpaces();
 
 
 include 'includes/footer.php';
