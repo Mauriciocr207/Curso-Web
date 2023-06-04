@@ -1,7 +1,5 @@
 <?php
-    require '../includes/funciones.php';
-    require '../includes/manageDB/propiedades.php';
-    
+    require "../includes/app.php";
     // Validamos que haya una sesión iniciada
     session_start();
     $auth = $_SESSION["login"];

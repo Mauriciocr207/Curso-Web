@@ -1,6 +1,4 @@
-<?php   
-    require 'app.php';
-    
+<?php  
     function setRootUrl(string $dir_url = __DIR__) {
         $dirs_to_root = substr_count(PROYECT__URL, "\\");
         $dirs_to_actual = substr_count($dir_url, "\\");

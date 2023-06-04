@@ -1,7 +1,5 @@
 <?php 
-    require '../includes/funciones.php';
-    require '../includes/manageDB/propiedades.php';
-    require '../includes/manageDB/vendedores.php';
+    require "../includes/app.php";
     setTemplate('header');
     $id = $_GET["id"];
     $propiedad = obtenerPropiedadPorId($id);
@@ -30,7 +28,7 @@
         // Asignar files hacia una variable
         $campos["imagen_nueva"] = $_FILES["imagen"];
         // Validamos datos
-        $errores = validarDatos($campos);
+        $errores = validarDatosPropiedades($campos);
         // Se elimina el error de imagen
         array_pop($errores);
         // Revisar que no haya errores

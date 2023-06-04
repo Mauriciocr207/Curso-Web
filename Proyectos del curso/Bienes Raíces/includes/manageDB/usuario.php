@@ -1,5 +1,4 @@
 <?php
-    require'./includes/config/database.php';
     function signUp(string $email, string $password) : array {
         // Importar conexión
         $db = connectDB();
@@ -28,7 +27,7 @@
         }
         return $auth;
     }
-    function validarDatos(array $campos) : array {
+    function validarDatosUsuario(array $campos) : array {
         $errores = [];
         // Array de cada campo
         // foreach ($campos as $key => $value) {

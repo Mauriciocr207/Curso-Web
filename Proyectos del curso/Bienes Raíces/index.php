@@ -1,6 +1,5 @@
 <?php
-    require './includes/funciones.php';
-    require './includes/manageDB/propiedades.php';
+    require './includes/app.php';
     $propiedades = obtenerPropiedades();
     $propiedadesContables = [];
     $maxAnuncios = 3;

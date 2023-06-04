@@ -1,6 +1,6 @@
 <?php 
     // Este script es únicamente para crear un usuario y su contraseña;
-    require './includes/config/database.php';
+    require './includes/app.php';
     // Importar conexión
     $db = connectDB();
 

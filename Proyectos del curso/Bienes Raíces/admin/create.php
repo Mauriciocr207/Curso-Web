@@ -1,7 +1,7 @@
 <?php 
-    require '../includes/funciones.php';
-    require '../includes/manageDB/propiedades.php';
-    require '../includes/manageDB/vendedores.php';
+    require "../includes/app.php";
+    use App\Propiedad;
+
     setTemplate('header');
     // Información ingresada
     $campos = [
@@ -19,19 +19,19 @@
     $errores = [];
     // Ejecutar el código después de que el usuario envía el formulario
     if($_SERVER["REQUEST_METHOD"] === 'POST') {
-        $campos["titulo"] = $_POST["titulo"];
-        $campos["precio"] = $_POST["precio"];
-        $campos["descripcion"] = $_POST["descripcion"];
-        $campos["habitaciones"] = $_POST["habitaciones"];
-        $campos["wc"] = $_POST["wc"];
-        $campos["estacionamiento"] = $_POST["estacionamiento"];
-        $campos["vendedor"] = $_POST["vendedor"];
-        $campos["creado"] = date('Y/m/d');
+        $campos["titulo"] = $_POST["titulo"] ?? "";
+        $campos["precio"] = $_POST["precio"] ?? "";
+        $campos["descripcion"] = $_POST["descripcion"] ?? "";
+        $campos["habitaciones"] = $_POST["habitaciones"] ?? "";
+        $campos["wc"] = $_POST["wc"] ?? "";
+        $campos["estacionamiento"] = $_POST["estacionamiento"] ?? "";
+        $campos["vendedor"] = $_POST["vendedor"] ?? "";
+        $campos["creado"] = date('Y/m/d') ?? "";
         // Asignar files hacia una variable
-        $campos["imagen"] = $_FILES["imagen"];
+        $campos["imagen"] = $_FILES["imagen"] ?? "";
 
         // Validamos datos
-        $errores = validarDatos($campos);
+        $errores = validarDatosPropiedades($campos);
         // Revisar que no haya errores
         if(empty($errores)) {
             // Se envían los datos
@@ -131,7 +131,7 @@
                             Nombre
                         </label>
                         <select name="vendedor" id="vendedor">
-                            <option selected  disabled >Selecciona un vendedor</option>
+                            <option selected value="" disabled>Selecciona un vendedor</option>
                             <?php
                                 $vendedores = consultarVendedores();
                                 foreach( $vendedores as $vendedor ) { ?>
