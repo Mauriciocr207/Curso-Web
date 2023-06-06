@@ -1,7 +1,7 @@
 <?php 
-declare(strict_types = 1);
-include 'includes/header.php';
-define("br", "</br>");
+    declare(strict_types = 1);  
+    include 'includes/header.php';
+    define("br", "</br>");
     // Se guardará todo el código en funciones, para una mejor organización
 
     // 344. Creando una Clase e instanciándola
@@ -328,10 +328,87 @@ define("br", "</br>");
     // autoLoad();
 
     // 355. Namespaces
+    // use App\UsuarioPro;
+    // use App\UsuarioDefault;
     function nameSpaces() {
+        // require './Classes/UsuarioPro.php';
+        // require './Classes/UsuarioDefault.php'; 
+        function autoload_($clase) {
+            $cleanClass = explode("\\", $clase); //Separa un string por cada "\" que encuentre
+            $cleanClass = $cleanClass[1];
+            require __DIR__ . "/Classes/" . $cleanClass . ".php";
+            // Otra forma de organizar el código, sería crear una carpeta con el nombre del namespace creado y crear archivos con las clases dentro de esa carpeta, así al llamar a la clase, no habría problemas con la ruta
+        }
+        spl_autoload_register('autoload_');
+        // Podemos crear una clase que tenga el mismo nombre pero sin un namespace
+        class UsuarioPro {
+            public function __construct()
+            {
+                echo "Desde Usuario Pro en index";
+            }
+        }
         
+        
+        $pro = new App\UsuarioPro();
+        echo br;
+        $normal = new App\UsuarioDefault();
+        echo br;
+        $pro2 = new UsuarioPro();
     }
-    nameSpaces();
+    // nameSpaces();
 
+    // 358. Autoload con Composer
+    use App\Vendedor;
+    function namespacesComposer() {
+        // Podemos incluir clases de namespaces con el autoload por composer
+        require './vendor/autoload.php';
+        $vendedor = new Vendedor();
+    }
+    // namespacesComposer();
+
+    // 359. Consultar la Base de datos con POO y MySQLI
+    function POO_mysqli() {
+        // Conexión a la DB
+        $db = new mysqli("localhost", "root", "root", "bienesraices_crud");
+        // Creación del query
+        $query = "SELECT titulo FROM propiedades";
+        // $res = $db -> query($query);
+        // En vez de utilizar $db -> query, pdemos utilizar $db -> prepare;
+        // Ventajas: * seguridad, * performance;
+        // Se prepara el query
+        $stmt = $db -> prepare($query);
+        // Ejecución del query
+        $stmt -> execute();
+        // Creamos la variable
+        $stmt -> bind_result($res);
+        // Asignamos el resultado
+        $stmt -> fetch();
+        echo "<pre>";
+        var_dump($res);
+        while($stmt -> fetch()) {
+            var_dump($res);
+        }
+        echo "</pre>";
+    }
+    // POO_mysqli();
+
+    // 360. Consultar la Base de datos con POO y PDO
+    function POO_PDO() {
+        // PDO soporta varias bases de datos, no sólo mysql
+        $db = new PDO("mysql:host=localhost; dbname=bienesraices_crud", "root", "root");
+        $query = "SELECT * FROM propiedades";
+        $stmt = $db -> prepare($query);
+        $stmt -> execute();
+        $propiedades = $stmt -> fetchAll( PDO::FETCH_ASSOC );
+        // Para "despreparar la declaración se puede usar:
+        // $stmt -> closeCursor();
+        // De modo que podemos volver a utilizar el stmt, incluso, si se quiere, con algún parámetro
+        // $stmt -> execute();
+        // PDOStatement::closeCursor() libera la conexión al servidor, 
+        // por lo que otras sentencias SQL podrían ejecutarse, pero deja la sentencia 
+        // en un estado que la habilita para ser ejecutada otra vez.
+
+    }
+    POO_PDO();
 
 include 'includes/footer.php';

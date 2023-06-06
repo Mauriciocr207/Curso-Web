@@ -1,5 +1,4 @@
 <?php 
-    require PROYECT__URL . '/includes/config/database.php';
     function crearArchivioImagen(string $archivo) : string {
         $carpetaImagenes = '../imagenes';
         // Crear carpeta si no existe
@@ -18,7 +17,7 @@
         $carpetaImagenes = '../imagenes';
         unlink($carpetaImagenes . "/" . $imagen);
     }
-    function validarDatos(array $campos) : array {
+    function validarDatosPropiedades(array $campos) : array {
         $errores = [];
         // Array de cada campo
         foreach ($campos as $key => $value) {

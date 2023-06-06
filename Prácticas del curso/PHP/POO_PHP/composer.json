@@ -1,0 +1,16 @@
+{
+    "name": "mauricio_carrillo/poo_php",
+    "description": "Aprendiendo Namespaces y Autoload",
+    "authors": [
+        {
+            "name": "Mauricio CR",
+            "email": "mauriciocr123@outlook.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "./Classes"
+        }
+    }
+}

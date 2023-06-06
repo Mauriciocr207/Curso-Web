@@ -1,6 +1,5 @@
 <?php
-    require './includes/funciones.php';
-    require './includes/manageDB/usuario.php';
+    require './includes/app.php';
     $errores = [];
     $campos = [
         "email" => "",
@@ -11,7 +10,7 @@
         $campos["email"] = $_POST["email"];
         $campos["password"] = $_POST["password"];
         // Validamos los campos
-        $errores = validarDatos($campos);
+        $errores = validarDatosUsuario($campos);
         if(empty($errores)) {
             // Validar si el usuario existe y si su contraseña es correcta
             $auth = signUp($campos["email"], $campos["password"]);

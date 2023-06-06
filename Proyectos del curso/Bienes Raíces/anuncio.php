@@ -1,6 +1,5 @@
 <?php
-    require './includes/funciones.php';
-    require './includes/manageDB/propiedades.php';
+    require './includes/app.php';
     $id = $_GET["id"];
     $id = filter_var($id, FILTER_VALIDATE_INT);
     if(!$id) header('Location: ./');
