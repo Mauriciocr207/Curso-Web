@@ -1,8 +1,13 @@
 <?php
     require './includes/app.php';
+    use App\Database;
+    $db = new Database();
     $propiedades = obtenerPropiedades();
     $propiedadesContables = [];
     $maxAnuncios = 3;
+
+    echo "</pre>";
+
     setTemplate(template: "header", inHome: true);
 ?>
 <!-- MAIN ICONOS NOSOTROS -->

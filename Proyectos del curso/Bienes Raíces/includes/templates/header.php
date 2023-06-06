@@ -1,6 +1,5 @@
 <?php 
     $root = setRootUrl(__FILE__);
-    
     if(!isset($_SESSION)) session_start();
     if(isset($_GET["logout"])) {
         $logout = $_GET["logout"];
