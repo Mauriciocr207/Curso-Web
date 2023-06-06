@@ -19,16 +19,22 @@
     $errores = [];
     // Ejecutar el código después de que el usuario envía el formulario
     if($_SERVER["REQUEST_METHOD"] === 'POST') {
+        $propiedad = new Propiedad($_POST);
         $campos["titulo"] = $_POST["titulo"] ?? "";
         $campos["precio"] = $_POST["precio"] ?? "";
         $campos["descripcion"] = $_POST["descripcion"] ?? "";
         $campos["habitaciones"] = $_POST["habitaciones"] ?? "";
         $campos["wc"] = $_POST["wc"] ?? "";
         $campos["estacionamiento"] = $_POST["estacionamiento"] ?? "";
-        $campos["vendedor"] = $_POST["vendedor"] ?? "";
+        $campos["vendedor"] = $_POST["vendedor_id"] ?? "";
         $campos["creado"] = date('Y/m/d') ?? "";
         // Asignar files hacia una variable
         $campos["imagen"] = $_FILES["imagen"] ?? "";
+        echo "<pre>";
+        var_dump($_POST);
+        echo "</pre>";
+        $propiedad = new Propiedad($_POST);
+        $propiedad -> guardar();
 
         // Validamos datos
         $errores = validarDatosPropiedades($campos);
@@ -130,7 +136,7 @@
                         <label for="" class="input__label">
                             Nombre
                         </label>
-                        <select name="vendedor" id="vendedor">
+                        <select name="vendedor_id" id="vendedor">
                             <option selected value="" disabled>Selecciona un vendedor</option>
                             <?php
                                 $vendedores = consultarVendedores();
