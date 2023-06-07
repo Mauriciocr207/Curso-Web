@@ -1,5 +1,6 @@
 <?php
     require "../includes/app.php";
+    use App\Propiedad;
     // Validamos que haya una sesión iniciada
     session_start();
     $auth = $_SESSION["login"];
@@ -10,12 +11,14 @@
 
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         $id = $_POST["id"];
-        $imagen = $_POST["imagen"];
-        borrarPropiedad($id);
-        eliminarArchivoImagen($imagen);
-    }
-    $propiedades = obtenerPropiedades();
+        $metadata = Propiedad::getPropiedadById($id);
+        if($metadata) {
+            $propiedad = new Propiedad($metadata);
+            $propiedad -> delete();
+        }
 
+    }
+    
     setTemplate('header');
 ?>
 <main class="box">
@@ -27,11 +30,14 @@
         </a>
         <div class="propiedades">
             <?php
+                $propiedades = Propiedad::getAll() ?? [];
                 foreach ($propiedades as $propiedad) {
+                    // Reescribimos los datos del objeto a objetos de la clase Propiedad
+                    $propiedad = new Propiedad($propiedad);
             ?>
                     <div class="propiedad_admin">
                         <div class="propiedad_admin__img">
-                            <img src="../imagenes/<?php echo $propiedad["imagen"]; ?>" alt="">
+                            <img src="../imagenes/<?php echo $propiedad -> getImagen(); ?>" alt="">
                         </div>
                         <div class="propiedad_admin__content">
                             <div class="campo">
@@ -39,7 +45,7 @@
                                     <h3>Título:</h3>
                                 </div>
                                 <div class="campo__value">
-                                    <p><?php echo $propiedad["titulo"]; ?></p>
+                                    <p><?php echo $propiedad -> getTitulo(); ?></p>
                                 </div>
                             </div>
                             <div class="campo">
@@ -47,7 +53,7 @@
                                     <h3>Precio:</h3>
                                 </div>
                                 <div class="campo__value">
-                                    <p>$<?php echo $propiedad["precio"]; ?></p>
+                                    <p>$<?php echo $propiedad -> getPrecio(); ?></p>
                                 </div>
                             </div>
                             <div class="campo">
@@ -55,16 +61,15 @@
                                     <h3>ID:</h3>
                                 </div>
                                 <div class="campo__value">
-                                    <p><?php echo $propiedad["id"]; ?></p>
+                                    <p><?php echo $propiedad -> getId(); ?></p>
                                 </div>
                             </div>
                             <div class="propiedad_admin__content--acciones">
-                                <a href="./admin/update.php?id=<?php echo $propiedad["id"]; ?>" class="button actualizar">
+                                <a href="./admin/update.php?id=<?php echo $propiedad -> getId(); ?>" class="button actualizar">
                                     Actualizar
                                 </a>
                                 <form action="./admin" method="POST">
-                                    <input type="hidden" name="imagen" value="<?php echo $propiedad["imagen"]; ?>">
-                                    <input type="hidden" name="id" value="<?php echo $propiedad["id"]; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $propiedad -> getId(); ?>">
                                     <input type="submit" value="Eliminar" class="button eliminar">
                                 </form>
                             </div>

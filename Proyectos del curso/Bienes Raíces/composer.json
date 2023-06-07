@@ -6,7 +6,9 @@
             "email": "mauriciocr123@outlook.com"
         }
     ],
-    "require": {},
+    "require": {
+        "intervention/image": "^2.7"
+    },
     "autoload": {
         "psr-4": {
             "App\\" : "./Classes"

@@ -1,56 +1,28 @@
 <?php 
     require "../includes/app.php";
     use App\Propiedad;
-
-    setTemplate('header');
-    // Información ingresada
-    $campos = [
-        "titulo" => "",
-        "precio" => "",
-        "descripcion" => "",
-        "habitaciones" => "",
-        "wc" => "",
-        "estacionamiento" => "",
-        "vendedor" => "",
-        "creado" => "",
-        "imagen" => "",
-    ]; 
-    $respuesta = "";
+    use App\Vendedor;
+    $camposNew = $_POST;
+    $camposNew["imagen"] = $_FILES["imagen"]["tmp_name"] ?? "";
+    $camposNew["creado"] = date('Y/m/d');
+    $propiedad = new Propiedad($camposNew);
     $errores = [];
-    // Ejecutar el código después de que el usuario envía el formulario
-    if($_SERVER["REQUEST_METHOD"] === 'POST') {
-        $propiedad = new Propiedad($_POST);
-        $campos["titulo"] = $_POST["titulo"] ?? "";
-        $campos["precio"] = $_POST["precio"] ?? "";
-        $campos["descripcion"] = $_POST["descripcion"] ?? "";
-        $campos["habitaciones"] = $_POST["habitaciones"] ?? "";
-        $campos["wc"] = $_POST["wc"] ?? "";
-        $campos["estacionamiento"] = $_POST["estacionamiento"] ?? "";
-        $campos["vendedor"] = $_POST["vendedor_id"] ?? "";
-        $campos["creado"] = date('Y/m/d') ?? "";
-        // Asignar files hacia una variable
-        $campos["imagen"] = $_FILES["imagen"] ?? "";
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
-        $propiedad = new Propiedad($_POST);
-        $propiedad -> guardar();
+    $resDB = "";
 
-        // Validamos datos
-        $errores = validarDatosPropiedades($campos);
+    // Ejecutar el código después de que el usuario envía el formulario
+    if($_SERVER["REQUEST_METHOD"] === 'POST') { 
+        $errores = $propiedad -> validateData();
         // Revisar que no haya errores
         if(empty($errores)) {
             // Se envían los datos
-            $res = enviarPropiedad($campos);
+            $res = $propiedad -> save();
             if($res) {
-                $respuesta = "Datos enviados correctamente";
-                foreach ($campos as $key => $value) {
-                    $campos[$key] = "";
-                }
+                $propiedad -> clean(); // Se limpian los datos
+                $resDB = "Datos enviados correctamente";
             }
         }
     }
-    
+    setTemplate('header');
 ?>
     <main class="box">
         <section class="section create">
@@ -68,10 +40,9 @@
                         </div>
                 <?php         
                     }
-                    if($respuesta != "") {
-                        echo "<div class='enviado'>" . $respuesta . "</div>";
+                    if(!empty($resDB)) {
+                        echo "<div class='enviado'>" . $resDB . "</div>";
                     }
-
                 ?>
             </div>
 
@@ -82,12 +53,12 @@
                     <!-- TITULO DE PROPIEDAD -->
                     <div class="input">
                         <label class="input__label" for="titulo">Título:</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Titulo de propiedad" require value="<?php echo $campos["titulo"]; ?>" >
+                        <input type="text" id="titulo" name="titulo" placeholder="Titulo de propiedad" require value="<?php echo $propiedad -> getTitulo(); ?>" >
                     </div>
                     <!-- PRECIO -->
                     <div class="input">
                         <label class="input__label" for="precio">Precio:</label>
-                        <input type="number" id="precio"  name="precio" placeholder="Precio de propiedad" require value="<?php echo $campos["precio"]; ?>" >
+                        <input type="number" id="precio"  name="precio" placeholder="Precio de propiedad" require value="<?php echo $propiedad -> getPrecio(); ?>" >
                     </div>
                     <!-- IMAGENES -->
                     <div class="input">
@@ -99,7 +70,7 @@
                         <label for="" class="input__label">
                             Descripción: 
                         </label>
-                        <textarea name="descripcion" id="descripcion" cols="30" rows="10" placeholder="Ingresa una descripcion"><?php echo $campos["descripcion"]; ?></textarea>
+                        <textarea name="descripcion" id="descripcion" cols="30" rows="10" placeholder="Ingresa una descripcion"><?php echo $propiedad -> getDescripcion(); ?></textarea>
                     </div>
                 </fieldset>
                 <!-- INFORMACIÓN PROPIEDAD -->
@@ -109,21 +80,21 @@
                     <!-- HABITACIONES -->
                     <div class="input">
                         <label class="input__label" for="titulo">Habitaciones</label>
-                        <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 3" require value="<?php echo $campos["habitaciones"]; ?>" >
+                        <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 3" require value="<?php echo $propiedad -> getHabitaciones(); ?>" >
                     </div>
                     <!-- BAÑOS -->
                     <div class="input">
                         <label for="" class="input__label">
                             Baños
                         </label>
-                        <input type="number" id="wc"  name="wc" placeholder="Ej: 3" min="1" max="9" value="<?php echo $campos["wc"]; ?>" >
+                        <input type="number" id="wc"  name="wc" placeholder="Ej: 3" min="1" max="9" value="<?php echo $propiedad -> getWc(); ?>" >
                     </div>
                     <!-- ESTACIONAMIENTO -->
                     <div class="input">
                         <label for="" class="input__label">
                             Estacionamiento
                         </label>
-                        <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9" value="<?php echo $campos["estacionamiento"]; ?>" >
+                        <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 3" min="1" max="9" value="<?php echo $propiedad -> getEstacionamiento(); ?>" >
                     </div>
 
                 </fieldset>
@@ -139,15 +110,17 @@
                         <select name="vendedor_id" id="vendedor">
                             <option selected value="" disabled>Selecciona un vendedor</option>
                             <?php
-                                $vendedores = consultarVendedores();
+                                // VENDEDORES
+                                $vendedoresData = Vendedor::getAll();
+                                $vendedores = [];
+                                foreach($vendedoresData as $data) {
+                                    $vendedores[] = new Vendedor($data);
+                                }
                                 foreach( $vendedores as $vendedor ) { ?>
-                                    <?php  
-                                        echo $campos["vendedor"];
-                                    ?>
                                      <option 
-                                        <?php echo $campos["vendedor"] == $vendedor["id"] ? "selected" : ""; ?>
-                                        value="<?php echo $vendedor["id"] ?>"
-                                     > <?php echo $vendedor["nombre"]; ?> </option>
+                                        <?php echo $propiedad -> getVendedor() == $vendedor -> getId() ? "selected" : ""; ?>
+                                        value="<?php echo $vendedor -> getId() ?>"
+                                     > <?php echo $vendedor -> getNombre() . " " . $vendedor -> getApellido(); ?> </option>
                                 <?php  
                                 }
                             ?>
