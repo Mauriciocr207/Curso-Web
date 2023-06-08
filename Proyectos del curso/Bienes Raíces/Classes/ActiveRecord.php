@@ -50,7 +50,7 @@
             return md5( uniqid( rand(), true ) ) . ".jpg";
         }
         private function deleteFileImage(string $name) : void {
-            $imagesFolder = PROYECT__URL . "/imagenes/" . static::$folderImages;
+            $imagesFolder = PROYECT__URL . "/Imagenes/" . static::$folderImages;
             $file = $imagesFolder . "/$name";
             unlink($file);
         }
@@ -150,20 +150,23 @@
             // Creamos un arreglo con las propiedades, ignorando el 'id' y 'campos'
             $cols = $this -> getPropertyArray(ignore_id: true);
             // Variables a ignorar
-            unset($cols["creado"]);
+            unset($cols["creado"]); // ignorar para cualquier clase (la tenga o no)
+            if(!isset($cols["imagen"])) unset($cols["imagen"]); // Si una clase tiene la propiedad imagen en NULL, la elimina
             // Array de cada campo
             foreach ($cols as $key => $value) {
                 if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";
             }
+            // Validación extra de Propiedades
             if(isset($cols["descripcion"]) && strlen($cols["descripcion"]) < 50) {
                 $errores[] = "La Descripción es obligatoria y debe tener al menos 50 caracteres";
             }
-            // $maxSizeImage = 1000 * 100;
-            // if($imagen["size"] > $maxSizeImage) {
-            //     $errores[] = "El tamaño máximo de la imagen son 100kb";
-            // }
+            // Validación extra de Vendedores
             if(isset($cols["telefono"]) && !preg_match("/^\d{10}/", $cols["telefono"])) {
                 $errores[] = "Número de teléfono inválido";
+            }
+            // Validación extra de Usuario
+            if(isset($cols["email"]) && !empty($cols["email"]) && !filter_var($cols["email"], FILTER_VALIDATE_EMAIL)) {
+                $errores[] = "Email Inválido" ;
             }
             return $errores;
         }

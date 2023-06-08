@@ -7,7 +7,7 @@
     // Autenticar usuario
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         // Validamos los campos
-        $errores = $usuario -> validateData();
+        $errores = $usuario -> validate();
         if(empty($errores)) {
             // Validar si el usuario existe y si su contraseña es correcta
             $auth = $usuario -> signUp();
