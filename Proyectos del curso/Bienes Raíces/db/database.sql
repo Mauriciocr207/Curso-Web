@@ -47,7 +47,6 @@ CREATE TABLE `propiedades` (
 
 LOCK TABLES `propiedades` WRITE;
 /*!40000 ALTER TABLE `propiedades` DISABLE KEYS */;
-INSERT INTO `propiedades` VALUES (34,'Casa con piscina ',123213.00,'af77c0bbd85c157ed3ccfacbe5d6ee46.jpg','asdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsdaasdsadasdsda',2,1,1,'2023-06-01',2),(35,'Casa de Doña Mary',25000.00,'9c0a4c58c224ee00fd1cc8d2637def98.jpg','Sabemos que ésta es la casa de tus sueños, esperamos poder cumplir tus espectativas y mejorar la calidad de tus estancias. Casa de Doña Mary, para darte las mejores vacaciones',2,1,1,'2023-06-01',1),(36,'Casa frente al mar',40000.00,'43a0fe8c2a1485a5109e8cb08354be45.jpg','Esta es la mejor casa de todo Sisal. Una de las más reconocidas a nivel estatal. Centro de reunión de los personajes más destacados de Mérida, Yucatán.',3,3,3,'2023-06-02',2),(37,'Casa de doña mary',123212.00,'0e72dc639a492addb48ae18d1b5977d6.jpg','aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas aasdjjabdas ',2,2,1,'2023-06-02',1);
 /*!40000 ALTER TABLE `propiedades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,6 +87,7 @@ CREATE TABLE `vendedores` (
   `nombre` varchar(45) DEFAULT NULL,
   `apellido` varchar(45) DEFAULT NULL,
   `telefono` varchar(10) DEFAULT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -98,7 +98,6 @@ CREATE TABLE `vendedores` (
 
 LOCK TABLES `vendedores` WRITE;
 /*!40000 ALTER TABLE `vendedores` DISABLE KEYS */;
-INSERT INTO `vendedores` VALUES (1,'Juan','de la Torre','1234567890'),(2,'Karen','Perez','1234567890');
 /*!40000 ALTER TABLE `vendedores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -111,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-02 22:44:53
+-- Dump completed on 2023-06-07 21:08:30

@@ -4,7 +4,7 @@
     $id = $_GET["id"];
     $id = filter_var($id, FILTER_VALIDATE_INT);
     if(!$id) header('Location: ./');
-    $metadata = Propiedad::getPropiedadById($id);
+    $metadata = Propiedad::getById($id);
     $propiedad = new Propiedad($metadata);
     setTemplate('header');
 ?>
@@ -13,9 +13,9 @@
         <div class="section propiedad">
             <div class="propiedad__img">
                 <picture class="anuncio__img">
-                    <source srcset="./imagenes/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
-                    <source srcset="./imagenes/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
-                    <img loading="lazy" src="./imagenes/<?php echo $propiedad -> getImagen(); ?>" alt="">
+                    <source srcset="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
+                    <source srcset="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
+                    <img loading="lazy" src="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
                 </picture>
             </div>
             <h1 class="propiedad__title"><?php echo $propiedad -> getTitulo(); ?></h1>

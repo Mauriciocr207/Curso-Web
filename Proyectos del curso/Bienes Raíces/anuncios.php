@@ -15,6 +15,9 @@
             <div class="section__anuncios--content">
                 <?php 
                     $propiedades = [];
+                    if(count($propiedadesData) < $maxAnuncios) {
+                        $maxAnuncios = count($propiedadesData);
+                    }
                     for ($i=0; $i < $maxAnuncios; $i++) { 
                         $data = $propiedadesData[$i];
                         $propiedades[] = new Propiedad($data);
@@ -24,9 +27,9 @@
                 ?>
                         <div class="anuncio">
                             <picture class="anuncio__img">
-                                <source srcset="./imagenes/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
-                                <source srcset="./imagenes/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
-                                <img loading="lazy" src="./imagenes/<?php echo $propiedad -> getImagen(); ?>" alt="">
+                                <source srcset="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
+                                <source srcset="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
+                                <img loading="lazy" src="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
                             </picture>
                             <div class="anuncio__content">
                                 <h3><?php echo $propiedad -> getTitulo() ?></h3>

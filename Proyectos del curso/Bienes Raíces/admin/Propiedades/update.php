@@ -1,34 +1,42 @@
 <?php 
-    require "../includes/app.php";
+    require "../../includes/app.php";
     use App\Propiedad;
     use App\Vendedor;
-    $camposNew = $_POST;
-    $camposNew["imagen"] = $_FILES["imagen"]["tmp_name"] ?? "";
-    $camposNew["creado"] = date('Y/m/d');
-    $propiedad = new Propiedad($camposNew);
+
+    $id = $_GET["id"];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    if(!$id) {
+        header('Location:../admin?panel=Propiedades');
+    }
+    $metadata = Propiedad::getById($id);
+    $propiedad = new Propiedad($metadata);
     $errores = [];
     $resDB = "";
-
     // Ejecutar el código después de que el usuario envía el formulario
     if($_SERVER["REQUEST_METHOD"] === 'POST') { 
-        $errores = $propiedad -> validateData();
+        // Verificamos si se subió una nueva imagen
+        $imageUpdated = !empty($_FILES["imagen"]["tmp_name"]);
+        // Guardamos los datos nuevos
+        $camposNew = $_POST;
+        $camposNew["imagen"] = $imageUpdated ? $_FILES["imagen"]["tmp_name"] : $propiedad -> getImagen(); 
+        $propiedad -> setPropiedad($camposNew);
+        // Validamos que no haya errores
+        $errores = $propiedad -> validate();
         // Revisar que no haya errores
         if(empty($errores)) {
             // Se envían los datos
-            $res = $propiedad -> save();
-            if($res) {
-                $propiedad -> clean(); // Se limpian los datos
-                $resDB = "Datos enviados correctamente";
-            }
+            $res = $propiedad -> update();
+            if($res) $resDB = "Actualizado Correctamente";
         }
     }
     setTemplate('header');
+    
 ?>
     <main class="box">
         <section class="section create">
-            <h1>Crear</h1>
+            <h1>Actualizar</h1>
 
-            <a href="../admin" class="back">
+            <a href="../admin?panel=Propiedades" class="back">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
             </a>
 
@@ -46,7 +54,7 @@
                 ?>
             </div>
 
-            <form action="./create.php" class="DB__form" method="POST" enctype="multipart/form-data" >
+            <form action="./update.php?id=<?php echo $id;  ?>" class="DB__form" method="POST" enctype="multipart/form-data" >
                 <!-- INFORMACIÓN GENERAL -->
                 <fieldset class="form__section">
                     <legend>Información General</legend>
@@ -64,6 +72,10 @@
                     <div class="input">
                         <label for="imagen" class="input__label">Imagen: </label>
                         <input type="file" accept="image/jpg, image/jpeg, image/png"  id="imagen" name="imagen"  require  >
+                        <?php 
+                            $fileImage = Propiedad::getById($id)["imagen"];
+                        ?>
+                        <img src="../../imagenes/Propiedades/<?php echo $fileImage; ?>" alt="" class="input__imagen">
                     </div>
                     <!-- DESCRIPCIÓN -->
                     <div class="input">
@@ -134,7 +146,6 @@
             </form>
         </section>
     </main>
-
 <?php 
     setTemplate('footer');
 ?>
