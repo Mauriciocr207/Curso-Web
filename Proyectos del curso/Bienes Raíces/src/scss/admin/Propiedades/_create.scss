@@ -1,0 +1,10 @@
+@use '../../base/mixins' as m;
+@use '../../base/variables' as v;
+
+.create {
+
+    .button {
+        @include m.button(v.$green, v.$yellow);
+    }
+    
+}

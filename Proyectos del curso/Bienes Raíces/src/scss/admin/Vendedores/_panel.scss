@@ -1,0 +1,14 @@
+@use '../../base/mixins' as m;
+@use '../../base/variables' as v;
+.admin {
+    .button {
+        @include m.button(v.$green, v.$yellow);
+    }
+    .vendedores {
+        margin-top: 3rem;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+}

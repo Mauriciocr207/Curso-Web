@@ -1,10 +1,10 @@
 <?php
     require './includes/app.php';
-    $propiedades = obtenerPropiedades();
-    $propiedadesContables = [];
-    $maxAnuncios = 6;
+    use App\Propiedad;
+    $propiedadesData = Propiedad::getAll();
+    $maxAnuncios = 3;
     if($_SERVER["REQUEST_METHOD"] === "POST") {
-        $mostrarMaxPropiedades = count($propiedadesContables);
+        $maxAnuncios = count($propiedadesData);
     }
     setTemplate('header');
 ?>
@@ -14,52 +14,50 @@
             <h2 class="section__anuncios--title">Casas y Depas en Venta</h2>
             <div class="section__anuncios--content">
                 <?php 
-                    if(!empty($propiedades)) {
-                        foreach ($propiedades as $propiedad) {
-                            $propiedadesContables[] = $propiedad;
-                        }
-                        $numPropiedades = count($propiedades);
-                        if($numPropiedades < $maxAnuncios) {
-                            $mostrarMaxPropiedades = $numPropiedades;
-                        } else {
-                            $mostrarMaxPropiedades = $maxAnuncios;
-                        }
-                        for ($i=0; $i < $mostrarMaxPropiedades; $i++) { 
+                    $propiedades = [];
+                    if(count($propiedadesData) < $maxAnuncios) {
+                        $maxAnuncios = count($propiedadesData);
+                    }
+                    for ($i=0; $i < $maxAnuncios; $i++) { 
+                        $data = $propiedadesData[$i];
+                        $propiedades[] = new Propiedad($data);
+                    }
+                    foreach($propiedades as $propiedad) {
+                        $propiedad -> getImagen();
                 ?>
                         <div class="anuncio">
                             <picture class="anuncio__img">
-                                <source srcset="./imagenes/<?php echo $propiedadesContables[$i]["imagen"] ?>" type="image/avif">
-                                <source srcset="./imagenes/<?php echo $propiedadesContables[$i]["imagen"] ?>" type="image/webp">
-                                <img loading="lazy" src="./imagenes/<?php echo $propiedadesContables[$i]["imagen"] ?>" alt="">
+                                <source srcset="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
+                                <source srcset="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
+                                <img loading="lazy" src="./imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
                             </picture>
                             <div class="anuncio__content">
-                                <h3><?php echo $propiedadesContables[$i]["titulo"] ?></h3>
-                                <p class="anuncio__content--descripcion"><?php echo substr($propiedadesContables[$i]["descripcion"],0, 30); ?>...</p>
+                                <h3><?php echo $propiedad -> getTitulo() ?></h3>
+                                <p class="anuncio__content--descripcion"><?php echo substr($propiedad -> getDescripcion(),0, 30); ?>...</p>
                                 <p class="anuncio__content--precio">
-                                    $<?php echo $propiedadesContables[$i]["precio"] ?>
+                                    $<?php echo $propiedad -> getPrecio(); ?>
                                 </p>
                                 <ul class="anuncio__content--icons">
                                     <li>
                                         <img loading="lazy" src="build/img/icono_wc.svg" alt="Ícono wc">
-                                        <p><?php echo $propiedadesContables[$i]["wc"] ?></p>
+                                        <p><?php echo $propiedad -> getWc(); ?></p>
                                     </li>
                                     <li>
                                         <img loading="lazy" src="build/img/icono_estacionamiento.svg"
                                             alt="Ícono estacionamiento">
-                                        <p><?php echo $propiedadesContables[$i]["estacionamiento"] ?></p>
+                                        <p><?php echo $propiedad -> getEstacionamiento(); ?></p>
                                     </li>
                                     <li>
                                         <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Ícono dormitorio">
-                                        <p><?php echo $propiedadesContables[$i]["habitaciones"] ?></p>
+                                        <p><?php echo $propiedad -> getHabitaciones() ?></p>
                                     </li>
                                 </ul>
-                                <a href="anuncio.php?id=<?php echo $propiedadesContables[$i]["id"] ?>" class="button">
+                                <a href="anuncio.php?id=<?php echo $propiedad -> getId(); ?>" class="button">
                                     Ver Propiedad
                                 </a>
                             </div>
                         </div>
                 <?php 
-                        }
                     }
                 ?>
             </div>

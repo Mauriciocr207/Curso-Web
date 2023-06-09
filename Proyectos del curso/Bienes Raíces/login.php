@@ -1,28 +1,23 @@
 <?php
+
+    use App\Usuario;
     require './includes/app.php';
     $errores = [];
-    $campos = [
-        "email" => "",
-        "password" => ""
-    ];
+    $usuario = new Usuario($_POST);
     // Autenticar usuario
     if($_SERVER["REQUEST_METHOD"] === "POST") {
-        $campos["email"] = $_POST["email"];
-        $campos["password"] = $_POST["password"];
         // Validamos los campos
-        $errores = validarDatosUsuario($campos);
+        $errores = $usuario -> validate();
         if(empty($errores)) {
             // Validar si el usuario existe y si su contraseña es correcta
-            $auth = signUp($campos["email"], $campos["password"]);
+            $auth = $usuario -> signUp();
             if($auth["validated"]) {
                 session_start();
-                $_SESSION["user"] = $campos["email"];
+                $_SESSION["user"] = $usuario -> getEmail();
                 $_SESSION["login"] = true;
                 header('Location: ./admin');
             } else {
-                foreach ($auth["errores"] as $err) {
-                    $errores[] = $err;
-                }
+                $errores = [$auth["error"]];
             }
         }
     }
@@ -54,7 +49,7 @@
                         <!-- E-MAIL -->
                         <div class="input">
                             <label class="input__label">E-mail</label>
-                            <input name="email" type="email" placeholder="Ingresa Email" value="<?php echo $campos["email"]; ?>" require>
+                            <input name="email" type="email" placeholder="Ingresa Email" value="<?php echo $usuario -> getEmail(); ?>" require>
                         </div>
                         <!-- PASSWORD -->
                         <div class="input">
