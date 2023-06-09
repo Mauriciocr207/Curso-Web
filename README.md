@@ -2,7 +2,7 @@
 Aquí se verá el progreso de mi aprendizaje en desarrollo web. 
 
 ## Mi progreso:
-__Actualmente en:__ $\rightarrow$ _[Seccion 32](#sección-32-programación-orientada-a-objetos-poo-en-php)_
+__Actualmente en:__ ==> _[Seccion 41](#sección-41-bienes-raices-y-model-view-controller---moviendo-nuestro-proyecto-hacia-mvc)_
 
 ## Proyectos en Netlify
 * [Freelancer](https://proyects-freelancer.netlify.app/) 
@@ -49,4 +49,13 @@ __Actualmente en:__ $\rightarrow$ _[Seccion 32](#sección-32-programación-orien
 * #### Sección 30: BIENES RAICES - Creando un CRUD para Propiedades
 * #### Sección 31: BIENES RAICES - Añadiendo Autenticación de Usuarios
 * #### Sección 32: Programación Orientada a Objetos (POO) en PHP
+* #### Sección 33: BIENES RAICES - Añadiendo Programación Orientada a Objetos al Proyecto
+* #### Sección 34: BIENES RAICES y POO - Guardar Registros de Propiedades
+* #### Sección 35: BIENES RAICES y POO - Listar las propiedades
+* #### Sección 36: BIENES RAICES y POO - Actualizar las propiedades
+* #### Sección 37: BIENES RAICES y POO - Eliminar Propiedades
+* #### Sección 38: BIENES RAICES y POO - Herencia para tener una clase ActiveRecord
+* #### Sección 39: BIENES RAICES y POO - CRUD para Vendedores
+* #### Sección 40: BIENES RAICES y POO - Mostrando las Propiedades en el FrontEnd
+* #### Sección 41: BIENES RAICES y Model View Controller - Moviendo nuestro proyecto hacia MVC!
 </details>

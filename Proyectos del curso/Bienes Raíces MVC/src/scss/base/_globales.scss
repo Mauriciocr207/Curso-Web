@@ -1,0 +1,89 @@
+@use '../base/variables' as v;
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: v.$font-principal;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    box-sizing: content-box;
+    transition: all 0.3s ease;
+}
+p {
+    color: v.$black;
+    font-size: 2rem;
+    margin: 0;
+}
+.section {
+    margin: 3rem 0;
+    &:last-of-type {
+        margin-bottom: none;
+    }
+}
+.box {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+img,
+picture {
+    width: 100%;
+    display: block;
+}
+h1, h2, h3, h4 {
+    font-family: v.$font-principal;
+    margin: calc(v.$gap / 2) 0;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+}
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 3.4rem;
+}
+h3 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 2.6rem;
+}
+.button, button {
+    padding: 1.2rem;
+    border-radius: .5rem;
+    transition: background-color .3s ease;
+    font-weight: bold;
+    display: inline-block;
+}
+.alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    .err, .enviado {
+        padding: .7rem;
+        color: v.$white;
+        font-size: 1.6rem;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+    }
+    .err {
+        background-color: v.$red;
+    }
+    .enviado {
+        background-color: v.$green;
+    }
+}

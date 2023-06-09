@@ -1,6 +1,6 @@
 <?php 
-    namespace App;
-    use App\Database;
+    namespace Models;
+    use Models\Database;
     use Intervention\Image\ImageManagerStatic as Image;
     class ActiveRecord {
         protected $id;
@@ -37,6 +37,7 @@
                 mkdir($imagesFolder);
             }
             $imagesFolder = $imagesFolder . "/" . static::$folderImages;
+            var_dump($imagesFolder);
             if( !is_dir($imagesFolder) ) {
                 mkdir($imagesFolder);
             }

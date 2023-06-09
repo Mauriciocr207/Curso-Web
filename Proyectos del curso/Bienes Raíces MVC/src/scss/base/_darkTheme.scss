@@ -1,0 +1,60 @@
+@use '../base/variables' as v;
+.dark {
+    background-color: darken(v.$greyBlack, 5);
+
+    * {
+        color: v.$grey;
+    }
+    p {
+        color: v.$white;
+    }
+
+    .anuncio {
+        background-color: lighten(v.$greyBlack,7);
+        border: 1px solid v.$greyBlack;
+
+        &__content--precio {
+            color: v.$green;
+        }
+
+        &__content--icons img {
+            filter: invert(100%);
+        }
+
+    }
+
+    .content__article {
+        &--entrada {
+            h4 {
+                color: lighten(v.$grey,7);
+            }
+        }
+    }
+    .blog .content__article {
+        background-color: lighten(v.$greyBlack,5);
+        &:hover {
+            background-color: lighten(v.$greyBlack,10);
+        }
+    }
+
+    .form__section .input{
+        input, textarea, select {
+            background-color: lighten(v.$greyBlack,4);
+        }
+    }
+    .propiedad_admin {
+        background-color: lighten(v.$greyBlack, 6);
+        &__content {
+            .campo {
+                &__nombre {
+                
+                }
+                &__value {
+                    background-color: lighten(v.$greyBlack, 12);
+                }
+            }
+        }
+    }
+
+
+}

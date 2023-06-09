@@ -1,0 +1,22 @@
+{
+    "name": "mauriciocarrillo/bienes-raices-poo_php_inicio",
+    "authors": [
+        {
+            "name": "Mauricio CR",
+            "email": "mauriciocr123@outlook.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Models\\" : "./Models",
+            "MVC\\": "./",
+            "Controllers\\": "./Controllers/"
+        },
+        "classmap": [
+            "./Controllers"
+        ]
+    }
+}

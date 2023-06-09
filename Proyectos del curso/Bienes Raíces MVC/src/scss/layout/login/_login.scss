@@ -1,0 +1,14 @@
+@use '../../base/variables' as v;
+@use '../../base/mixins' as m;
+
+.login {
+    width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    .button {
+        border: none;
+        cursor: pointer;
+        @include m.button(v.$green, v.$yellow);
+    }
+}
