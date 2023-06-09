@@ -3,7 +3,7 @@
         'name' => 'mauriciocarrillo/bienes-raices-poo_php_inicio',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '37fd91a9eac1b9f79e9ad30d3d692c5d293b7f61',
+        'reference' => '245719125e9186418efbe6935d8c0825b4f5708d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'mauriciocarrillo/bienes-raices-poo_php_inicio' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '37fd91a9eac1b9f79e9ad30d3d692c5d293b7f61',
+            'reference' => '245719125e9186418efbe6935d8c0825b4f5708d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

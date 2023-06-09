@@ -1,12 +1,3 @@
-<?php
-    // Validamos que haya una sesión iniciada
-    session_start();
-    $auth = $_SESSION["login"] ?? null;
-    if( !$auth ) {
-        $_SESSION = [];
-        // header("Location: ./");
-    }  
-?>
 <main class="box">
     <section class="section admin">
         <h1>Administrador de Bienes Raíces</h1>

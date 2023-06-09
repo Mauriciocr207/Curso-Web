@@ -7,7 +7,7 @@
     ?>
             <div class="panel_admin">
                 <div class="panel_admin__img">
-                    <img src="../imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
+                    <img src="/imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
                 </div>
                 <div class="panel_admin__content">
                     <div class="campo">
@@ -35,10 +35,11 @@
                         </div>
                     </div>
                     <div class="panel_admin__content--acciones">
-                        <a href="./Propiedades/update.php?id=<?php echo $propiedad -> getId(); ?>" class="button actualizar">
+                        <a href="/admin/propiedades/update?id=<?php echo $propiedad -> getId(); ?>" class="button actualizar">
                             Actualizar
                         </a>
-                        <form action="./?panel=Propiedades" method="POST">
+                        <form action="/admin?panel=propiedades" method="POST">
+                            <input type="hidden" name="object" value="propiedad">
                             <input type="hidden" name="id" value="<?php echo $propiedad -> getId(); ?>">
                             <input type="submit" value="Eliminar" class="button eliminar">
                         </form>
