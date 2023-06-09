@@ -1,6 +1,14 @@
 <a class="button" href="/admin/vendedores/create">
-    Agregar vendedor
+    Agregar Vendedor
 </a>
+<?php 
+    if(isset($error)) { ?>
+        <div class="alert" style="margin-top: 2rem;">
+            <div class="err"><?php echo $error ?></div>
+        </div>
+    <?php
+    }
+?>
 <div class="vendedores">
     <?php
         foreach ($vendedores as $vendedor) {

@@ -36,7 +36,16 @@ use function PHPSTORM_META\map;
                     $metadata = Vendedor::getById($id);
                     if($metadata) {
                         $vendedor = new Vendedor($metadata);
-                        $vendedor -> delete();
+                        // si tenemos in vendedor asociado a las propiedades,
+                        // hay que obligar a que este vendedor no se pueda borrar
+                        // hasta que las propiedades asociadas a él se borren
+                        // Esto es debido a cómo se construyó la base de datos
+                        if($vendedor -> isRestricted()) {
+                            $data["error"] = "El Vendedor tiene propiedades asociadas. Por favor elimina las propiedades asociadas antes de eliminar a este vendedor";
+                        } else {
+                            $vendedor -> delete();
+                        }
+                        
                     }
                 }
                 
