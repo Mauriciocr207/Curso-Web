@@ -1,6 +1,6 @@
 <?php 
-    namespace App;
-    use App\Database;
+    namespace Models;
+    use Models\Database;
     use Intervention\Image\ImageManagerStatic as Image;
     class ActiveRecord {
         protected $id;
@@ -31,7 +31,7 @@
         }
         // HELP METHODS
         private function createFileImage(string $name, string $file) : void {
-            $imagesFolder = PROYECT__URL . "/Imagenes";
+            $imagesFolder = PROYECT__URL . "/public/Imagenes";
             // Crear carpeta si no existe
             if( !is_dir($imagesFolder) ) {
                 mkdir($imagesFolder);
@@ -49,7 +49,7 @@
             return md5( uniqid( rand(), true ) ) . ".jpg";
         }
         private function deleteFileImage(string $name) : void {
-            $imagesFolder = PROYECT__URL . "/Imagenes/" . static::$folderImages;
+            $imagesFolder = PROYECT__URL . "/public/Imagenes/" . static::$folderImages;
             $file = $imagesFolder . "/$name";
             unlink($file);
         }

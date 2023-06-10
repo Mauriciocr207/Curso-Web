@@ -1,0 +1,27 @@
+@use '../../../base/variables' as v;
+.entrada {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    &__title {
+        margin-bottom: 2rem;
+    }
+    &__content {
+        margin: 2rem 0;
+        padding: 2rem;
+
+        p {
+            font-weight: v.$bold;
+            line-height: 2.5;
+            text-align: justify;
+        }
+    }
+    &__meta {
+        margin-bottom: 1rem;
+        font-weight: v.$bold;
+        font-size: 1.7rem;
+        span {
+            color: v.$yellow;
+        }
+    }
+}

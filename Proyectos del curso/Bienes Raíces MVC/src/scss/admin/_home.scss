@@ -1,0 +1,25 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.admin {
+}
+
+.panel {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    &__option {
+        padding: 1.5rem;
+        background-color: v.$green;
+        color: v.$white;
+        font-weight: bold;
+        font-size: 1.8rem;
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+        &.nonactive {
+            background-color: darken(v.$green, 10);
+            color: darken(v.$white, 10);
+        }
+    }
+}

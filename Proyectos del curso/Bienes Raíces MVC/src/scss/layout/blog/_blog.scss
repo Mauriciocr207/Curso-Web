@@ -1,0 +1,29 @@
+@use '../../base/variables' as v;
+.blog {
+    gap: 0rem;
+    .content__article {
+        background-color: v.$grey;
+        padding: 3rem;
+        --br: 2rem;
+        &, &--img{
+            border-radius: var(--br);
+        }
+    }
+}
+
+.blog .content__article {
+    --t: all 0.3s ease;
+    transition: var(--t);
+    &--img {
+        overflow: hidden;
+    }
+    &:hover {
+        background-color: darken(v.$grey, 15);
+    }
+    &:hover .content__article--img img {
+        transition: var(--t);
+        transform: scale(1.1);
+    }
+
+}
+
