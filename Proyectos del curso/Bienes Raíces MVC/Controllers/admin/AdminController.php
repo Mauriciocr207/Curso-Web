@@ -4,8 +4,6 @@
     use Models\Vendedor;
     use MVC\Router;
 
-use function PHPSTORM_META\map;
-
     class AdminController {
         public static function index(Router $router) {
             // SESSION

@@ -1,11 +1,3 @@
-<?php
-    require './includes/app.php';
-    use App\Propiedad;
-    $propiedadesData = Propiedad::getAll();
-    $maxAnuncios = 3;
-
-    setTemplate(template: "header", inHome: true);
-?>
 <!-- MAIN ICONOS NOSOTROS -->
     <main class="box">
         <div class="section about">
@@ -38,22 +30,14 @@
             <h2 class="section__anuncios--title">Casas y Depas en Venta</h2>
             <div class="section__anuncios--content">
                 <?php 
-                    $propiedades = [];
-                    if(count($propiedadesData) < $maxAnuncios) {
-                        $maxAnuncios = count($propiedadesData);
-                    }
-                    for ($i=0; $i < $maxAnuncios; $i++) { 
-                        $data = $propiedadesData[$i];
-                        $propiedades[] = new Propiedad($data);
-                    }
                     foreach($propiedades as $propiedad) {
                         $propiedad -> getImagen();
                 ?>
                         <div class="anuncio">
                             <picture class="anuncio__img">
-                                <source srcset="./Imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
-                                <source srcset="./Imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
-                                <img loading="lazy" src="./Imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
+                                <source srcset="/Imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/avif">
+                                <source srcset="/Imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" type="image/webp">
+                                <img loading="lazy" src="/Imagenes/Propiedades/<?php echo $propiedad -> getImagen(); ?>" alt="">
                             </picture>
                             <div class="anuncio__content">
                                 <h3><?php echo $propiedad -> getTitulo() ?></h3>
@@ -76,7 +60,7 @@
                                         <p><?php echo $propiedad -> getHabitaciones() ?></p>
                                     </li>
                                 </ul>
-                                <a href="anuncio.php?id=<?php echo $propiedad -> getId(); ?>" class="button">
+                                <a href="anuncio?id=<?php echo $propiedad -> getId(); ?>" class="button">
                                     Ver Propiedad
                                 </a>
                             </div>
@@ -86,7 +70,7 @@
                 ?>
             </div>
             <div class="view-all">
-                <a href="./anuncios.php" class="button">
+                <a href="/anuncios" class="button">
                     Ver Todas
                 </a>
             </div>
@@ -96,7 +80,7 @@
     <section class="contact">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Llena el formulario de contacto y un asesor se pondrá en conctacto contigo a la brevedad</p>
-        <a href="contacto.php" class="button">Contáctanos</a>
+        <a href="/contacto" class="button">Contáctanos</a>
     </section>
     <!-- SECTION BLOG -->
     <section class="box">
@@ -118,7 +102,7 @@
                         <p>Consejos para construir una terraza en el techo de tu casa, con los mejores materiales y
                             ahorrando dinero</p>
                         <div class="view-entrada">
-                            <a href="entrada.php" class="button">
+                            <a href="/entrada" class="button">
                                 Leer entrada
                             </a>
                         </div>
@@ -139,7 +123,7 @@
                         <p>Maximiza el espacio en tu hogar con esta guía, aprende a combinar muebles y colores para
                             darle vida a tu hogar</p>
                         <div class="view-entrada">
-                            <a href="entrada.php" class="button">
+                            <a href="/entrada" class="button">
                                 Leer entrada
                             </a>
                         </div>
@@ -160,6 +144,3 @@
             </section>
         </div>
     </section>
-<?php
-    setTemplate('footer');
-?>

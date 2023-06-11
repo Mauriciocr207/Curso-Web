@@ -26,14 +26,10 @@
             Database::open();
             $res = Database::read($query)[0] ?? false;
             Database::close();
-            echo "<pre>";
-            var_dump($res);
-            echo "</pre>";
             // Validamos que el usuario exista y que la contraseña sea correcta
             if($res) {
                 // Verificamos si existe un usuario con la contraseña especificada
                 $passwordVerified = password_verify($this -> password, $res["password"]);
-                var_dump($passwordVerified);
                 if($passwordVerified) $validated = true;
                 else $error = "Contraseña incorrecta";
             } else {

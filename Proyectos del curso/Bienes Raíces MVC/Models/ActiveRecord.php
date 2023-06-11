@@ -54,9 +54,9 @@
             unlink($file);
         }
         // PUBLIC METHODS
-        public static function getAll() : array {
+        public static function getAll(int $limit = 0) : array {
             // Creación del query
-            $query = "SELECT * FROM " . static::$table;
+            $query = "SELECT * FROM " . static::$table . ($limit > 0 ? " LIMIT $limit" : "");
             // Conexión a la DB
             Database::open();
             $propiedades = Database::read($query) ?? [];
