@@ -4,11 +4,13 @@
         <h1 class="contact__form--title">Contacto</h1>
         <h4>Llena el Formulario</h4>
         <div class="alert">
-            <?php         
-                if($result["status"]) {
-                    echo "<div class='enviado'>" . $result["message"] . "</div>";
-                } else {
-                    echo "<div class='enviado'>" . $result["message"] . "</div>";
+            <?php    
+                if(isset($result)) {     
+                    if($result["status"]) {
+                        echo "<div class='enviado'>" . $result["message"] . "</div>";
+                    } else {
+                        echo "<div class='enviado'>" . $result["message"] . "</div>";
+                    }
                 }
             ?>
         </div>
