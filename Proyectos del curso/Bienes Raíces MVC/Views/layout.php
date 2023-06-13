@@ -1,12 +1,3 @@
-<?php 
-    if(!isset($_SESSION)) session_start();
-    if(isset($_GET["logout"])) {
-        $logout = $_GET["logout"];
-        if($logout) {
-            $_SESSION = [];
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +23,6 @@
                     <a href="blog" >Blog</a>
                     <a href="contacto" >Contacto</a>
                     <?php
-                        $auth = isset($_SESSION["login"]) ? $_SESSION["login"] : false;
                         if(!$auth) { ?>
                             <a href="login">Iniciar Sesión</a>
                         <?php 
