@@ -57,7 +57,7 @@
     
     .checkbox {        
         .input__label,
-        input[type=checkbox] {
+        input[type=radio] {
             display: inline;
             width: auto;
         }
@@ -69,8 +69,10 @@
 .submit {
     text-align: right;
     .button {
+        border: none;
         margin-top: 1rem;
         @include m.button(v.$green, v.$yellow);
+        cursor: pointer;
     }
 }
 

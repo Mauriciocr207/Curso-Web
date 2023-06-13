@@ -42,10 +42,44 @@ function showResponsiveMenu() {
         }
     });
 }
+function showContactMethodForm() {
+    // Caja de contacto
+    const contactoBox = document.querySelector('#contacto');
+    console.log(contactoBox);
+    // input type = "radio";
+    const metodos = document.querySelectorAll('input[name="contacto"]');
+    // funcion para mostrar método de contacto
+    function showPanelContact(e) {
+        if(e.target.value === "telefono") {
+            contactoBox.innerHTML = `
+                <div class="input">
+                    <label class="input__label">
+                        Telefono
+                    </label>
+                    <input type="tel" class="telefono" name="contacto_telefono">
+                </div>
+            `;
+        }
+        else if(e.target.value === "email") {
+            contactoBox.innerHTML = `
+                <div class="input">
+                    <label class="input__label">
+                        Email
+                    </label>
+                    <input type="email" class="email" name="contacto_email">
+                </div>
+            `;
+        }
+    }
+    metodos.forEach( e => {
+        e.addEventListener('click', showPanelContact);
+    })
+}
 
 function app() {
     showResponsiveMenu();
     darkTheme();
+    showContactMethodForm();
 }
 
 window.addEventListener('DOMContentLoaded', () => {

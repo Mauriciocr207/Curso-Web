@@ -6,15 +6,6 @@
 
     class AdminController {
         public static function index(Router $router) {
-            // SESSION
-            // Validamos que haya una sesión iniciada
-            session_start();
-            $auth = $_SESSION["login"] ?? null;
-            if( !$auth ) {
-                $_SESSION = [];
-                // header("Location: /");
-            } 
-            
             // GET -> en caso de borrar propiedad
             if($_SERVER["REQUEST_METHOD"] === "POST") {
                 $id = $_POST["id"] ?? null;
