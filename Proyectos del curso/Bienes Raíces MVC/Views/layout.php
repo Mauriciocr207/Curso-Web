@@ -20,21 +20,21 @@
 
 <body>
     <!-- HEADER -->
-    <header class="header <?php //echo $inHome ? 'home' : ''; ?>">
+    <header class="header <?php echo isset($inHome) ? 'home' : ''; ?>">
         <div class="box header__box">
             <div class="header__box--bar ">
-                <a class="bar__logo" href="<?php //echo $root; ?>">
+                <a class="bar__logo" href='/'>
                     <img src="/build/img/logo.svg" alt="">
                 </a>
                 <nav class="bar__nav">
-                    <a href="nosotros.php" >Nosotros</a>
-                    <a href="anuncios.php" >Anuncios</a>
-                    <a href="blog.php" >Blog</a>
-                    <a href="contacto.php" >Contacto</a>
+                    <a href="nosotros" >Nosotros</a>
+                    <a href="anuncios" >Anuncios</a>
+                    <a href="blog" >Blog</a>
+                    <a href="contacto" >Contacto</a>
                     <?php
                         $auth = isset($_SESSION["login"]) ? $_SESSION["login"] : false;
                         if(!$auth) { ?>
-                            <a href="login.php">Iniciar Sesión</a>
+                            <a href="login">Iniciar Sesión</a>
                         <?php 
                         } else { 
                         ?>

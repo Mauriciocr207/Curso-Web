@@ -65,6 +65,7 @@ class ComposerStaticInite37ba44d72f744dfa402c2b02418c39d
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Controllers\\AdminController' => __DIR__ . '/../..' . '/Controllers/admin/AdminController.php',
+        'Controllers\\HomeController' => __DIR__ . '/../..' . '/Controllers/public/HomeController.php',
         'Controllers\\PropiedadController' => __DIR__ . '/../..' . '/Controllers/admin/Propiedades/PropiedadController.php',
         'Controllers\\VendedorController' => __DIR__ . '/../..' . '/Controllers/admin/Vendedores/VendedorController.php',
     );
