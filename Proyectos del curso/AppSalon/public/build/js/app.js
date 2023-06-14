@@ -1,0 +1,2 @@
+function e(){const e=document.querySelector(".icon"),s=document.querySelector(".icon .eye"),o=document.querySelector("#password");e.addEventListener("click",()=>{"password"===o.type?(o.type="text",s.classList.remove("fa-eye-slash"),s.classList.add("fa-eye")):(o.type="password",s.classList.remove("fa-eye"),s.classList.add("fa-eye-slash")),o.focus()}),console.log(s,e,o)}function s(){e()}window.onload=s;
+//# sourceMappingURL=app.js.map
