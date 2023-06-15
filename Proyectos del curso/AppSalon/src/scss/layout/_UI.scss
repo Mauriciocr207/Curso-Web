@@ -33,15 +33,14 @@
     @include m.desktop {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        min-height: 100vh;
         .imagen {
             position: inherit;
             height: 100%;
         }
-        .app {
-            width: 80%;
-            margin: auto;
-            padding: 3rem 0;
+        .appContainer {
+            height: 100%;
+            width: 90%;
+            margin: 0 auto;
         }
     }
 

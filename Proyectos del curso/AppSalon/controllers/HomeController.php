@@ -17,6 +17,7 @@
                         $usuario -> where("email", $usuario -> getEmail())
                     );
                     // Iniciamos una sesion para el usuario
+                    session_start();
                     $_SESSION = [
                         "id" => $usuario -> getId(),
                         "nombre" => $usuario -> getNombre() . " " . $usuario -> getApellido(),
@@ -31,7 +32,6 @@
                     else if($usuario -> getAdmin() === "0") {
                         header('Location: /citas');
                     }
-                    read($_SESSION);
                 } 
             }
             $data["usuario"] = $usuario;
@@ -43,7 +43,80 @@
             echo "desde logout";
         }
         public static function olvide(Router $router) {
-            $router -> render('/auth/olvide-password');
+            $usuario = new Usuario();
+            $errores = [];
+            if($_SERVER["REQUEST_METHOD"] === "POST") {
+                $usuario -> setUsuario($_POST);
+                $errores = $usuario -> validateEmail();
+                if(empty($errores)) {
+                    if($usuario -> existeUsuario()) {
+                        // Guardamos los datos del usuario
+                        $usuario -> setUsuario(
+                            $usuario -> where("email", $usuario -> getEmail())
+                        );
+                        // Crear token
+                        $usuario -> createToken();
+                        // Establecer al usuario como no confirmado
+                        $usuario -> setUsuario(["confirmado" => "0"]);
+                        // Enviar Email
+                        $email = new Email(
+                            nombre: ($usuario -> getNombre()) . " " . ($usuario -> getApellido()),
+                            email: $usuario -> getEmail(),
+                            token: $usuario -> getToken(),
+                            view: "/cambiar-password"
+                        );
+                        $email -> enviarConfirmacion();
+                        // Guardar en la base de datos 
+                        $res =  $usuario -> update();
+                        // Validar el resultado
+                        if($res) {
+                            $usuario -> clean();
+                            header('Location: /confirma-tu-cuenta');
+                        }
+                        else $errores = ["No se puede reestablecer la contraseña"];
+                    } else {
+                        $errores = ["El usuario no existe"];
+                    }
+                }
+            }
+            $data["usuario"] = $usuario;
+            $data["errores"] = $errores;
+            $router -> render('/auth/olvide-password', $data);
+        }
+        public static function cambiarPassword(Router $router) {
+            $usuario = new Usuario();
+            $token = htmlspecialchars($_GET["token"]);
+            if(!$usuario -> where("token", $token)) {
+                header('Location: /confirma-tu-cuenta');
+            }
+            $errores = [];
+            if($_SERVER["REQUEST_METHOD"] === "POST") {
+                $usuario -> setUsuario($_POST);
+                $errores = $usuario -> validatePassword();
+                if(empty($errores)) {
+                    $password = $usuario -> getPassword();
+                    $usuario -> setUsuario(
+                        $usuario -> where("token", $token)
+                    );
+                    $usuario -> setUsuario([
+                        "password" => $password,
+                        "confirmado" => "1",
+                        "token" => "",
+                    ]);
+                    $usuario -> encriptPassword();
+                    $res = $usuario -> update();
+                    if($res) {
+                        $data["res"] = "Tu contraseña ha sido cambiada correctamente.\n Porfavor inicia sesión para comenzar.";
+                        $usuario -> clean();
+                    } else {
+                        $errores = ["No se pudo cambiar la contraseña"];
+                    }
+                }
+            }
+            $data["errores"] = $errores;
+            $data["usuario"] = $usuario;
+            $data["token"] = $token;
+            $router -> render('/auth/cambiar-password', $data);
         }
         // Crear cuenta
         public static function crear(Router $router) {
@@ -62,7 +135,8 @@
                         $email = new Email(
                             nombre: ($usuario -> getNombre()) . " " . ($usuario -> getApellido()),
                             email: $usuario -> getEmail(),
-                            token: $usuario -> getToken()
+                            token: $usuario -> getToken(),
+                            view: "/confirmar-cuenta"
                         );
                         $email -> enviarConfirmacion();
                         // Guardar en la base de datos 
@@ -77,8 +151,6 @@
                         $errores = ["Ya existe un usuario con este correo"];
                     }
                 }
-
-                
             }
             $data["usuario"] = $usuario;
             $data["errores"] = $errores;
@@ -97,7 +169,7 @@
             $userData = $usuario -> where(property: "token", value: $token);
             if($userData) {
                 $userData["confirmado"] = 1;
-                $userData["token"] = null;
+                $userData["token"] = "";
                 $usuario -> setUsuario($userData);
                 $result = $usuario -> update();
                 if($result) {

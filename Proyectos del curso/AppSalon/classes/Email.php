@@ -6,18 +6,21 @@
         protected $email;
         protected $nombre;
         protected $token;
+        protected $view;
         
-        public function __construct($email, $nombre, $token)
+        public function __construct($email, $nombre, $token, $view)
         {
             $this -> email = $email;
             $this -> nombre = $nombre;
             $this -> token = $token;
+            $this -> view = $view;
         }
         public function enviarConfirmacion() {
             $campos = [
                 "nombre" => $this -> nombre,
                 "email" => $this -> email,
-                "token" => $this -> token
+                "token" => $this -> token,
+                "view" => $this -> view,
             ];
             // Crear instancia de PHPMailer
             $phpmailer = new PHPMailer();
@@ -32,7 +35,7 @@
 
             // Configurar el contenido del mail
             $phpmailer -> setFrom("cuentas@appsalon.com");
-            $phpmailer -> addAddress("cuentas@appsalon.com", "AppSalon.com");
+            $phpmailer -> addAddress($campos["email"], "AppSalon.com");
             $phpmailer -> Subject = "Tienes un Nuevo Mensaje";
 
             // Habilitar HTML
@@ -71,7 +74,7 @@
                         <div class='box'>
                             <p> Hola " . $campos["nombre"] . "!</p>
                             <p>Has Creado tu cuenta en AppSalon, confirma tu cuenta en el siguiente enlace</p>
-                            <a class='button' href='http://localhost:3000/confirmar-cuenta?token=" . $campos["token"] . "'>CONFIRMAR CUENTA</a>
+                            <a class='button' href='http://localhost:3000" . $campos["view"] . "?token=" . $campos["token"] . "'>CONFIRMAR CUENTA</a>
                         </div>
                         </html>"; 
 

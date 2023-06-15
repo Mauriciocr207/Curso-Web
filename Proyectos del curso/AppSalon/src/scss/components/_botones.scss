@@ -3,16 +3,16 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    .boton {
-        background-color: v.$azul;
-        color: v.$blanco;
-        font-weight: bold;
-        padding: 2rem 2rem;
-        border-radius: 1rem;
-        text-align: center;
-        font-size: 2rem;
-        border: none;
-        outline: none;
-        cursor: pointer;
-    }   
 }
+.boton {
+    background-color: v.$azul;
+    color: v.$blanco;
+    font-weight: bold;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}  
