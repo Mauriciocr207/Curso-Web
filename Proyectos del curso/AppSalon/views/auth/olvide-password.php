@@ -2,6 +2,19 @@
 <p class="descripcion-pagina">
     Ingresa tu email para para reestablecer tu contraseña
 </p>
+<div class="alert">
+    <?php  
+        foreach($errores as $err) { ?>
+            <div class="err">
+                <?php echo $err; ?>
+            </div>
+    <?php         
+        }
+        if(!empty($res)) {
+            echo "<div class='enviado'>" . $res . "</div>";
+        }
+    ?>
+</div>
 <form action="/olvide" class="form" method="POST">
     <div class="campo">
         <label for="email">Email</label>

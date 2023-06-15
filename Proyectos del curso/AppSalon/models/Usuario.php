@@ -74,12 +74,13 @@
             foreach ($cols as $key => $value) {
                 if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";
             }
-            // Validación extra de Vendedores
-            if(isset($cols["telefono"]) && !preg_match("/^\d{10}/", $cols["telefono"])) {
+            if(!preg_match("/^\d{10}/", $cols["telefono"])) {
                 $errores[] = "Número de teléfono inválido";
             }
-            // Validación extra de Usuario
-            if(isset($cols["email"]) && !empty($cols["email"]) && !filter_var($cols["email"], FILTER_VALIDATE_EMAIL)) {
+            if(strlen($cols["password"]) < 6) {
+                $errores[] = "La contraseña debe tener al menos 6 caracteres";
+            }
+            if(!empty($cols["email"]) && !filter_var($cols["email"], FILTER_VALIDATE_EMAIL)) {
                 $errores[] = "Email Inválido" ;
             }
             return $errores;
@@ -101,6 +102,24 @@
                         if(!$this -> verifyPassword()) $errores = ["Contraseña incorrecta"];
                     } else $errores = ["Confirma tu cuenta antes de iniciar sesión.\n Revisa tu correo para verificar tu cuenta"];
                 } else $errores = ["El usuario no existe"];
+            }
+            return $errores;
+        }
+        public function validateEmail() : array {
+            $errores = [];
+            $email = $this -> email;
+            if(empty($email)) $errores[] = "Ingresa un email";
+            if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errores[] = "Email Inválido" ;
+            }
+            return $errores;
+        }
+        public function validatePassword() : array {
+            $errores = [];
+            $password = $this -> password;
+            if(empty($password)) $errores[] = "Ingresa una contraseña";
+            if(strlen($password) < 6) {
+                $errores[] = "La contraseña debe tener al menos 6 caracteres";
             }
             return $errores;
         }

@@ -19,11 +19,14 @@
                 <img loading="lazy" src="build/img/1.jpg" alt="imagen corte de barba">
             </picture>
         </div>
-        <div class="app">
+        <div class="appContainer">
             <?php echo $content; ?>
         </div>
     </div>
 
+    <?php
+        echo $script ?? '';
+    ?>
     <script src="build/js/app.js"></script>
 </body>
 

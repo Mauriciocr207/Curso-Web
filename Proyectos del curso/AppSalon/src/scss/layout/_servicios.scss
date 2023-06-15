@@ -1,0 +1,77 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.listado-servicios {
+    display: grid;
+    gap: 0rem;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include m.tablet {
+        @include m.grid(3, 2rem);
+    }
+    @include m.desktop {
+        width: 100%;
+    }
+
+    .servicio {
+        border-radius: 1rem;
+        background-color: v.$blanco;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition-property: transform;
+        transition-duration: .3s;
+        position: relative;
+        &:hover {
+            transform: scale(1.03);
+        }
+        &.azul {
+            background-color: v.$azul;
+            p {
+                color: v.$blanco;
+            }
+        }
+        p {
+            color: v.$negro;
+            margin: 0;
+            text-align: center;
+        }
+        .nombre-servicio {
+            flex-basis: 60%;
+            font-size: 1.8rem;
+        }
+        .precio-servicio {
+            flex-basis: 40%;
+            color: v.$azul;
+            font-weight: v.$bold;
+            font-size: 2.5rem;
+        }
+        .botonesBox {
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            gap: 2rem;
+            .fa-plus,
+            .fa-minus {
+                font-weight: bold;
+                font-size: 3rem;
+                cursor: pointer;
+            }
+            .fa-plus {
+                color: v.$verde;
+            }
+            .fa-minus {
+                color: v.$rojo;
+            }
+        }
+
+    }
+}
