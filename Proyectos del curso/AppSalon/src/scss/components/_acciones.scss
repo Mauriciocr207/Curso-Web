@@ -1,0 +1,18 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.acciones {
+    margin-top: 4rem;
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    .accion {
+        background-color: darken(v.$azul, 10);
+        width: fit-content;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        a {
+            color: v.$blanco;
+        }
+    }
+}

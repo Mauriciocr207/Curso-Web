@@ -1,0 +1,25 @@
+{
+    "name": "mauricio-carrillo/app-salon",
+    "description": "Proyecto PHP 8, MVC, SQL, SASS, Gulp",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Models\\" : "./models",
+            "MVC\\": "./",
+            "Controllers\\": "./controllers/",
+            "Classes\\": "./classes"
+        },
+        "classmap": [
+            "./controllers"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Mauricio CR",
+            "email": "mauriciocr123@outlook.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
