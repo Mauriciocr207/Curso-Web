@@ -74,7 +74,7 @@
                         <div class='box'>
                             <p> Hola " . $campos["nombre"] . "!</p>
                             <p>Has Creado tu cuenta en AppSalon, confirma tu cuenta en el siguiente enlace</p>
-                            <a class='button' href='http://localhost:3000" . $campos["view"] . "?token=" . $campos["token"] . "'>CONFIRMAR CUENTA</a>
+                            <a class='button' href='http://". $_ENV["URL"] . $campos["view"] . "?token=" . $campos["token"] . "'>CONFIRMAR CUENTA</a>
                         </div>
                         </html>"; 
 

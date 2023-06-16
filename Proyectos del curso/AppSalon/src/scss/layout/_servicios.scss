@@ -4,17 +4,20 @@
 .listado-servicios {
     display: grid;
     gap: 0rem;
-    width: 60%;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    padding: 0 2rem;
+    height: 30rem;
+    overflow-y: scroll;
+    @include m.grid(3, 1rem);
 
     @include m.tablet {
-        @include m.grid(3, 2rem);
+        @include m.grid(5, 1rem);
+        overflow: visible;
+        height: auto;
     }
     @include m.desktop {
-        width: 100%;
+        @include m.grid(3, 1rem);
+        width: 90%;
     }
 
     .servicio {
@@ -73,5 +76,24 @@
             }
         }
 
+    }
+}
+.resumen {
+    width: 90%;
+    margin: 0 auto;
+    p {
+        text-align: center;
+        span {
+            font-weight: bold;
+        }
+    }
+    .boton {
+        margin: 2rem 0;
+    }
+    .listado-servicios {
+        height: 100%;
+        @include m.grid(2, 2rem);
+        overflow: visible;
+        flex-wrap: wrap;
     }
 }

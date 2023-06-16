@@ -67,7 +67,7 @@
             Database::open(); // no necesitamos retornar la DB, por eso no la guardamos
             $res = Database::create($query);
             Database::close(); // Cerramos la DB
-            return true;
+            return $res;
         }
         public function update() : bool {
             $object_onDB = self::getById($this -> id);

@@ -25,8 +25,7 @@
 
     // API CITAS
     $router -> match('/api/servicios', [APIController::class, 'getServicios']);
-
-
+    $router -> match('/api/citas', [APIController::class, 'guardarCita']);
 
     // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
     $router -> run();

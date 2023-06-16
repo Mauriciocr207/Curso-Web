@@ -4,7 +4,13 @@
     class Database {
         private static ?mysqli $connection = null;
         static function open() {
-            if(self::$connection === null) self::$connection = new mysqli('localhost', 'root', 'root', 'appsalon');
+            if(self::$connection === null) self::$connection = new mysqli(
+                hostname: $_ENV["DB_HOST"],
+                username: $_ENV["DB_USER"],
+                password: $_ENV["DB_PASSWORD"],
+                database: $_ENV["DB_NAME"],
+                port: $_ENV["DB_PORT"]
+            );
             return self::$connection;
         }
         static function close() {

@@ -32,6 +32,7 @@
                 <input 
                     id="fecha"
                     type="date"
+                    min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>"
                 >
             </div>
             <div class="campo">
@@ -41,9 +42,10 @@
                     type="time"
                 >
             </div>
+            <input type="hidden" id="id" value="<?php echo $id; ?>">
         </form>
     </div>
-    <div id="paso-3" class="seccion ocultar" >
+    <div id="paso-3" class="seccion ocultar resumen" >
         <h3>Resumen</h3>
         <p class="text-center">Verifica que la informacion sea correcta</p>
     </div>
@@ -60,6 +62,7 @@
 </div>
 <?php
     $script = "
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
         <script src='build/js/citas.js'></script>
     ";
 
