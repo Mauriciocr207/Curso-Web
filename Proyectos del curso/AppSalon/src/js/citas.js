@@ -2,7 +2,7 @@ const Pasos = {
     inicial: 1,
     final: 3,
     current: 1
-}
+} 
 const Cita = {
     id: "",
     nombre: "",

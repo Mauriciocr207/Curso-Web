@@ -17,14 +17,17 @@
             self::$connection -> close();
             self::$connection = null;
         }
-        static function create($query) : bool {
+        static function create($query) : array {
             $isCreate = strpos($query, "INSERT");
-            $res = false;
+            $response = [
+                "res" => false
+            ];
             if($isCreate !== false) {
                 $stmt = self::$connection -> prepare($query);
-                $res = $stmt -> execute(); // Guardamos la respuesta de la base de datos    
+                $response["res"] = $stmt -> execute(); // Guardamos la respuesta de la base de datos   
+                $response["id"] = self::$connection -> insert_id;
             }
-            return $res;
+            return $response;
         }
         static function read($query) : array {
             $isRead = strpos($query, "SELECT");
@@ -39,14 +42,17 @@
             }
             return $objects;
         }
-        static function update($query) : bool {
+        static function update($query) : array {
             $isUpdate = strpos($query, "UPDATE");
-            $res = false;
+            $response = [
+                "res" => false
+            ];
             if($isUpdate !== false) {
                 $stmt = self::$connection -> prepare($query);
-                $res = $stmt -> execute(); // Guardamos la respuesta de la base de datos   
+                $response["res"] = $stmt -> execute(); // Guardamos la respuesta de la base de datos   
+                $response["id"] = self::$connection -> insert_id;
             }
-            return $res;
+            return $response;
         }
         static function delete($query) : bool {
             $isDelete = strpos($query, "DELETE");

@@ -50,11 +50,19 @@
             Database::open();
             // Creación del query
             $query = "SELECT * FROM " . static::$table ." WHERE $property = '$value'";
-            $propiedad = Database::read($query)[0] ?? false;
+            $object = Database::read($query)[0] ?? false;
             Database::close();
-            return $propiedad;
+            return $object;
         }
-        public function save() : bool {
+        public static function SQL($query) {
+            // Conexión a la DB
+            Database::open();
+            // Creación del query
+            $object = Database::read($query) ?? false;
+            Database::close();
+            return $object;
+        }
+        public function save() : array {
             // Creamos un arreglo con las propiedades, ignorando el 'id'
             $cols = $this -> escape_string(); // Limpia las propiedades
             // Creamos un string que contiene las propiedades a la base de datos
@@ -69,7 +77,7 @@
             Database::close(); // Cerramos la DB
             return $res;
         }
-        public function update() : bool {
+        public function update() : array {
             $object_onDB = self::getById($this -> id);
             $object = $this -> escape_string(); // Limpia las propiedades
             $object_changed = []; // Guardamos los datos cambiados
@@ -78,7 +86,7 @@
                     $object_changed[$key] = $value; 
                 }
             }
-            $res = false;
+            $res["res"] = false;
             if(!empty($object_changed)) {
                 // Construcción del query
                 $colsAndValues = []; // Generaremos un arreglo con valores "key='value'";
@@ -90,7 +98,7 @@
                 $query = "UPDATE " . static::$table . " SET " . $colsAndValues . " WHERE id = $id";
                 // Subir datos a la DB
                 Database::open(); // no necesitamos retornar la DB, por eso no la guardamos
-                $res = Database::update($query);
+                $res["res"] = Database::update($query);
                 Database::close(); // Cerramos la DB
             }     
             return $res;
@@ -101,7 +109,6 @@
             Database::open();
             $res = Database::delete($query);
             Database::close();
-            if($res) $this -> deleteFileImage($this -> imagen);
             return $res;
         }
         public function getInfo() : void {

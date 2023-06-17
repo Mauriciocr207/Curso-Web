@@ -40,7 +40,9 @@
             $router -> render('/auth/login', $data);
         }
         public static function logout() {
-            echo "desde logout";
+            session_start();
+            $_SESSION = [];
+            header('Location: /');
         }
         public static function olvide(Router $router) {
             $usuario = new Usuario();
@@ -67,7 +69,7 @@
                         );
                         $email -> enviarConfirmacion();
                         // Guardar en la base de datos 
-                        $res =  $usuario -> update();
+                        $res =  ($usuario -> update())["res"];
                         // Validar el resultado
                         if($res) {
                             $usuario -> clean();
@@ -104,7 +106,7 @@
                         "token" => "",
                     ]);
                     $usuario -> encriptPassword();
-                    $res = $usuario -> update();
+                    $res = ($usuario -> update())["res"];
                     if($res) {
                         $data["res"] = "Tu contraseña ha sido cambiada correctamente.\n Porfavor inicia sesión para comenzar.";
                         $usuario -> clean();
@@ -140,7 +142,7 @@
                         );
                         $email -> enviarConfirmacion();
                         // Guardar en la base de datos 
-                        $res =  $usuario -> save();
+                        $res =  ($usuario -> save())["res"];
                         // Validar el resultado
                         if($res) {
                             $usuario -> clean();
@@ -171,7 +173,7 @@
                 $userData["confirmado"] = 1;
                 $userData["token"] = "";
                 $usuario -> setUsuario($userData);
-                $result = $usuario -> update();
+                $result = ($usuario -> update())["res"];
                 if($result) {
                     $res = [
                         "res" => true,

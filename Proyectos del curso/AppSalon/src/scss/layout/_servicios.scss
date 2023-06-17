@@ -8,10 +8,13 @@
     padding: 0 2rem;
     height: 30rem;
     overflow-y: scroll;
+    &::-webkit-scrollbar-thumb {
+        width: 0rem;
+    }
     @include m.grid(3, 1rem);
 
     @include m.tablet {
-        @include m.grid(5, 1rem);
+        @include m.grid(4, 1rem);
         overflow: visible;
         height: auto;
     }
@@ -74,6 +77,32 @@
             .fa-minus {
                 color: v.$rojo;
             }
+        }
+        .servicio-opciones {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 1rem;
+            .icon {
+                font-weight: bold;
+                font-size: 2rem;
+                i {
+                    transition: color .3s ease;
+                }
+            }
+            .actualizar {
+                color: v.$gris;
+            }
+            .eliminar {
+                color: v.$gris;
+            }
+        }
+        &:hover > .servicio-opciones .actualizar {
+            color: v.$rojo;
+        }
+        &:hover > .servicio-opciones .eliminar {
+            color: v.$verde;
         }
 
     }
