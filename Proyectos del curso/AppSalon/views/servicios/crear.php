@@ -23,7 +23,7 @@
 </div>
 <form action="/servicios/crear" method="POST" class="form">
     <?php
-        include_once __DIR__ . './formulario.php';
+        include_once './formulario.php';
     ?>
     <input type="submit" class="boton" value="Guardar Servicio">
 </form>
