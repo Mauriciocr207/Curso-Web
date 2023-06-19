@@ -95,14 +95,14 @@
                 color: v.$gris;
             }
             .eliminar {
-                color: v.$gris;
+                color: v.$gris; 
             }
         }
         &:hover > .servicio-opciones .actualizar {
-            color: v.$rojo;
+            color: v.$verde;
         }
         &:hover > .servicio-opciones .eliminar {
-            color: v.$verde;
+            color: v.$rojo;
         }
 
     }

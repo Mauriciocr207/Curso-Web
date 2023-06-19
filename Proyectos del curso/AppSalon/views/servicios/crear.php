@@ -1,12 +1,12 @@
 <?php
-    include_once __DIR__ . '/../templates/barra.php';
+    include_once './../templates/barra.php';
 ?>
 <h1 class="nombre-pagina">Crear Servicio</h1>
 <p class="descripcion-pagina">
     Crea un nuevo servicio
 </p>
 <?php
-    include_once __DIR__ . '/../templates/navServicios.php';
+    include_once './../templates/navServicios.php';
 ?>
 <div class="alert">
     <?php  
