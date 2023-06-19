@@ -15,7 +15,6 @@ function showPassword() {
             }
             input.focus();
         })
-        console.log(icon, iconBox, input);
     }
 }
 

@@ -2,9 +2,9 @@
 @use '../base/variables' as v;
 
 .app .paginacion {
-    padding: 5rem 0;
     width: 90%;
     margin: 0 auto;
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     @include m.desktop {

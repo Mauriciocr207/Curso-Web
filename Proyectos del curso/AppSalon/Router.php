@@ -2,7 +2,6 @@
     namespace MVC;
     class Router {
         public $routs = [];
-        protected $adminRouts = ["/admin", "/admin/propiedades/create", "/admin/propiedades/update", "/admin/vendedores/create", "/admin/vendedores/update"];
 
         public function match($url, $function) {
             $this -> routs[$url] = $function;

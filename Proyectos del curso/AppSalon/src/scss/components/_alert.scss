@@ -1,5 +1,7 @@
 @use '../base/variables' as v;
 .alert {
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

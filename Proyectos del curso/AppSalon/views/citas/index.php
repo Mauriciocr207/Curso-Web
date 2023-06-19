@@ -1,3 +1,7 @@
+<div class="barra">
+    <p class="saludo">Hola <?php echo $nombre ?? ""; ?></p>
+    <a class="cerrarSesion" href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+</div>
 <h1 class="nombre-pagina">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">
     Elige tus servicios a continuación.
@@ -9,13 +13,13 @@
         <button type="button" data-paso="3">Resumen</button>
     </nav>
     <div id="paso-1" class="seccion ocultar mostrar" >
-        <h3>Servicios</h3>
-        <p class="text-center">Elige tus servicios a continuación</p>
+        <h3 class="seccion_titulo">Servicios</h3>
+        <p class="seccion_descripcion text-center">Elige tus servicios a continuación</p>
         <div id="servicios" class="listado-servicios"></div>
     </div>
     <div id="paso-2" class="seccion ocultar" >
-        <h3>Tus datos y Cita</h3>
-        <p class="text-center">Coloca tus datos y fecha de la cita</p>
+        <h3 class="seccion_titulo">Tus datos y Cita</h3>
+        <p class="seccion_descripcion text-center">Coloca tus datos y fecha de la cita</p>
         <form class="form">
             <div class="campo">
                 <label for="nombre">Nombre</label>
@@ -32,6 +36,7 @@
                 <input 
                     id="fecha"
                     type="date"
+                    min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>"
                 >
             </div>
             <div class="campo">
@@ -41,11 +46,12 @@
                     type="time"
                 >
             </div>
+            <input type="hidden" id="id" value="<?php echo $id; ?>">
         </form>
     </div>
-    <div id="paso-3" class="seccion ocultar" >
-        <h3>Resumen</h3>
-        <p class="text-center">Verifica que la informacion sea correcta</p>
+    <div id="paso-3" class="seccion ocultar resumen" >
+        <h3 class="seccion_titulo">Resumen</h3>
+        <p class="seccion_descripcion text-center">Verifica que la informacion sea correcta</p>
     </div>
     <div class="paginacion">
         <button
@@ -60,6 +66,7 @@
 </div>
 <?php
     $script = "
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
         <script src='build/js/citas.js'></script>
     ";
 

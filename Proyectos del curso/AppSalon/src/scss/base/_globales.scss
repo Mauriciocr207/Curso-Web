@@ -28,3 +28,28 @@ a {
 img {
     max-width: 100%;
 }
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: v.$azul v.$negro;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: .7rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: v.$negro;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: v.$azul;
+    border-radius: 10px;
+    border: 1px solid v.$azul;
+}
+input[type="number"] {
+    appearance: none;
+}

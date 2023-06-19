@@ -2,24 +2,20 @@
 @use '../base/mixins' as m;
 
 .tabs {
-    @include m.tablet {
-        display: flex;
-        gap: 1.5rem;
-    }
+    @include m.grid(3, 1rem);
+    margin-bottom: 1rem;
     button {
+        text-align: center;
         background-color: v.$azul;
         border: none;
         color: v.$blanco;
-        padding: 1rem;
+        padding: .5rem;
         display: block;
-        width: 100%;
-        margin-bottom: 1rem;
         text-transform: uppercase;
         font-weight: bold;
         cursor: pointer;
         border-radius: .7rem;
         transition: background-color .3s;
-
         &:hover {
             background-color: darken(v.$azul, 20);
         }

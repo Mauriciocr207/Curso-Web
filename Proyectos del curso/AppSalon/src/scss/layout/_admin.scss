@@ -1,0 +1,97 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.citas {
+    width: 90%;
+    @include m.tablet {
+        height: 50rem;
+    }
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.cita {
+    width: 100%;
+    background-color: darken(v.$gris, 70);
+    padding: 1rem 0;
+    border-radius: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h3 {
+        margin: .5rem 0;
+        font-size: 2.5rem;
+    }
+    h4 {
+        margin: .5rem 0;
+    }
+    .info {
+        background-color: darken(v.$gris, 50);
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        .dato {
+            font-weight: bold;
+            span {
+                font-weight: lighter;
+            }
+        }
+    }
+    .total {
+        width: 90%;
+        padding: 1rem;
+        text-align: right;
+        p {
+            font-weight: bold;
+            margin: 0;
+        }
+    }
+    .listado-servicios {
+        height: 15rem;
+        @include m.grid(3, 1rem);
+        overflow-y: auto;
+        .servicio {
+            .nombre-servicio {
+                
+            }
+            .precio-servicio {
+                
+            }
+        }
+    }
+    .form-eliminar {
+        width: 90%;
+        text-align: right;
+        margin: 1rem;
+        .boton-eliminar {
+            font-weight: bold;
+            background-color: v.$rojo;
+            color: v.$blanco;
+            outline: none;
+            border: none;
+            margin: 0;
+            padding: 1rem;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+.barra-servicios {
+    @include m.grid(3, 1rem);
+    width: 90%;
+    margin: 1rem auto;
+    .servicio {
+        padding: .7rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        background-color: v.$azul;
+        color: v.$blanco;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
