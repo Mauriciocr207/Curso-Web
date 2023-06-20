@@ -1,0 +1,14 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.login {
+    padding-top: 15rem;
+    .uptask {
+        font-size: 7rem;
+        text-align: center;
+
+        @include m.tablet {
+            font-size: 10rem;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "mauricio-carrillo/uptask",
+    "description": "Proyecto PHP 8, MVC, SQL, SASS, Gulp",
+    "autoload": {
+        "psr-4": {
+            "UpTask\\Models\\" : "./models/",
+            "UpTask\\MVC\\": "./",
+            "UpTask\\Controllers\\": "./controllers/",
+            "UpTask\\Classes\\": "./classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mauricio CR",
+            "email": "mauriciocr123@outlook.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
