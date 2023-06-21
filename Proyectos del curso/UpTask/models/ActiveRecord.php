@@ -5,7 +5,7 @@ class ActiveRecord {
     protected $id;
     protected static $table = "";
     // GETTERS
-    public function getId() : string {
+    public function getId() : string | null {
         return $this -> id;
     }
     // PROTECTED METHODS

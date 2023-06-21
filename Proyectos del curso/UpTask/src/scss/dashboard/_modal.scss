@@ -1,0 +1,63 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.modal {
+    position: absolute;
+    background-color: rgba(0,0,0,.8);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    padding: 0 2rem;
+
+    .form {
+        max-width: 60rem;
+        background-color: v.$blanco;
+        margin: 0 auto;
+        padding: 3rem;
+        border-radius: 1.5rem;
+        opacity: 0;
+        transition: opacity .3s ease;
+
+        legend {
+            font-size: 2rem;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        
+        &.animar {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+        &.cerrar {
+            opacity: 0;
+        }
+        
+        .alert {
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+
+
+    }
+}
+
+.modal .form .opciones {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 1rem;
+    @include m.tablet {
+        flex-direction: row;
+    }
+    .submit-nueva-tarea {
+        @include m.boton(v.$indigo, v.$blanco);
+    }
+    .cerrar-modal {
+        @include m.boton(v.$naranja, v.$blanco);
+    }
+}

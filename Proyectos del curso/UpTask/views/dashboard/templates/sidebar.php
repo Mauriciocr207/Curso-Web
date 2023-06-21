@@ -35,6 +35,3 @@
         </a>
     </nav>
 </aside>
-<?php
-    $script = "<script src='/build/js/sideBar.js'></script>";
-?>

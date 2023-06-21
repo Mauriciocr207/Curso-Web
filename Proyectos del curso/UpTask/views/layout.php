@@ -14,7 +14,11 @@
 <body>
 
     <?php echo $content; ?>
-    <?php echo $script ?? ''; ?>
+    <?php 
+        echo "<div>";
+        echo $script ?? ''; 
+        echo "</div>";
+    ?>
 
 </body>
 </html>
