@@ -1,0 +1,40 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.form {
+    margin-top: 5rem;
+    .campo {
+        margin-bottom: 2rem;
+        overflow: hidden;
+        border-radius: 1.5rem;
+        display: grid;
+        grid-template-columns: 15rem 1fr 5rem;
+        
+        height: 4rem;
+
+        label {
+            padding-left: 2rem;
+            font-weight: bold;
+            color: v.$blanco;
+            display: flex;
+            align-items: center;
+        }
+        input {
+            padding-left: 1rem;
+            border: none;
+            background-color: lighten(v.$gris, 40%);
+            outline: none;
+        }
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: red;
+            background-color:  lighten(v.$gris, 40%);
+            cursor: pointer;
+        }
+    }
+    .boton {
+        border-radius: 1rem;
+    }
+}

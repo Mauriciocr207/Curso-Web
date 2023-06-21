@@ -1,0 +1,2 @@
+function e(){const e=document.querySelectorAll(".campo.w-password");console.log(e),e.forEach(e=>{const s=e.querySelector(".icon"),o=e.querySelector(".icon .eye"),c=e.querySelector(".password");null!==s&&s.addEventListener("click",()=>{"password"===c.type?(c.type="text",o.classList.remove("fa-eye-slash"),o.classList.add("fa-eye")):(c.type="password",o.classList.remove("fa-eye"),o.classList.add("fa-eye-slash")),c.focus()})})}e();
+//# sourceMappingURL=showPassword.js.map

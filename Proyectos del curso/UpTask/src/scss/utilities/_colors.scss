@@ -1,0 +1,83 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+// cyan
+.cyan {
+    @include m.color(v.$cyan);
+}
+.bg-cyan {
+    background-color: v.$cyan;
+}
+// red
+.rojo {
+    @include m.color(v.$rojo);
+}
+.bg-rojo {
+    background-color: v.$rojo;
+}
+// purple
+.morado {
+    @include m.color(v.$morado);
+}
+.bg-morado {
+    background-color: v.$morado;
+}
+// pink
+.rosa {
+    @include m.color(v.$rosa);
+}
+.bg-rosa {
+    background-color: v.$rosa;
+}
+// blue
+.azul {
+    @include m.color(v.$azul);
+}
+.bg-azul {
+    background-color: v.$azul;
+}
+// orange
+.naranja {
+    @include m.color(v.$naranja);
+}
+.bg-naranja {
+    background-color: v.$naranja;
+}
+// indigo
+.indigo {
+    @include m.color(v.$indigo);
+}
+.bg-indigo {
+    background-color: v.$indigo;
+}
+
+.boton {
+    // cyan
+    &.bg-cyan {
+        @include m.boton(v.$cyan, v.$blanco);
+    }
+    // red
+    &.bg-rojo {
+        @include m.boton(v.$rojo, v.$blanco);
+    }
+    // purple
+    &.bg-morado {
+        @include m.boton(v.$morado, v.$blanco);
+    }
+    // pink
+    &.bg-rosa {
+        @include m.boton(v.$rosa, v.$blanco);
+    }
+    // blue
+    &.bg-azul {
+        @include m.boton(v.$azul, v.$blanco);
+    }
+    // orange
+    &.bg-naranja {
+        @include m.boton(v.$naranja, v.$blanco);
+    }
+    // indigo
+    &.bg-indigo {
+        @include m.boton(v.$indigo, v.$blanco);
+    }
+}
