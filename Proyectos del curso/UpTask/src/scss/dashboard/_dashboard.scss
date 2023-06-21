@@ -1,0 +1,15 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.dashboard {
+    background-color: v.$grisClaro;
+    height: 100vh;
+    display: flex;
+    
+    .panel {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 7rem 1fr;
+    }
+}

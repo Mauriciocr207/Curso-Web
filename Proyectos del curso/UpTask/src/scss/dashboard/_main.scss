@@ -1,0 +1,30 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+.panel .main {
+    overflow-y: auto;
+    padding: 2rem;
+    padding-left: 4rem;
+    @include m.tablet {
+        padding-left: 2rem;
+    }
+    
+    .nombre-pagina {
+        font-size: 2.8rem;
+        text-align: center;
+    }
+
+    
+}
+
+.main .form {
+    .campo {
+        input {
+            background-color: v.$blanco;
+        }
+    }
+    input[type="submit"] {
+        @include m.boton(v.$indigo, v.$blanco);
+        font-weight: bold;
+        border-radius: 1rem;
+    }
+}

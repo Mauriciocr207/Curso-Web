@@ -51,6 +51,15 @@ class ActiveRecord {
         Database::close();
         return $object;
     }
+    public static function belongsTo($property, $value) {
+        // Conexión a la DB
+        Database::open();
+        // Creación del query
+        $query = "SELECT * FROM " . static::$table ." WHERE $property = '$value'";
+        $object = Database::read($query) ?? false;
+        Database::close();
+        return $object;
+    }
     public static function SQL($query) {
         // Conexión a la DB
         Database::open();
