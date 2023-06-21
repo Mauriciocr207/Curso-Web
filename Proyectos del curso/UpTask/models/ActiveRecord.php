@@ -5,7 +5,7 @@ class ActiveRecord {
     protected $id;
     protected static $table = "";
     // GETTERS
-    public function getId() : string {
+    public function getId() : string | null {
         return $this -> id;
     }
     // PROTECTED METHODS
@@ -48,6 +48,15 @@ class ActiveRecord {
         // Creación del query
         $query = "SELECT * FROM " . static::$table ." WHERE $property = '$value'";
         $object = Database::read($query)[0] ?? false;
+        Database::close();
+        return $object;
+    }
+    public static function belongsTo($property, $value) {
+        // Conexión a la DB
+        Database::open();
+        // Creación del query
+        $query = "SELECT * FROM " . static::$table ." WHERE $property = '$value'";
+        $object = Database::read($query) ?? false;
         Database::close();
         return $object;
     }

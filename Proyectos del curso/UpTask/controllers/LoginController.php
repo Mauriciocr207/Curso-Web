@@ -7,17 +7,37 @@ use UpTask\MVC\Router;
 
 class LoginController {
     public static function login(Router $router) {
-        if($_SERVER["REQUEST_METHOD"] === "POST") {
-
-        }
+            $usuario = new Usuario();
+            $errores = [];
+            if($_SERVER["REQUEST_METHOD"] === "POST") {
+                $usuario -> setAll($_POST);
+                $errores = $usuario -> validateLogin();
+                if(empty($errores)) {
+                    $usuario -> setAll(
+                        $usuario -> where("email", $usuario -> getEmail())
+                    );
+                    // Iniciamos una sesion para el usuario
+                    session_start();
+                    $_SESSION = [
+                        "id" => $usuario -> getId(),
+                        "nombre" => $usuario -> getNombre(),
+                        "usuario" => $usuario -> getEmail(),
+                        "login" => true,
+                    ];
+                    // Redireccionamiento
+                    header('Location: /dashboard');
+                } 
+            }
+            $data["usuario"] = $usuario;
+            $data["errores"] = $errores;
+            $data["usuario"] = $usuario;
         $data["titulo"] = "Iniciar Sesión";
         $router -> render('/login/index', $data);
     }
     public static function logout(Router $router) {
-        
-        if($_SERVER["REQUEST_METHOD"] === "POST") {
-
-        }
+        session_start();
+        $_SESSION = [];
+        header('Location: /');
         $data["titulo"] = "Crear cuenta";
         $router -> render('/login/logout', $data);
     }

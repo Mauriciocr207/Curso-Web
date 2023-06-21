@@ -10,10 +10,10 @@
         display: grid;
         grid-template-columns: 15rem 1fr 5rem;
         
-        height: 4rem;
+        min-height: 4rem;
 
         label {
-            padding-left: 2rem;
+            padding-left: 1rem;
             font-weight: bold;
             color: v.$blanco;
             display: flex;
@@ -29,7 +29,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: red;
             background-color:  lighten(v.$gris, 40%);
             cursor: pointer;
         }

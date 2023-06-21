@@ -1,0 +1,11 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.contenedor-nueva-tarea {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    .agregar-tarea {
+        @include m.boton(v.$cyan, v.$blanco);
+    }
+}
