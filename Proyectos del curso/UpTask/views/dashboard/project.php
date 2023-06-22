@@ -27,19 +27,19 @@
                     >
                 </div>
                 <div class="campo">
-                    <label for="comp letadas">Completadas</label>
+                    <label for="pendientes">Pendientes</label>
                     <input 
                         type="radio"
-                        id="completadas"
+                        id="pendientes"
                         name="filtro"
                         value="0"
                     >
                 </div>
                 <div class="campo">
-                    <label for="pendientes">Pendientes</label>
+                    <label for="comppletadas letadas">Completadas</label>
                     <input 
                         type="radio"
-                        id="pendientes"
+                        id="completadas"
                         name="filtro"
                         value="1"
                     >

@@ -1,6 +1,5 @@
 function showPassword() {
     const campos = document.querySelectorAll('.campo.w-password');
-    console.log(campos);
     campos.forEach( campo => {
         const iconBox = campo.querySelector('.icon');
         const icon = campo.querySelector('.icon .eye');

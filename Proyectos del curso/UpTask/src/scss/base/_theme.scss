@@ -3,7 +3,7 @@
 
 @media (prefers-color-scheme: dark) {
     $grisOscuro: #2c2c3b;
-    body {
+    .dark {
         background-color: $grisOscuro;
         .tagline,
         .acciones a {
@@ -99,6 +99,9 @@
                 }
                 &.active {
                     background-color: darken(v.$naranja, 10%);
+                }
+                &.theme {
+                    background-color: lighten(v.$grisOscuro, 10%);
                 }
             }
         }

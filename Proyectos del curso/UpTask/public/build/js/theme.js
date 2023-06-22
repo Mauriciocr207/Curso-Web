@@ -1,2 +1,2 @@
-console.log("cambiando el tema");
+(()=>{const e="dark",t="light",n=document.querySelector("body");function o(n=t){const o=document.querySelector("#themeBtn"),c=o.querySelector(".icon"),s=o.querySelector(".option-text");n===e?(c.innerHTML='<i class="fa-solid fa-moon"></i>',s.textContent="Dark"):(c.innerHTML='<i class="fa-solid fa-sun"></i>',s.textContent="Light")}window.matchMedia("(prefers-color-scheme: dark)").matches&&(n.classList.add(e),o(e)),document.querySelector("#themeBtn").addEventListener("click",()=>{n.classList.toggle("dark"),n.classList.contains(e)?o(e):o(t)})})();
 //# sourceMappingURL=theme.js.map

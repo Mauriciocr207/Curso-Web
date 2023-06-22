@@ -44,7 +44,6 @@
 
         modal.addEventListener('click', event => {
             event.preventDefault();
-            console.log(event);
             const classList = event.target.classList;
             if(classList.contains('cerrar-modal') || classList.contains('modal')) {
                 const form = document.querySelector('.form');
@@ -277,7 +276,6 @@
         }
     }
     async function actualizarTarea(tarea) {
-        console.log(tarea);
         const { estado, id, nombre } = tarea;
         const datos = new FormData();
         datos.append('data', JSON.stringify({

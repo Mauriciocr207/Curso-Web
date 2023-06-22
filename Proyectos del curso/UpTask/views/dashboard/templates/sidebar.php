@@ -30,5 +30,11 @@
                 <p class="option-text">Perfil</p>
             </a>
         </div>
+        <a class="option theme" id="themeBtn">
+            <div class="icon">
+                <i class="fa-regular fa-sun"></i>
+            </div>
+            <p class="option-text">Light</p>
+        </a>
     </nav>
 </aside>
