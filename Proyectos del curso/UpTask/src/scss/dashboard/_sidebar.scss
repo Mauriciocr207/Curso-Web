@@ -56,6 +56,11 @@
 }
 
 .sidebar-nav {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .option {
         display: grid;
         grid-template-columns: 6rem 26rem;
@@ -66,6 +71,7 @@
         transition: background-color .3s ease; 
         background-color: v.$azul;
         overflow: hidden;
+        cursor: pointer;
         // active
         &.active {
             background-color: v.$morado;
@@ -86,6 +92,11 @@
         .icon {
             justify-self: center;
             font-size: 2.3rem;
+        }
+
+        &.theme {
+            margin-bottom: 0;
+
         }
     };
 }

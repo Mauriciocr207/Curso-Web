@@ -5,6 +5,7 @@
     @include m.tablet {
         display: flex;
         justify-content: space-between;
+        width: 50rem;
     }
     a {
         display: block;

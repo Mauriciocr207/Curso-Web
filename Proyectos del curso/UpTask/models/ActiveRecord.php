@@ -92,7 +92,7 @@ class ActiveRecord {
                 $object_changed[$key] = $value; 
             }
         }
-        $res["res"] = false;
+        $res = ["res" => false];
         if(!empty($object_changed)) {
             // Construcción del query
             $colsAndValues = []; // Generaremos un arreglo con valores "key='value'";
@@ -104,12 +104,12 @@ class ActiveRecord {
             $query = "UPDATE " . static::$table . " SET " . $colsAndValues . " WHERE id = $id";
             // Subir datos a la DB
             Database::open(); // no necesitamos retornar la DB, por eso no la guardamos
-            $res["res"] = Database::update($query);
+            $res = Database::update($query);
             Database::close(); // Cerramos la DB
         }     
         return $res;
     }
-    public function delete() : bool {
+    public function delete() : array {
         $id = $this -> id;
         $query = "DELETE FROM " . static::$table . " WHERE id = $id";
         Database::open();

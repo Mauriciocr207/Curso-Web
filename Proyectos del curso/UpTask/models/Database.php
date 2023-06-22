@@ -17,18 +17,6 @@
             self::$connection -> close();
             self::$connection = null;
         }
-        static function create($query) : array {
-            $isCreate = strpos($query, "INSERT");
-            $response = [
-                "res" => false
-            ];
-            if($isCreate !== false) {
-                $stmt = self::$connection -> prepare($query);
-                $response["res"] = $stmt -> execute(); // Guardamos la respuesta de la base de datos   
-                $response["id"] = self::$connection -> insert_id;
-            }
-            return $response;
-        }
         static function read($query) : array {
             $isRead = strpos($query, "SELECT");
             $objects = [];
@@ -42,6 +30,18 @@
             }
             return $objects;
         }
+        static function create($query) : array {
+            $isCreate = strpos($query, "INSERT");
+            $response = [
+                "res" => false
+            ];
+            if($isCreate !== false) {
+                $stmt = self::$connection -> prepare($query);
+                $response["res"] = $stmt -> execute(); // Guardamos la respuesta de la base de datos   
+                $response["id"] = self::$connection -> insert_id;
+            }
+            return $response;
+        }
         static function update($query) : array {
             $isUpdate = strpos($query, "UPDATE");
             $response = [
@@ -54,14 +54,16 @@
             }
             return $response;
         }
-        static function delete($query) : bool {
+        static function delete($query) : array {
             $isDelete = strpos($query, "DELETE");
-            $res = false;
+            $response = [
+                "res" => false
+            ];
             if($isDelete !== false) {
                 $stmt = self::$connection -> prepare($query);
-                $res = $stmt -> execute(); // Guardamos la respuesta de la base de datos    
+                $response["res"] = $stmt -> execute(); // Guardamos la respuesta de la base de datos    
             }
-            return $res;
+            return $response;
         }
 
     }

@@ -25,6 +25,7 @@ $router -> match('/dashboard/create', [DashboardController::class, 'create']);
 $router -> match('/dashboard/project', [DashboardController::class, 'project']);
 $router -> match('/dashboard/project-not-found', [DashboardController::class, 'project_not_found']);
 $router -> match('/dashboard/perfil', [DashboardController::class, 'perfil']);
+$router -> match('/dashboard/change_password', [DashboardController::class, 'change_password']);
 
 // TareasAPI
 $router -> match('/api/task', [TaskAPI::class, 'index']);

@@ -34,14 +34,11 @@
         font-size: 1.7rem;
         font-weight: bold;
         overflow: hidden;
+        color: v.$blanco;
 
         &:hover {
             background-color: darken(v.$indigo, 5%);
             cursor: pointer;
-        }
-
-        a {
-            color: v.$blanco;
         }
     }
 }
