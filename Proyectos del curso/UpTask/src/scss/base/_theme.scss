@@ -1,0 +1,124 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+@media (prefers-color-scheme: dark) {
+    $grisOscuro: #2c2c3b;
+    body {
+        background-color: $grisOscuro;
+        .tagline,
+        .acciones a {
+            color: v.$blanco;
+        }
+        .descripcion-pagina,
+        .nombre-pagina,
+        .enlace {
+            color: v.$grisClaro;
+        }
+    
+    
+        .form .campo input,
+        .main .form .campo input {
+            background-color: lighten(v.$grisOscuro, 15%);
+            color: v.$blanco;
+        }
+        .form .campo input::placeholder {
+            color: darken(v.$blanco, 20%);
+        }
+        .form .campo .icon,
+        .main .form .campo .icon  {
+            background-color: lighten(v.$grisOscuro, 15%);
+            color: v.$blanco;
+        }
+        .alert {
+            .err,
+            .enviado {
+                background-color: v.$blanco;
+            }
+        }
+
+
+
+        .dashboard {
+            background-color: v.$grisOscuro;
+        }
+        .barra {
+            background-color: darken(v.$grisOscuro, 7%); 
+            p {
+                color: v.$blanco;
+                span {
+                    color: lighten(v.$naranja, 15%);
+                }
+            }
+        }
+
+        .listado-proyectos .proyecto {
+            background-color: lighten(v.$grisOscuro, 10%);
+            &:hover {
+                background-color: lighten(v.$grisOscuro, 6%);
+            }
+        }
+        .listado-tareas .tarea {
+            background-color: lighten(v.$grisOscuro, 10%);
+            border-radius: 1.5rem;
+            border: none;
+            transition:  background-color .3s ease;
+            &:hover {
+                background-color: lighten(v.$grisOscuro, 7.5%);
+            }
+            p {
+                color: v.$grisClaro;
+            }
+            .nombre-box .icon {
+                color: v.$blanco;
+            }
+        }
+
+        .filtros {
+            background-color: lighten(v.$grisOscuro, 10%);
+            .filtros-inputs {
+                h2, label {
+                    color: v.$blanco;
+                }
+                input[type="radio"] {
+                    accent-color: v.$grisOscuro;
+                }
+            }
+        }
+
+        .sidebar {
+            background-color: darken(v.$grisOscuro, 10%); 
+
+            .sidebar-button {
+                background-color: darken(v.$grisOscuro, 20%);
+            }
+
+            .option {
+                background-color: v.$naranja;
+                &:hover {
+                    background-color: lighten(v.$naranja, 4%);
+                }
+                &.active {
+                    background-color: darken(v.$naranja, 10%);
+                }
+            }
+        }
+
+        .logout {
+            i {
+                color: lighten(v.$naranja, 15%);
+            }
+        }
+
+        .modal .form.nueva-tarea {
+            background-color: v.$grisOscuro;
+            legend {
+                color: v.$blanco;
+            }
+        }
+
+        .panel .main p {
+            color: v.$blanco;
+        }
+        
+    }
+}

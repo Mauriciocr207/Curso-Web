@@ -9,11 +9,9 @@
     <?php } else { ?>
         <ul class="listado-proyectos">
             <?php foreach($proyectos  as $proyecto) { ?>
-                <li class="proyecto">
-                    <a href="/dashboard/project?url=<?php echo $proyecto -> getUrl(); ?>">
-                        <?php echo $proyecto -> getNombre(); ?>
-                    </a>
-                </li>
+                <a class="proyecto" href="/dashboard/project?url=<?php echo $proyecto -> getUrl(); ?>">
+                    <?php echo $proyecto -> getNombre(); ?>
+                </a>
             <?php } ?>
         </ul>
     <?php } ?>

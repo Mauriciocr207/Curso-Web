@@ -124,6 +124,27 @@ class Usuario extends ActiveRecord {
         if($password !== $password2) $errores[] = "Las contraseñas no son iguales";
         return $errores;
     }
+    public function validar_perfil() : array {
+        $errores = [];
+        if(empty($this -> nombre)) $errores[] = "El nombre es obligatorio";
+        if(empty($this -> email)) $errores[] = "El email es obligatorio";
+        if($this -> existeUsuario()) $errores[] = "Este correo ya está en uso";
+        return $errores;
+    }
+    public function validar_nuevo_password($nuevoPassword) : array {
+        $errores = [];
+        if(empty($this -> password)) $errores[] = "La contraseña actual es obligatoria";
+        if(empty($nuevoPassword)) $errores[] = "Ingresa una nueva contraseña";
+        if(strlen($nuevoPassword) < 6) $errores[] = "La contraseña debe contener al menos 6 caracteres";
+        if(empty($errores)) {
+            $password_actual = ($this -> where("id", $this -> getId()))["password"];
+            if(!password_verify($this -> password, $password_actual)) {
+                $errores[] = "La contraseña actual es incorrecta";
+            }
+        }
+        return $errores;
+    }
+
     public function createToken() {
         $this -> token = uniqid();
     }

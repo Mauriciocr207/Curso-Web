@@ -28,9 +28,9 @@ class LoginController {
                     header('Location: /dashboard');
                 } 
             }
-            $data["usuario"] = $usuario;
-            $data["errores"] = $errores;
-            $data["usuario"] = $usuario;
+        $data["usuario"] = $usuario;
+        $data["errores"] = $errores;
+        $data["usuario"] = $usuario;
         $data["titulo"] = "Iniciar Sesión";
         $router -> render('/login/index', $data);
     }

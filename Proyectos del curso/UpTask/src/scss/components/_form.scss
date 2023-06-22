@@ -3,17 +3,19 @@
 
 .form {
     margin-top: 5rem;
+    max-width: 70rem;
+    width: 100%;
     .campo {
         margin-bottom: 2rem;
         overflow: hidden;
         border-radius: 1.5rem;
         display: grid;
         grid-template-columns: 15rem 1fr 5rem;
-        
+        width: 100%;
         min-height: 4rem;
 
         label {
-            padding-left: 1rem;
+            padding-left: 2rem;
             font-weight: bold;
             color: v.$blanco;
             display: flex;

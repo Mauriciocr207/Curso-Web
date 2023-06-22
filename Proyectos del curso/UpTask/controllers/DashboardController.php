@@ -97,7 +97,7 @@ class DashboardController {
         }
 
         $data["usuario"] = $usuario;
-        $data["titulo"] = "Administrar Proyecto";
+        $data["titulo"] = $proyecto -> getNombre();
         $router -> render('/dashboard/project', $data);
     }
     public static function project_not_found(Router $router) {
@@ -112,8 +112,63 @@ class DashboardController {
         session_start();
         isAuth();
         $usuario = new Usuario($_SESSION);
+        $usuario -> setAll(
+            Usuario::where("id", $usuario -> getId())
+        );
+
+        $errores = [];
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+            $usuario -> setAll($_POST);
+            $errores = $usuario -> validar_perfil();
+            if(empty($errores)) {
+                $res = $usuario -> update();
+                if($res["res"]) $res["message"] = "Actualizado correctamente";
+                else {
+                    $res["message"] = "No se pudo actualizar";
+                }
+                $data["res"] = $res;
+            }
+        }
+
+
+
         $data["usuario"] = $usuario;
         $data["titulo"] = "Perfil";
+        $data["errores"] = $errores;
         $router -> render('/dashboard/perfil', $data);
+    }
+    public static function change_password(Router $router) {
+        session_start();
+        isAuth();
+        $usuario = new Usuario($_SESSION);
+
+        $errores = [];
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+            $usuario -> setAll($_POST);
+            $password_new = $_POST["password_new"];
+
+            $errores = $usuario -> validar_nuevo_password($password_new);
+            if(empty($errores)) {
+                $usuario -> setAll(
+                    Usuario::where("id", $usuario -> getId())
+                );
+                $usuario -> setAll([
+                    "password" => $password_new
+                ]);
+                $usuario -> encriptPassword();
+                $res = $usuario -> update();
+                if($res["res"]) $res["message"] = "Contraseña actualizada correctamente";
+                else {
+                    $res["message"] = "No se pudo actualizar la contraseña";
+                }
+                $data["res"] = $res;
+            }
+            
+        }
+
+        $data["errores"] = $errores;
+        $data["titulo"] = "Cambiar contraseña";
+        $data["usuario"] = $usuario;
+        $router -> render('/dashboard/change_password', $data);
     }
 }

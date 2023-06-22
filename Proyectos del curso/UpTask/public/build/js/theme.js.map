@@ -1,0 +1,1 @@
+{"version":3,"sources":["theme.js"],"names":["console","log"],"mappings":"AAAAA,QAAQC,IAAI","file":"theme.js","sourcesContent":["console.log(\"cambiando el tema\");"]}

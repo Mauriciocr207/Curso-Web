@@ -9,3 +9,87 @@
         @include m.boton(v.$cyan, v.$blanco);
     }
 }
+
+.listado-tareas {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 100rem;
+
+    .tarea {
+        padding: .5rem 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid darken(v.$grisClaro, 20%);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        @include m.tablet {
+            flex-direction: row;
+            padding-bottom: .5rem;
+            gap: 2rem;
+        }
+
+        .nombre-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 2rem;
+            width: 100%;
+            
+            margin-bottom: 1rem;
+
+            @include m.tablet {
+                margin: 0;
+                justify-content: flex-start;
+            }
+            
+            p {
+                word-break: break-all;
+                margin: 1rem 0;
+            }
+            .icon {
+                color: v.$gris;
+                cursor: pointer;
+            }
+        }
+
+        .opciones {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            gap: 1rem;
+            @include m.tablet {
+                flex-direction: row;
+                justify-content: flex-start;
+                width: fit-content;
+            }
+            button {
+                border: none;
+                font-size: 1.1rem;
+                padding: 1rem 2rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                border-radius: 2rem;
+                color: v.$blanco;
+                cursor: pointer;
+            }
+            .completa {
+                background-color: v.$verde;
+            }
+            .pendiente {
+                background-color: v.$naranja;
+            }
+            .eliminar-tarea {
+                background-color: v.$rojo;
+            }
+            .completa,
+            .pendiente {
+                transition: background-color .3s ease;
+            }
+        }
+    }
+
+    
+}

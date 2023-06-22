@@ -12,11 +12,13 @@
     <script src="https://kit.fontawesome.com/d10d1e89d5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <?php echo $content; ?>
     <?php 
+        echo $content;
         echo "<div>";
-        echo $script ?? ''; 
+        if(isset($script)) {
+            $script .= "<script src='/build/js/theme.js'></script>";
+            echo $script;
+        }
         echo "</div>";
     ?>
 
