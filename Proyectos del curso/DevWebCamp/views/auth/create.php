@@ -4,7 +4,7 @@
     </h2>
     <p class="auth__texto">Regístrate en DevWebCamp</p>
     <?php require_once __DIR__ . '/../templates/alertas.php'; ?>
-    <form action="/registro" class="form" method="POST">
+    <form action="/create" class="form" method="POST">
         <div class="form__campo">
             <label for="nombre" class="form__label">Nombre</label>
             <input 
@@ -13,7 +13,7 @@
                 placeholder="Tu Nombre"
                 id="nombre"
                 name="nombre"
-                value="<?php echo $usuario -> nombre; ?>"
+                value="<?php echo $usuario -> getNombre(); ?>"
             >
         </div>
         <div class="form__campo">
@@ -24,7 +24,7 @@
                 placeholder="Tu Apellido"
                 id="apellido"
                 name="apellido"
-                value="<?php echo $usuario -> apellido; ?>"
+                value="<?php echo $usuario -> getApellido(); ?>"
             >
         </div>
         <div class="form__campo">
@@ -35,7 +35,7 @@
                 placeholder="Tu Email"
                 id="email"
                 name="email"
-                value="<?php echo $usuario -> email; ?>"
+                value="<?php echo $usuario -> getEmail(); ?>"
             >
         </div>
         <div class="form__campo">
@@ -61,7 +61,7 @@
         <input type="submit" class="form__submit" value="Crear Cuenta">
         <div class="acciones">
             <a href="/login" class="acciones__enalce">¿Ya tienes una cuenta? Iniciar Sesión</a>
-            <a href="/olvide" class="acciones__enalce">¿Olvidaste tu apellido?</a>
+            <a href="/forgotpassword" class="acciones__enalce">¿Olvidaste tu apellido?</a>
         </div>
     </form>
 </main>

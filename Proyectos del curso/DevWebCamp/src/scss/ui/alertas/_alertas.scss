@@ -1,20 +1,28 @@
 @use '../../base/mixins' as m;
 @use '../../base/variables' as v;
 
-.alerta {
-    padding: 1.5rem 1.5rem 1.5rem 3rem;
-    text-transform: uppercase;
-    margin: 1rem 0;
-    font-size: 1.2rem;
-    font-weight: v.$bold;
-
-    &__error {
-        background-color: lighten($color: v.$rojo, $amount: 60%);
+.alert {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    .err, .enviado {
+        padding: .7rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+    }
+    .err {
+        background-color: lighten(v.$rojo, 60%);
         border-left: .5rem solid v.$rojo;
         color: v.$rojo;
     }
-    &__exito {
-        background-color: lighten($color: v.$verde, $amount: 60%);
+    .enviado {
+        background-color: lighten(v.$verde, 60%);
         border-left: .5rem solid v.$verde;
         color: v.$verde;
     }

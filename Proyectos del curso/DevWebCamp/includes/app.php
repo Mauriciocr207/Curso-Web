@@ -1,16 +1,10 @@
-<?php 
+<?php
+    // GLOBALS
+    use Dotenv\Dotenv;
 
-use Dotenv\Dotenv;
-use Model\ActiveRecord;
-require __DIR__ . '/../vendor/autoload.php';
-define('PROYECT__URL', dirname(dirname(__FILE__)));
-
-// Añadir Dotenv
-$dotenv = Dotenv::createImmutable(PROYECT__URL);
-$dotenv->safeLoad();
-
-require 'funciones.php';
-require 'database.php';
-
-// Conectarnos a la base de datos
-ActiveRecord::setDB($db);
+    define('PROYECT__URL', dirname(dirname(__FILE__)));
+    
+    require PROYECT__URL . '/includes/funciones.php';
+    require PROYECT__URL . '/vendor/autoload.php';
+    $dotenv = Dotenv::createImmutable(PROYECT__URL);
+    $dotenv -> safeload();

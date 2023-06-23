@@ -1,11 +1,19 @@
-<?php 
-    foreach($alertas as $key => $alerta) {
-        foreach($alerta as $mensaje) {
-?>
-            <div class="alerta alerta__<?php echo $key; ?>">
-                <?php echo $mensaje ?>
-            </div>
-<?php
+<div class="alert">
+    <?php  
+        if(isset($errores)) {
+            foreach($errores as $err) { ?>
+                <div class="err">
+                    <?php echo $err; ?>
+                </div>
+    <?php         
+            }
         }
-    }
-?>
+        if(isset($res["res"])) {
+            if($res["res"]) {
+                echo "<div class='enviado'>" . $res["message"] . "</div>";
+            } else {
+                echo "<div class='err'>" . $res["message"] . "</div>";  
+            }
+        }
+    ?>
+</div>

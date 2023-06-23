@@ -4,7 +4,7 @@
     </h2>
     <p class="auth__texto">Recupera tu acceso a DevWebCamp</p>
 
-    <form action="" class="form">
+    <form action="/forgotpassword" class="form">
         <div class="form__campo">
             <label for="email" class="form__label">Email</label>
             <input 
@@ -18,7 +18,7 @@
         <input type="submit" class="form__submit" value="Enviar Instrucciones">
         <div class="acciones">
             <a href="/login" class="acciones__enalce">¿Ya tienes cuenta? Iniciar Sesión</a>
-            <a href="/registro" class="acciones__enalce">¿Aún no tienes cuenta? Obtener una</a>
+            <a href="/create" class="acciones__enalce">¿Aún no tienes cuenta? Obtener una</a>
         </div>
     </form>
 </main>

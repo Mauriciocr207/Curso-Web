@@ -653,19 +653,28 @@ h3 {
   }
 }
 
-.alerta {
-  padding: 1.5rem 1.5rem 1.5rem 3rem;
-  text-transform: uppercase;
-  margin: 1rem 0;
-  font-size: 1.2rem;
-  font-weight: 700;
+.alert {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
-.alerta__error {
+.alert .err, .alert .enviado {
+  padding: 0.7rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.alert .err {
   background-color: #ffdcdc;
   border-left: 0.5rem solid rgb(169, 0, 0);
   color: rgb(169, 0, 0);
 }
-.alerta__exito {
+.alert .enviado {
   background-color: white;
   border-left: 0.5rem solid #02db02;
   color: #02db02;

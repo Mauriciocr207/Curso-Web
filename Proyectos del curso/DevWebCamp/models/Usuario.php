@@ -1,109 +1,167 @@
 <?php
-
-namespace Model;
-
+namespace DevWebCamp\Models;
 class Usuario extends ActiveRecord {
-    protected static $tabla = 'usuarios';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token', 'admin'];
-    
+    protected $id;
+    protected $nombre;
+    protected $apellido;
+    protected $email;
+    protected $password;
+    protected $token;
+    protected $confirmado;
+    protected static $table = "usuarios";
+
     public function __construct($args = [])
     {
-        $this->id = $args['id'] ?? null;
-        $this->nombre = $args['nombre'] ?? '';
-        $this->apellido = $args['apellido'] ?? '';
-        $this->email = $args['email'] ?? '';
-        $this->password = $args['password'] ?? '';
-        $this->password2 = $args['password2'] ?? '';
-        $this->confirmado = $args['confirmado'] ?? 0;
-        $this->token = $args['token'] ?? '';
-        $this->admin = $args['admin'] ?? 0;
+        $this -> id = $args["id"] ?? null;
+        $this -> nombre = $args["nombre"] ?? "";
+        $this -> apellido = $args["apellido"] ?? "";
+        $this -> email = $args["email"] ?? "";
+        $this -> password = $args["password"] ?? "";
+        $this -> token = $args["token"] ?? "";
+        $this -> confirmado = $args["confirmado"] ?? "0";
     }
 
-    // Validar el Login de Usuarios
-    public function validarLogin() {
-        if(!$this->email) {
-            self::$alertas['error'][] = 'El Email del Usuario es Obligatorio';
+    // Getters
+    public function getNombre() {
+        return $this -> nombre;
+    }
+    public function getApellido() {
+        return $this -> apellido;
+    }
+    public function getEmail() {
+        return $this -> email;
+    }
+    public function getPassword() {
+        return $this -> password;
+    }
+    public function getToken() {
+        return $this -> token;
+    }
+    // Setters
+    public function setAll($args = [])
+    {
+        $this -> id = $args["id"] ?? $this -> id;
+        $this -> nombre = $args["nombre"] ?? $this -> nombre;
+        $this -> apellido = $args["apellido"] ?? $this -> apellido;
+        $this -> email = $args["email"] ?? $this -> email;
+        $this -> password = $args["password"] ?? $this -> password;
+        $this -> token = $args["token"] ?? $this -> token;
+        $this -> confirmado = $args["confirmado"] ?? $this -> confirmado;
+    }
+    // PROTECTED
+    public function existeUsuario() : bool {
+        // $email = ($this -> escape_string())["email"];
+        // Crear query
+        $email = $this -> email;
+        $res = $this -> where("email", $email);
+        return !empty($res) ? true : false;
+    }
+    protected function verifyPassword() : bool {
+        $password_onDB = $this -> where("email", $this -> email)["password"];
+        $password = $this -> password;
+        $verified = password_verify($password, $password_onDB);
+        return $verified;
+    }
+    protected function confirmedAccount() : bool {
+        $confirmed = $this -> where("email", $this -> email)["confirmado"] === 1 ? true : false;
+        return $confirmed;
+    }
+    // PUBLIC
+    public function validate($password2) : array {
+        $errores = [];
+        $cols = $this -> getPropertyArray(ignore_id: true);
+        // Variables a ignorar
+        unset($cols["confirmado"]);
+        unset($cols["token"]);
+        // Array de cada campo
+        foreach ($cols as $key => $value) {
+            if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";
         }
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
+        // if(!preg_match("/^\d{10}/", $cols["telefono"])) {
+        //     $errores[] = "Número de teléfono inválido";
+        // }
+        if(empty($password2)) $errores[] = "Repite la contraseña";
+        if($cols["password"] !== $password2) $errores[] = "Las contraseñas no son iguales";
+        if(strlen($cols["password"]) < 6) {
+            $errores[] = "La contraseña debe tener al menos 6 caracteres";
         }
-        if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
+        if(!empty($cols["email"]) && !filter_var($cols["email"], FILTER_VALIDATE_EMAIL)) {
+            $errores[] = "Email Inválido" ;
         }
-        return self::$alertas;
-
+        if($this -> existeUsuario()) $errores = ["Este email ya se encuentra registrado"];
+        return $errores;
+    }
+    public function validateLogin() : array {
+        $errores = [];
+        $cols = [
+            "email" => $this -> email,
+            "password" => $this -> password
+        ];
+        foreach ($cols as $key => $value) {
+            if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";
+        }
+        // Si no hay errores en los datos ingresados,
+        // se verifica la cuenta
+        if(empty($errores)) {
+            if($this -> existeUsuario()) {
+                if($this -> confirmedAccount()) {
+                    if(!$this -> verifyPassword()) $errores = ["Contraseña incorrecta"];
+                } else $errores = ["Confirma tu cuenta antes de iniciar sesión.\n Revisa tu correo para verificar tu cuenta"];
+            } else $errores = ["El usuario no existe"];
+        }
+        return $errores;
+    }
+    public function validateEmail() : array {
+        $errores = [];
+        $email = $this -> email;
+        if(empty($email)) $errores[] = "Ingresa un email";
+        if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errores[] = "Email Inválido" ;
+        }
+        return $errores;
+    }
+    public function validatePassword($password2) : array {
+        $errores = [];
+        $password = $this -> password;
+        if(empty($password)) $errores[] = "Ingresa una contraseña";
+        if(strlen($password) < 6) {
+            $errores[] = "La contraseña debe tener al menos 6 caracteres";
+        }
+        if($password !== $password2) $errores[] = "Las contraseñas no son iguales";
+        return $errores;
+    }
+    public function validar_perfil() : array {
+        $errores = [];
+        if(empty($this -> nombre)) $errores[] = "El nombre es obligatorio";
+        if(empty($this -> email)) $errores[] = "El email es obligatorio";
+        if($this -> existeUsuario()) $errores[] = "Este correo ya está en uso";
+        return $errores;
+    }
+    public function validar_nuevo_password($nuevoPassword) : array {
+        $errores = [];
+        if(empty($this -> password)) $errores[] = "La contraseña actual es obligatoria";
+        if(empty($nuevoPassword)) $errores[] = "Ingresa una nueva contraseña";
+        if(strlen($nuevoPassword) < 6) $errores[] = "La contraseña debe contener al menos 6 caracteres";
+        if(empty($errores)) {
+            $password_actual = ($this -> where("id", $this -> getId()))["password"];
+            if(!password_verify($this -> password, $password_actual)) {
+                $errores[] = "La contraseña actual es incorrecta";
+            }
+        }
+        return $errores;
     }
 
-    // Validación para cuentas nuevas
-    public function validar_cuenta() {
-        if(!$this->nombre) {
-            self::$alertas['error'][] = 'El Nombre es Obligatorio';
-        }
-        if(!$this->apellido) {
-            self::$alertas['error'][] = 'El Apellido es Obligatorio';
-        }
-        if(!$this->email) {
-            self::$alertas['error'][] = 'El Email es Obligatorio';
-        }
-        if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
-        }
-        if(strlen($this->password) < 6) {
-            self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
-        }
-        if($this->password !== $this->password2) {
-            self::$alertas['error'][] = 'Los password son diferentes';
-        }
-        return self::$alertas;
+    public function createToken() {
+        $this -> token = uniqid();
     }
-
-    // Valida un email
-    public function validarEmail() {
-        if(!$this->email) {
-            self::$alertas['error'][] = 'El Email es Obligatorio';
-        }
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
-        }
-        return self::$alertas;
+    public function encriptPassword() { 
+        $this -> password = password_hash($this -> password, PASSWORD_BCRYPT);
     }
-
-    // Valida el Password 
-    public function validarPassword() {
-        if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
-        }
-        if(strlen($this->password) < 6) {
-            self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
-        }
-        return self::$alertas;
-    }
-
-    public function nuevo_password() : array {
-        if(!$this->password_actual) {
-            self::$alertas['error'][] = 'El Password Actual no puede ir vacio';
-        }
-        if(!$this->password_nuevo) {
-            self::$alertas['error'][] = 'El Password Nuevo no puede ir vacio';
-        }
-        if(strlen($this->password_nuevo) < 6) {
-            self::$alertas['error'][] = 'El Password debe contener al menos 6 caracteres';
-        }
-        return self::$alertas;
-    }
-
-    // Comprobar el password
-    public function comprobar_password() : bool {
-        return password_verify($this->password_actual, $this->password );
-    }
-
-    // Hashea el password
-    public function hashPassword() : void {
-        $this->password = password_hash($this->password, PASSWORD_BCRYPT);
-    }
-
-    // Generar un Token
-    public function crearToken() : void {
-        $this->token = uniqid();
+    public function clean() {
+        $this -> id = "";
+        $this -> nombre = "";
+        $this -> apellido = "";
+        $this -> email = "";
+        $this -> password = "";
     }
 }

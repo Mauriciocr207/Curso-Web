@@ -1,6 +1,5 @@
 <?php
-
-namespace MVC;
+namespace DevWebCamp\MVC;
 
 class Router
 {
@@ -44,10 +43,10 @@ class Router
 
         ob_start(); 
 
-        include_once __DIR__ . "/views/$view.php";
+        include_once PROYECT__URL . "/views/$view.php";
 
         $contenido = ob_get_clean(); // Limpia el Buffer
 
-        include_once __DIR__ . '/views/layout.php';
+        include_once PROYECT__URL . '/views/layout.php';
     }
 }

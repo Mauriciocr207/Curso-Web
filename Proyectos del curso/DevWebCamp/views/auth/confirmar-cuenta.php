@@ -4,7 +4,7 @@
     </h2>
     <p class="auth__texto">Inicia sesión en DevWebCamp</p>
     <?php require_once __DIR__ . '/../templates/alertas.php'; ?>
-    <?php if(isset($alertas["exito"])) { ?>
+    <?php if(isset($confirmado)) { ?>
         <div class="acciones--centrar">
             <a href="/login" class="acciones__enalce">Iniciar Sesión</a>
         </div>
