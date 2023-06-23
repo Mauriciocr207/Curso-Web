@@ -1,0 +1,11 @@
+@use '../base/mixins' as m;
+.auth {
+    @include m.box-sm;
+    &__heading {
+        
+    }
+    
+    &__texto {
+        font-size: 2rem;
+    }
+}
