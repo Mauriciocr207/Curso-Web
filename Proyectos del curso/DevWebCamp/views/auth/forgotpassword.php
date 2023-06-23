@@ -3,8 +3,8 @@
         <?php echo $titulo ?>
     </h2>
     <p class="auth__texto">Recupera tu acceso a DevWebCamp</p>
-
-    <form action="/forgotpassword" class="form">
+    <?php require_once __DIR__ . '/../templates/alertas.php'; ?>
+    <form action="/forgotpassword" class="form" method="POST">
         <div class="form__campo">
             <label for="email" class="form__label">Email</label>
             <input 

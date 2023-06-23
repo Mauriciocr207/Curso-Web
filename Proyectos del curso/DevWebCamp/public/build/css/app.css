@@ -675,7 +675,7 @@ h3 {
   color: rgb(169, 0, 0);
 }
 .alert .enviado {
-  background-color: white;
+  background-color: #ddffdd;
   border-left: 0.5rem solid #02db02;
   color: #02db02;
 }

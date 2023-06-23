@@ -30,5 +30,7 @@ $router->post('/changepassword', [LoginController::class, 'changepassword']);
 $router->get('/confirma-tu-cuenta', [LoginController::class, 'confirma_tu_cuenta']);
 $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar_cuenta']);
 
+// Error al confirmar
+$router->get('/error-cuenta', [LoginController::class, 'error_cuenta']);
 
 $router->comprobarRutas();

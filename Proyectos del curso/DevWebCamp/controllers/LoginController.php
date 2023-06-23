@@ -47,7 +47,7 @@ class LoginController {
         $errores = [];
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             $usuario -> setAll($_POST);
-            $errores = $usuario -> validate($_POST["password2"]);
+            $errores = $usuario -> validateCreate($_POST["password2"]);
             if(empty($errores)) {
                 // Si no hay errores, se crea un nuevo usuario
                 // Crear contraseña
@@ -120,20 +120,22 @@ class LoginController {
     public static function changepassword(Router $router) {
         $usuario = new Usuario();
         $token = htmlspecialchars($_GET["token"]);
-        if(!$usuario -> where("token", $token)) {
-            header('Location: /error-cuenta');
-        }
+        // Verificamos si hay información de un usuario con el token especificado
+        $newDataUser = $usuario -> where("token", $token);
+        // Si no existe dicho token, redireccionamos
+        if(!$newDataUser) header('Location: /error-cuenta');
+        // Seteamos al usuario con los nuevos datos
+        $usuario -> setAll($newDataUser);
         $errores = [];
         if($_SERVER["REQUEST_METHOD"] === "POST") {
+            // Seteamos al usuario con los datos de password
             $usuario -> setAll($_POST);
-            $errores = $usuario -> validatePassword($_POST["password2"]);
+            // Validamos el cambio de contraseña
+            $errores = $usuario -> validatePassword();
+            // Si no hay errores, se verifica al usuario y cambia la contraseña
             if(empty($errores)) {
-                $password = $usuario -> getPassword();
-                $usuario -> setAll(
-                    $usuario -> where("token", $token)
-                );
                 $usuario -> setAll([
-                    "password" => $password,
+                    "password" => $usuario -> getPassword(),
                     "confirmado" => 1,
                     "token" => "",
                 ]);
@@ -162,19 +164,20 @@ class LoginController {
         $token = htmlspecialchars($_GET["token"]);
         $usuario = new Usuario();
         $userData = $usuario -> where(property: "token", value: $token);
-        if($userData) {
-            $userData["confirmado"] = 1;
-            $userData["token"] = "";
-            $usuario -> setAll($userData);
-            $result = ($usuario -> update())["res"];
-            if($result) {
-                $res = [
-                    "res" => true,
-                    "message" => "Tu cuenta ha sido verificada correctamente"
-                ];
-            } else {
-                $res["message"] = "No pudimos verificar tu cuenta, inténtalo de nuevo más tarde";
-            }
+        // Si no un usuario con este token, redireccionamos
+        if(!$userData) header('Location: /error-cuenta');
+        // Si la cuenta existe, la verificamos
+        $userData["confirmado"] = 1;
+        $userData["token"] = "";
+        $usuario -> setAll($userData);
+        $result = ($usuario -> update())["res"];
+        if($result) {
+            $res = [
+                "res" => true,
+                "message" => "Tu cuenta ha sido verificada correctamente"
+            ];
+        } else {
+            $res["message"] = "No pudimos verificar tu cuenta, inténtalo de nuevo más tarde";
         }
         $data["res"] = $res;
         $data["titulo"] = "Confirmar tu cuenta";

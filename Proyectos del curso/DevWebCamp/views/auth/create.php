@@ -61,7 +61,7 @@
         <input type="submit" class="form__submit" value="Crear Cuenta">
         <div class="acciones">
             <a href="/login" class="acciones__enalce">¿Ya tienes una cuenta? Iniciar Sesión</a>
-            <a href="/forgotpassword" class="acciones__enalce">¿Olvidaste tu apellido?</a>
+            <a href="/forgotpassword" class="acciones__enalce">¿Olvidaste tu contaseña?</a>
         </div>
     </form>
 </main>
