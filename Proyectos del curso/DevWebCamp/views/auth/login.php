@@ -13,6 +13,7 @@
                 placeholder="Tu Email"
                 id="email"
                 name="email"
+                value="<?php echo $usuario -> getEmail(); ?>"
             >
         </div>
         <div class="form__campo">

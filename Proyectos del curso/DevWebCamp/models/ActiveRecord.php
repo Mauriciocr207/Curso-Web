@@ -117,6 +117,16 @@ class ActiveRecord {
         Database::close();
         return $res;
     }
+    public function validate() : array {
+        $errores = [];
+        // Creamos un arreglo con las propiedades, ignorando el 'id'
+        $cols = $this -> getPropertyArray(ignore_id: true);
+        // Array de cada campo
+        foreach ($cols as $key => $value) {
+            if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";
+        }
+        return $errores;
+    }
     public function getInfo() : void {
         $cols = $this -> getPropertyArray(ignore_id: true);
         // Variables a ignorar

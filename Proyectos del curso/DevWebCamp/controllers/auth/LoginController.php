@@ -7,29 +7,32 @@ use DevWebCamp\MVC\Router;
 
 class LoginController {
     public static function login(Router $router) {
-            $usuario = new Usuario();
-            $errores = [];
-            if($_SERVER["REQUEST_METHOD"] === "POST") {
-                $usuario -> setAll($_POST);
-                $errores = $usuario -> validateLogin();
-                if(empty($errores)) {
-                    $usuario -> setAll(
-                        $usuario -> where("email", $usuario -> getEmail())
-                    );
-                    // Iniciamos una sesion para el usuario
-                    session_start();
-                    $_SESSION = [
-                        "id" => $usuario -> getId(),
-                        "nombre" => $usuario -> getNombre(),
-                        "apellido" => $usuario -> getApellido(),
-                        "usuario" => $usuario -> getEmail(),
-                        "login" => true,
-                    ];
-                    // Redireccionamiento
-                    header('Location: /dashboard');
-                } 
-            }
-        $data["usuario"] = $usuario;
+        $usuario = new Usuario();
+        $errores = [];
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+            $usuario -> setAll($_POST);
+            $errores = $usuario -> validateLogin();
+            if(empty($errores)) {
+                $usuario -> setAll(
+                    $usuario -> where("email", $usuario -> getEmail())
+                );
+                // Iniciamos una sesion para el usuario
+                session_start();
+                $_SESSION = [
+                    "id" => $usuario -> getId(),
+                    "nombre" => $usuario -> getNombre(),
+                    "apellido" => $usuario -> getApellido(),
+                    "email" => $usuario -> getEmail(),
+                    "amdin" => $usuario -> getAdmin(),
+                ];
+                // Redireccionamiento
+                if($usuario -> getAdmin()) {
+                    header('Location: /admin/dashboard');
+                } else {
+                    header('Location: /finalizar-registro');
+                }
+            } 
+        }
         $data["errores"] = $errores;
         $data["usuario"] = $usuario;
         $data["titulo"] = "Iniciar Sesión";
@@ -90,8 +93,6 @@ class LoginController {
                     );
                     // Crear token
                     $usuario -> createToken();
-                    // Establecer al usuario como no confirmado
-                    $usuario -> setAll(["confirmado" => "0"]);
                     // Enviar Email
                     $email = new Email(
                         nombre: $usuario -> getNombre(),
@@ -136,7 +137,6 @@ class LoginController {
             if(empty($errores)) {
                 $usuario -> setAll([
                     "password" => $usuario -> getPassword(),
-                    "confirmado" => 1,
                     "token" => "",
                 ]);
                 $usuario -> encriptPassword();

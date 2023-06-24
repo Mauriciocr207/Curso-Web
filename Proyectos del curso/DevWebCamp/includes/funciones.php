@@ -21,3 +21,6 @@ function isAdmin(): bool {
     }
     return $isAdmin;
 }
+function pagina_actual($path) {
+    return str_contains($_SERVER['PATH_INFO'], $path);
+}

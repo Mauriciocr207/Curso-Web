@@ -8,6 +8,7 @@ class Usuario extends ActiveRecord {
     protected $password;
     protected $token;
     protected $confirmado;
+    protected $admin;
     protected static $table = "usuarios";
 
     public function __construct($args = [])
@@ -18,7 +19,8 @@ class Usuario extends ActiveRecord {
         $this -> email = $args["email"] ?? "";
         $this -> password = $args["password"] ?? "";
         $this -> token = $args["token"] ?? "";
-        $this -> confirmado = $args["confirmado"] ?? "0";
+        $this -> confirmado = $args["confirmado"] ?? 0;
+        $this -> admin = $args["confirmado"] ?? 0;
     }
 
     // Getters
@@ -37,6 +39,9 @@ class Usuario extends ActiveRecord {
     public function getToken() {
         return $this -> token;
     }
+    public function getAdmin() {
+        return $this -> admin;
+    }
     // Setters
     public function setAll($args = [])
     {
@@ -47,6 +52,7 @@ class Usuario extends ActiveRecord {
         $this -> password = $args["password"] ?? $this -> password;
         $this -> token = $args["token"] ?? $this -> token;
         $this -> confirmado = $args["confirmado"] ?? $this -> confirmado;
+        $this -> admin = $args["admin"] ?? $this -> admin;
     }
     // PROTECTED
     public function existeUsuario() : bool {
@@ -129,17 +135,18 @@ class Usuario extends ActiveRecord {
         }
         return $errores;
     }
-    public function createToken() {
+    public function createToken() : void {
         $this -> token = uniqid();
     }
-    public function encriptPassword() { 
+    public function encriptPassword() : void { 
         $this -> password = password_hash($this -> password, PASSWORD_BCRYPT);
     }
-    public function clean() {
+    public function clean() : void {
         $this -> id = "";
         $this -> nombre = "";
         $this -> apellido = "";
         $this -> email = "";
         $this -> password = "";
+        $this -> admin = "";
     }
 }

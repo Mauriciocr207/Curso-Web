@@ -40,35 +40,33 @@
         cursor: pointer;
     }
 }
-
 @mixin grid($columnas, $espaciado ) {
     display: grid;
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
 }
-
 @mixin box {
     width: min(95%, 140rem);
     margin: 0 auto;
 }
-
+@mixin box-md {
+    width: min(95%, 80rem);
+    margin: 0 auto;
+}
 @mixin box-sm {
     width: min(95%, 60rem);
     margin: 0 auto;
 }
-
 @mixin headings {
     font-family: v.$fuente_principal;
     font-weight: v.$black;
     margin: 2rem 0;
 }
-
 @mixin nombre-pagina {
     @include headings;
     margin: 6rem 0 3rem 0;
     text-align: center;
 }
-
 @mixin texto-fluido($min, $max) {
     font-size: clamp($min, -.8rem + 10vw, $max);
 }
@@ -121,5 +119,43 @@
 
     &__ocultar {
         display: none;
+    }
+}
+@mixin enlace {
+    all: unset;
+    color: v.$blanco;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: v.$bold;
+    background-color: transparent;
+    border: none;
+    &:hover {
+        color: v.$azul;
+        cursor: pointer;
+    }
+}
+@mixin shadow {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+@mixin reset-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+@mixin tags {
+    @include reset-lista;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    
+    > li {
+        background-color: v.$azul;
+        padding: 1rem;
+        border-radius: .5rem;
+        font-size: 1.4rem;
+        color: v.$blanco;
+        font-weight: v.$bold;
+        cursor: pointer;
     }
 }

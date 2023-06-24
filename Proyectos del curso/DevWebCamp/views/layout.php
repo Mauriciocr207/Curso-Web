@@ -14,10 +14,10 @@
 </head>
 <body>
     <?php 
-        include_once __DIR__ .'/templates/header.php';
+        include_once __DIR__ .'/templates/home/header.php';
         echo $contenido;
-        include_once __DIR__ .'/templates/footer.php'; 
+        include_once __DIR__ .'/templates/home/footer.php'; 
     ?>
-    <script src="/build/js/bundle.min.js" defer></script>
+    <script src="/build/js/app.js" defer></script>
 </body>
 </html>

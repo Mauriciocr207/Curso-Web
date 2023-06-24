@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ponentes`
+--
+
+DROP TABLE IF EXISTS `ponentes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ponentes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `apellido` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ciudad` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pais` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `imagen` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tags` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `redes` text COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ponentes`
+--
+
+LOCK TABLES `ponentes` WRITE;
+/*!40000 ALTER TABLE `ponentes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ponentes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -32,7 +61,7 @@ CREATE TABLE `usuarios` (
   `token` varchar(13) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +70,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,' Enrique Mauricio','Romero','mauriciocr123@outlook.com','$2y$10$U9KZEYChWOlxeG5eJlenQeV.HBXxVxjQjIAZLdbcMuyaAPAZW/iuq',0,'',0);
+INSERT INTO `usuarios` VALUES (5,'Enrique Mauricio','Romero','mauriciocr123@outlook.com','$2y$10$E2bQR7mG5rOVy5BrNyhpEuXnhOcZRpD2KDgr9Fcvhqz5yfZkdJ/pK',1,'',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-23 11:54:58
+-- Dump completed on 2023-06-23 23:00:06

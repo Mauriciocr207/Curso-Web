@@ -7,7 +7,10 @@
             "DevWebCamp\\MVC\\": "./",
             "DevWebCamp\\Controllers\\": "./controllers/",
             "DevWebCamp\\Classes\\": "./classes/"
-        }
+        },
+        "classmap": [
+            "./controllers"
+        ]
     },
     "authors": [
         {
@@ -17,6 +20,7 @@
     ],
     "require": {
         "phpmailer/phpmailer": "^6.8",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "intervention/image": "^2.7"
     }
 }
