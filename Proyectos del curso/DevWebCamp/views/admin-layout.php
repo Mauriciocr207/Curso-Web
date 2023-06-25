@@ -27,5 +27,7 @@
         </div>
 
     <script src="/build/js/tags.js" defer></script>
+    <script src="/build/js/horas.js" defer></script>
+    <script src="/build/js/ponentes.js" defer></script>
 </body>
 </html>

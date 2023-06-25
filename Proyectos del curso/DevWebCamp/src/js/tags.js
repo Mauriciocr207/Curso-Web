@@ -36,8 +36,17 @@
             actualizarInputHidden();
         }
         function actualizarInputHidden() {
-            const tagsInputHidden = document.querySelector('[name="tags"]')
+            const tagsInputHidden = document.querySelector('[name="tags"]');
             tagsInputHidden.value = tags.toString();
         }
+        function leerInputHidden() {
+            const tagsInputHidden = document.querySelector('[name="tags"]');
+            const tagsValues = tagsInputHidden.value;
+            if(tagsValues !== "") {
+                tags = tagsValues.split(',');
+                mostrarTags();
+            };
+        };
+        leerInputHidden();
     }
 })();

@@ -17,13 +17,12 @@ class LoginController {
                     $usuario -> where("email", $usuario -> getEmail())
                 );
                 // Iniciamos una sesion para el usuario
-                session_start();
                 $_SESSION = [
                     "id" => $usuario -> getId(),
                     "nombre" => $usuario -> getNombre(),
                     "apellido" => $usuario -> getApellido(),
                     "email" => $usuario -> getEmail(),
-                    "amdin" => $usuario -> getAdmin(),
+                    "admin" => $usuario -> getAdmin(),
                 ];
                 // Redireccionamiento
                 if($usuario -> getAdmin()) {
@@ -39,7 +38,6 @@ class LoginController {
         $router -> render('auth/login', $data);
     }
     public static function logout(Router $router) {
-        session_start();
         $_SESSION = [];
         header('Location: /');
         $data["titulo"] = "Crear cuenta";

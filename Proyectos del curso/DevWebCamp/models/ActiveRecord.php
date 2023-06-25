@@ -51,6 +51,23 @@ class ActiveRecord {
         Database::close();
         return $object;
     }
+    // Búsqueda where con multiples opciones
+    public static function whereArray($array = []) {
+        
+        $keysAndValues = [];
+        foreach($array as $key => $value) {
+            $keysAndValues[] = "$key = '$value'";
+        }
+        $keysAndValuesString = join(" AND ", array_values($keysAndValues));
+
+        // Conexión a la DB
+        $query = "SELECT * FROM " . static::$table ." WHERE " . $keysAndValuesString;
+        Database::open();
+        // // Creación del query
+        $object = Database::read($query) ?? false;
+        Database::close();
+        return $object;
+    }
     public static function belongsTo($property, $value) {
         // Conexión a la DB
         Database::open();
@@ -67,6 +84,27 @@ class ActiveRecord {
         $object = Database::read($query) ?? false;
         Database::close();
         return $object;
+    }
+    public static function countAll() {
+        $query = "SELECT COUNT(*) AS 'total' FROM " . static::$table;
+        // Conexión a la DB
+        Database::open();
+        // Creación del query
+        $res = Database::read($query)[0]["total"] ?? 0;
+        Database::close();
+        return $res;
+    }
+    // Paginar registros
+    public static function paginar($registros_por_pagina = 0, $offset = 0) {
+        // Creación del query
+        $query = "SELECT * FROM " . static::$table 
+                . ($registros_por_pagina > 0 ? " LIMIT $registros_por_pagina " : "")
+                . ($offset > 0 ? " OFFSET $offset" : "");
+        // Conexión a la DB
+        Database::open();
+        $objects = Database::read($query) ?? [];
+        Database::close();
+        return $objects;
     }
     public function save() : array {
         // Creamos un arreglo con las propiedades, ignorando el 'id'
@@ -117,12 +155,16 @@ class ActiveRecord {
         Database::close();
         return $res;
     }
-    public function validate() : array {
+    public function validate($ignore_image = false) : array {
         $errores = [];
         // Creamos un arreglo con las propiedades, ignorando el 'id'
         $cols = $this -> getPropertyArray(ignore_id: true);
+        if($ignore_image) unset($cols["imagen"]);
         // Array de cada campo
         foreach ($cols as $key => $value) {
+            if(strpos($key, "id_") === 0) {
+                $key = str_replace("id_", "", $key);
+            };
             if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";
         }
         return $errores;

@@ -24,13 +24,19 @@ class Ponente extends ActiveRecord{
         $this -> redes = isset($args["redes"]) ? $this -> redesJsonEncode($args["redes"]) : "";
     }
     // Protected
-    protected function redesJsonEncode(array $redes) {
+    protected function redesJsonEncode($redes) {
+        $json = "";
         // Eliminamos las propiedades que estén vacías
-        $redesUsadas = array_filter($redes, function($red) {
-            if(!(empty($red))) return $red;
-        });
-        $json = json_encode($redesUsadas, JSON_UNESCAPED_SLASHES);
-        if(empty($redesUsadas)) $json = "";
+        if(is_array($redes)) {
+            $redesUsadas = array_filter($redes, function($red) {
+                if(!(empty($red))) return $red;
+            });
+            $json = json_encode($redesUsadas, JSON_UNESCAPED_SLASHES);
+            if(empty($redesUsadas)) $json = "";
+        } else {
+            // Para el caso donde se obtenga directamente el json de la base de datos
+            $json = $redes;
+        }
         return $json;
     }
     // Getters
@@ -69,6 +75,10 @@ class Ponente extends ActiveRecord{
     public function createUniqueNameImg() {
         $this -> imagen = md5( uniqid( rand(), true ) );
     }
+    public function imageChanged() {
+        // Si hay un archivo nuevo, la imagen va a cambiar
+        return !empty($_FILES["imagen"]["tmp_name"]) ? true : false;
+    }
     public function saveImg() {
         if(!empty($this -> imagen)) {
             $carpeta_imagenes = PROYECT__URL . '/public/img/speakers';
@@ -90,6 +100,15 @@ class Ponente extends ActiveRecord{
                 path: $carpeta_imagenes . "/" . $this -> imagen . ".webp"
             );
         }
+    }
+    public function updateImg($oldImage) {
+        // Borramos la imagen anterior
+        $carpeta_imagenes = PROYECT__URL . '/public/img/speakers';
+        $imagen_png = $carpeta_imagenes . "/$oldImage.png";
+        $imagen_webp = $carpeta_imagenes . "/$oldImage.webp";
+        unlink($imagen_png);
+        unlink($imagen_webp);
+        $this -> saveImg();
     }
     public function clean() {
         $this -> id = null;

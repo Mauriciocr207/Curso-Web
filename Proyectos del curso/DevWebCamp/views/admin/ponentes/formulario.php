@@ -53,6 +53,19 @@
             name="imagen"
         >
     </div>
+    <?php if(isset($imagen)) { 
+        $urlImagen = '/img/speakers/' . $imagen;
+    ?>
+        <p class="form__texto">
+            Imagen Actual:
+        </p>
+        <div class="form__imagen">
+            <picture>
+                <source srcset="<?php echo $urlImagen ?>.webp" type="image/webp">
+                <img loading="lazy" src="<?php echo $urlImagen ?>.png" alt="">
+            </picture>
+        </div>
+    <?php } ?>
 </fieldset>
 <fieldset class="form__fieldset">
     <legend class="form__legend">Información Extra</legend>

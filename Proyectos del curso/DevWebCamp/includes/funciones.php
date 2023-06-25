@@ -7,15 +7,21 @@ function read($var) {
 }
 
 // Functión que revisa que el usuario esté autenticado
-function isAuth() : void {
-    if(!isset($_SESSION["login"])) {
+
+session_start();
+function isAuth() {
+    $isAuth = false;
+    if( !(isset($_SESSION["nombre"]) && !empty($_SESSION)) ) {
         header('Location: /');
+    } else {
+        $isAuth = true;
     }
+    return $isAuth;
 }
-function isAdmin(): bool {
+function isAdmin() {
     $isAdmin = false;
-    if(!isset($_SESSION["admin"])) {
-        header('Location: /citas');
+    if( !(isAuth() && $_SESSION["admin"]) ) {
+        header('Location: /');
     } else {
         $isAdmin = true;
     }
