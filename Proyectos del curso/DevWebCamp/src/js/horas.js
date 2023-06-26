@@ -18,17 +18,14 @@
         })
         // añadimos el listener
         if(!Object.values(busqueda).includes('')) {
-            buscarEventos();
+            (async () => {
+                await buscarEventos(); 
+                // Resaltar la hora actual;
+                const horaSeleccionada = document.querySelector(`[data-id-hora="${inputHiddenHora.value}"]`);
+                horaSeleccionada.classList.remove('horas__hora--deshabilitada');
+                horaSeleccionada.classList.add('horas__hora--seleccionada');
+            })();
         }
-        const horasDisponibles = document.querySelectorAll('.horas__hora');
-        horasDisponibles.forEach( horaDisponible => {
-            if(horaDisponible.dataset.idHora === inputHiddenHora.value) {
-                horaDisponible.classList.add('horas__hora--seleccionada');
-            }
-        })
-        
-        
-        
         categoria.addEventListener('input', terminoBusqueda);
         dias.forEach( dia => dia.addEventListener('input', terminoBusqueda));
         function terminoBusqueda(e) {

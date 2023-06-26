@@ -15,7 +15,7 @@
                 name="password"
             >
         </div>
-        <input type="submit" class="form__submit" value="Crear Cuenta">
+        <input type="submit" class="form__submit" value="Actualizar Contraseña">
         <div class="acciones">
             <a href="/login" class="acciones__enalce">Iniciar Sesión</a>
             <a href="/forgotpassword" class="acciones__enalce">¿Olvidaste tu contraseña?</a>

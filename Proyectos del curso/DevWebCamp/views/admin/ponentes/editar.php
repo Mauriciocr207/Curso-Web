@@ -10,7 +10,7 @@
         include_once __DIR__ . '/../../templates/alertas.php';
     ?>
     <form class="form" method="POST" enctype="multipart/form-data">
-    <?php include_once __DIR__ . '/formulario.php'; ?>
-    <input type="submit" class="form__submit form__submit--registrar" value="Actualizar Ponente">
+        <?php include_once __DIR__ . '/formulario.php'; ?>
+        <input type="submit" class="form__submit form__submit--registrar" value="Actualizar Ponente">
     </form>
 </div>

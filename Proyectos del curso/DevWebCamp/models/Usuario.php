@@ -79,6 +79,7 @@ class Usuario extends ActiveRecord {
         // Variables a ignorar
         unset($cols["confirmado"]);
         unset($cols["token"]);
+        unset($cols["admin"]);
         // Array de cada campo
         foreach ($cols as $key => $value) {
             if(!$value) $errores[] = "El campo '" . $key . "' es Obligatorio";

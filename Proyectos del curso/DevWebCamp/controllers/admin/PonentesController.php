@@ -10,9 +10,9 @@ class PonentesController {
         // Verificamos si es administrador
         isAdmin();
         // Paginación
-        $pagina_actual = $_GET["page"] ?? 1;
+        $pagina_actual = $_GET["page"] ?? 0;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
-        if(!$pagina_actual || $pagina_actual < 1) {
+        if(!$pagina_actual || $pagina_actual < 0) {
             header('Location: /admin/ponentes?page=1');
         }
         $registor_por_pagina = 5;
@@ -22,8 +22,10 @@ class PonentesController {
             registros_por_pagina: $registor_por_pagina,
             total_registros: $total,
         );
-        if($paginacion -> total_paginas() < $pagina_actual) {
-            header('Location: /admin/ponentes?page=1');
+        if($paginacion -> total_paginas() > 0) {
+            if($paginacion -> total_paginas() < $pagina_actual) {
+                header('Location: /admin/ponentes?page=1');
+            }
         }
         // creación de los pontentes
         $ponentes = array_map(function($dataPonente) {
@@ -59,7 +61,7 @@ class PonentesController {
     }
     public static function editar(Router $router ) {
         isAdmin();
-        $id = $_GET["id"];
+        $id = $_GET["id"] ?? "";
         $id = filter_var($id, FILTER_VALIDATE_INT);
         $ponenteData = Ponente::getById($id);
         $imagenActual = $ponenteData["imagen"];
