@@ -16,7 +16,7 @@ class Registro extends ActiveRecord{
         $this -> id_paquete = $args["id_paquete"] ?? "";
         $this -> id_pago = $args["id_pago"] ?? "";
         $this -> id_usuario = $args["id_usuario"] ?? "";
-        $this -> id_regalo = $args["id_regalo"] ?? "";
+        $this -> id_regalo = $args["id_regalo"] ?? NULL;
     }
     // Getters
     public function getToken() {

@@ -90,16 +90,16 @@
                     body: datos,
                 });
                 const resultado = await respuesta.json();
-                if(resultado.res) {
+                if(resultado.resultado.res) {
                     Swal.fire({
                         title: 'Tus conferencias se han almacenado y tu registro fue exitoso.\n Te esperamos en DevWebCamp',
                         icon: 'success'
-                    });
+                    }).then( () => location.href = `/boleto?id=${resultado.token}`);
                 } else {
                     Swal.fire({
                         title: 'Hubo un error',
                         icon: 'error'
-                    }); 
+                    }).then( () => location.reload()); 
                 }
 
             }

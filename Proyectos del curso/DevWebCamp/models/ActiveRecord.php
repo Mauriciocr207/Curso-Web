@@ -19,6 +19,9 @@ class ActiveRecord {
         $db = Database::open();
         foreach ($cleanProperties as $key => $value) {
             if(is_string($cleanProperties[$key])) $cleanProperties[$key] = $db -> escape_string($value);
+            else if($cleanProperties[$key] === null) {
+                unset($cleanProperties[$key]);
+            }
         }
         Database::close();
         return $cleanProperties;
@@ -97,8 +100,22 @@ class ActiveRecord {
         Database::close();
         return $res;
     }
-    public static function ordenar($columna, $orden) {
-        $query = "SELECT * FROM " . static::$table . " ORDER BY $columna $orden ";
+    public static function countArray($array = []) {
+        $keysAndValues = [];
+        foreach($array as $key => $value) {
+            $keysAndValues[] = "$key = '$value'";
+        }
+        $keysAndValuesString = join(" AND ", array_values($keysAndValues));
+        $query = "SELECT COUNT(*) AS 'total' FROM " . static::$table . " WHERE " . $keysAndValuesString;
+        // Conexión a la DB
+        Database::open();
+        // Creación del query
+        $res = Database::read($query) ?? 0;
+        Database::close();
+        return $res;
+    }
+    public static function ordenar($columna, $orden, $limit = 0) {
+        $query = "SELECT * FROM " . static::$table . " ORDER BY $columna $orden" . ($limit > 0 ? " LIMIT $limit" : "");
         Database::open();
         $object = Database::read($query);
         Database::close();

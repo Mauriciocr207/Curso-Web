@@ -15,19 +15,34 @@ use DevWebCamp\Models\Regalo;
 
 class RegistroController {
     public static function crear(Router $router) {
-        if(!isAuth()) header('Location: /');
+        if(!isAuth()) {
+            header('Location: /');
+            return;
+        };
 
         // Verificar si el usuario ya se ha registrado
         $registro = Registro::where('id_usuario', $_SESSION["id"]);
+        if($registro && $registro["id_paquete"] === 3 || $registro && $registro["id_paquete"] === 2) {
+            header('Location: /boleto?id=' . urlencode($registro["token"]));
+            return;
+        }
         if($registro && $registro["id_paquete"] === 3) {
             header('Location: /boleto?id=' . urlencode($registro["token"]));
+            return;
+        }
+        if($registro && $registro["id_paquete"] === 1) {
+            header('Location: /finalizar-registro/conferencias');
+            return;
         }
 
         $data["titulo"] = "Registrarse";
         $router -> render('/registro/crear', $data);
     }
     public static function gratis() {
-        if(!isAuth()) header('Location: /');
+        if(!isAuth()) {
+            header('Location: /');
+            return;
+        };
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             $token = substr(md5(uniqid( rand(), true )), 0, 8);
             // Crear registro
@@ -40,11 +55,15 @@ class RegistroController {
             $response = $registro -> save();
             if($response["res"]) {
                 header('Location: /boleto?id=' . urlencode($registro -> getToken()));
+                return;
             }
         }
     }
     public static function pagar() {
-        if(!isAuth()) header('Location: /');
+        if(!isAuth()) {
+            header('Location: /');
+            return;
+        };
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             // Validar que post no venga vacío
             if(empty($_POST)) {
@@ -70,10 +89,13 @@ class RegistroController {
         // Validar la url
         $id = $_GET["id"] ?? "";
         if(!$id || !strlen($id) === 8 ) {
-            header('Location: /');
+            // header('Location: /');
         }
         $registroData = Registro::where('token', $id);
-        if(!$registroData) header('Location: /');
+        if(!$registroData) {
+            header('Location: /');
+            return;
+        };
 
         // Llenar las tablas de referencio
         $registro = new Registro($registroData);
@@ -87,11 +109,27 @@ class RegistroController {
         $router -> render('/registro/boleto', $data);
     }
     public static function conferencias(Router $router) {
-        if(!isAuth()) header('Location: /');
+        if(!isAuth()) {
+            header('Location: /');
+            return;
+        };
         // Validar que el usuario tenga el plan presencial
         $id_usuario = $_SESSION["id"];
         $registro = Registro::where('id_usuario', $id_usuario);
-        if(!$registro || $registro["id_paquete"] !== 1) header('Location: /');
+        if($registro && $registro["id_paquete"] === 2) {
+            header('Location: /boleto?id=' . urlencode($registro["token"]));
+            return;
+        };
+        if(!$registro || $registro["id_paquete"] !== 1) {
+            header('Location: /');
+            return;
+        };
+
+        // Redireccionar al boleto virtual en caso de haber finalizado el registro
+        if($registro["id_regalo"] && $registro["id_paquete"] === 1) {
+            header('Location: /boleto?id=' . urlencode($registro["token"]));
+            return;
+        }
 
         $eventosData = Evento::ordenar('id_hora', 'ASC');
         $eventos_formateados = [];
@@ -132,7 +170,7 @@ class RegistroController {
             // Obtener el registro del usuario
             $registroData = Registro::where('id_usuario', $_SESSION["id"]);
             if(!$registroData || $registroData["id_paquete"] != 1) {
-                echo json_encode(["resulato" => false]);
+                echo json_encode(["resultado" => false]);
                 return;
             }
 
@@ -142,7 +180,8 @@ class RegistroController {
                 $eventoData = Evento::getById($eventoId);
                 // Comprobar que el evento exista
                 if(!$eventoData || $eventoData["disponibles"] === 0) {
-                    echo json_encode(["resulato" => false]);
+                    echo json_encode(["resultado" => false]);
+                    return;
                 }
                 $eventos_array[] = $eventoData;
             }
@@ -164,12 +203,15 @@ class RegistroController {
             $registro = new Registro($registroData);
             $resultado = $registro -> update();
             if($resultado["res"]) {
-                echo json_encode($resultado);
-            }
-            
-            
-            
-            
+                echo json_encode([
+                    "resultado" => $resultado,
+                    "token" => $registro -> getToken(),
+                ]);
+            } else {
+                echo json_encode(["resultado" => false]); 
+                return;
+            }     
+
             exit;
         }
 

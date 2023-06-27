@@ -105,5 +105,11 @@
         @extend .dashboard__contenedor;
         @include m.box-md;
     }
+    &__grafica {
+        @include m.box-md;
+        height: 40rem;
+        display: flex;
+        justify-items: center;
+    }
 }
 

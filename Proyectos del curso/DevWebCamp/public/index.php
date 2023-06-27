@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use DevWebCamp\Controllers\ApiEventosHorariosController;
 use DevWebCamp\Controllers\ApiPonentesController;
+use DevWebCamp\Controllers\ApiRegalosController;
 use DevWebCamp\Controllers\DashboardController;
 use DevWebCamp\Controllers\EventosController;
 use DevWebCamp\Controllers\LoginController;
@@ -85,6 +86,7 @@ $router -> get('/boleto', [Registrocontroller::class, 'boleto']);
 // Eventos-Horario
 $router->get('/api/eventos-horarios', [ApiEventosHorariosController::class, 'index']);
 $router->get('/api/ponentes', [ApiPonentesController::class, 'index']);
+$router->get('/api/regalos', [ApiRegalosController::class, 'index']);
 
 
 

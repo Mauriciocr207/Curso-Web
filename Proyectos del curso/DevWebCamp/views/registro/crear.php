@@ -27,7 +27,7 @@
             <p class="paquete__precio">$199</p>
             <div id="smart-button-container">
                 <div style="text-align: center; margin-top: 3rem;">
-                    <div id="paypal-button-container"></div>
+                    <div id="paypal-button-container-1"></div>
                 </div>
             </div>
         </div>
@@ -40,14 +40,19 @@
                 <li class="paquete__elemento">Acceso a las Grabaciones</li>
             </ul>
             <p class="paquete__precio">$49</p>
+            <div id="smart-button-container">
+                <div style="text-align: center; margin-top: 3rem;">
+                    <div id="paypal-button-container-2"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Script para el pago -->
-<script src="https://www.paypal.com/sdk/js?client-id=AWJXtxKBy0jy0I2mDHljLfBhSV3C9I0NVZSEuqcjZ2REgWpa4WmMdAwdtuOXOkl-Kg_IySkPIeN37xvP&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo $_ENV["CLIENT_PAYPAL_ID"] ?>&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
-    function initPayPalButton() {
+    function initPayPalButton1() {
       paypal.Buttons({
         style: {
           shape: 'pill',
@@ -84,8 +89,49 @@
         onError: function(err) {
           console.log(err);
         }
-      }).render('#paypal-button-container');
+      }).render('#paypal-button-container-1');
     }
+    function initPayPalButton2() {
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'pay', 
+        },
  
-  initPayPalButton();
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"2","amount":{"currency_code":"USD","value":49}}]
+          });
+        },
+ 
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+                // console.log(orderData.purchase_units[0].payments.captures[0].id);
+                const datos = new FormData();
+                datos.append('id_paquete', orderData.purchase_units[0].description);
+                datos.append('id_pago', orderData.purchase_units[0].payments.captures[0].id);
+                fetch('/finalizar-registro/pagar', {
+                    method: 'POST',
+                    body: datos,
+                })
+                .then( respuesta => respuesta.json() )
+                .then( resultado => {
+                    if(resultado.res) {
+                        actions.redirect('http://devwebcamp.cm/finalizar-registro/conferencias');
+                    } else {
+                      console.log(resultado);
+                    }
+                })
+          });
+        },
+ 
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container-2');
+    }
+    initPayPalButton1();
+    initPayPalButton2();
 </script>
