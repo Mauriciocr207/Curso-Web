@@ -40,8 +40,6 @@ class LoginController {
     public static function logout(Router $router) {
         $_SESSION = [];
         header('Location: /');
-        $data["titulo"] = "Crear cuenta";
-        $router -> render('auth/logout', $data);
     }
     public static function create(Router $router) {
         $usuario = new Usuario();

@@ -1,0 +1,95 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.eventos-registro {
+    @include m.box;
+    @include m.tablet {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    &__listado {
+        @include m.tablet {
+            flex: 0 0 60%;
+        }
+    }
+    &__grid {
+        @include m.grid(1, 3rem);
+        @include m.tablet {
+            @include m.grid(2, 3rem);
+        }
+    }
+    &__heading {
+        &--conferencias {
+            color: v.$azul;
+            white-space: nowrap;
+            @include m.texto-fluido(2rem, 6rem);
+        }
+        &--workshops {
+            color: v.$secundario;
+            white-space: nowrap;
+            @include m.texto-fluido(2rem, 6rem);
+        }
+    }
+    &__fecha {
+        margin-top: 3rem;
+    }
+}
+
+.registro-bar {
+    background-color: darken($color: v.$gris-claro, $amount: 5);
+    padding: 3rem;
+    border-radius: 1rem;
+    @include m.tablet {
+        flex: 0 0 40%;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 3rem;
+    }
+    &__heading {
+        margin: 0;
+        margin-bottom: 3rem;
+    }
+    &__evento {
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:nth-child(odd) {
+            background-color: darken($color: v.$gris-claro, $amount: 13);
+        }
+    }
+    &__nombre {
+        margin: 1rem 0;
+        font-size: 2rem;
+        font-weight: v.$bold;
+    }
+    &__eliminar {
+        all: unset;
+        cursor: pointer;
+        color: v.$rojo;
+        i {
+            font-size: 2rem;
+        }
+    }
+    &__regalo {
+        margin-top: 3rem;
+    }
+    &__label {
+        display: block;
+        font-size: 2.2rem;
+        font-weight: v.$bold;
+        margin-bottom: 1rem;
+    }
+    &__select {
+        width: 100%;
+        background-color: v.$blanco;
+        border: 1px solid v.$gris;
+        padding: 1rem;
+        border-radius: .5rem;        
+    }
+    &__texto {
+        text-align: center;
+    }
+}

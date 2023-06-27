@@ -11,18 +11,14 @@ function read($var) {
 session_start();
 function isAuth() {
     $isAuth = false;
-    if( !(isset($_SESSION["nombre"]) && !empty($_SESSION)) ) {
-        header('Location: /');
-    } else {
+    if( (isset($_SESSION["nombre"])) ) {
         $isAuth = true;
     }
     return $isAuth;
 }
 function isAdmin() {
     $isAdmin = false;
-    if( !(isAuth() && $_SESSION["admin"]) ) {
-        header('Location: /');
-    } else {
+    if( isAuth() && $_SESSION["admin"]) {
         $isAdmin = true;
     }
     return $isAdmin;

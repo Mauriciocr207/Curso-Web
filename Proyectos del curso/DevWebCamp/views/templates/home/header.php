@@ -1,8 +1,25 @@
 <header class="header">
     <div class="header__contenedor">
         <na class="header__navegacion">
-            <a href="/registro" class="header__enlace">Registro</a>
-            <a href="/login" class="header__enlace">Iniciar Sesión</a>
+            <?php
+                if(isAuth()) {
+            ?>
+                <a href="/<?php echo isAdmin() ? 'admin/dashboard' : 'finalizar-registro'; ?>" class="header__enlace">Administrar</a>
+                <form action="/logout" class="header__form" method="POST">
+                    <input 
+                        type="Submit"
+                        value="Cerrar Sesión"
+                        class="header__submit--logout"
+                    >
+                </form>
+            <?php
+                } else {
+            ?>
+                <a href="/registro" class="header__enlace">Registro</a>
+                <a href="/login" class="header__enlace">Iniciar Sesión</a>
+            <?php
+                }
+            ?>
         </na>
         <div class="header__contenido">
             <a href="/">
@@ -25,10 +42,37 @@
             </h2>    
         </a>
         <nav class="navegacion">
-            <a href="/devwebcamp" class="navegacion__enlace">Evento</a>
-            <a href="/paquetes" class="navegacion__enlace">Paquetes</a>
-            <a href="/workshops-conferencias" class="navegacion__enlace">Workshops / Conferencias</a>
-            <a href="/registro" class="navegacion__enlace">Comprar Pase</a>
+            <?php
+                $links = [
+                    [
+                        "href" => "/devwebcamp",
+                        "text" => "Evento",
+                    ],
+                    [
+                        "href" => "/paquetes",
+                        "text" => "Paquetes",
+                    ],
+                    [
+                        "href" => "/workshops-conferencias",
+                        "text" => "Workshops / Conferencias",
+                    ],
+                    [
+                        "href" => "/registro",
+                        "text" => "Registro",
+                    ],
+                ];
+                foreach($links as $link) {
+                    $class = "";
+                    if(isset($_SERVER["PATH_INFO"])) {
+                        if(pagina_actual($link["href"])) {
+                            $class = "navegacion__enlace--actual";
+                        }
+                    }
+                    ?>
+                        <a href="<?php echo $link["href"] ?>" class="navegacion__enlace <?php echo $class?>"><?php echo $link["text"] ?></a>
+                    <?php
+                }
+            ?>
         </nav>
     </div>
 </div>

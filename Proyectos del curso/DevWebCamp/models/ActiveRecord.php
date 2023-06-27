@@ -85,14 +85,24 @@ class ActiveRecord {
         Database::close();
         return $object;
     }
-    public static function countAll() {
+    public static function countAll($columna = "", $valor = "") {
         $query = "SELECT COUNT(*) AS 'total' FROM " . static::$table;
+        if($columna) {
+            $query .= " WHERE $columna = $valor";
+        }
         // Conexión a la DB
         Database::open();
         // Creación del query
         $res = Database::read($query)[0]["total"] ?? 0;
         Database::close();
         return $res;
+    }
+    public static function ordenar($columna, $orden) {
+        $query = "SELECT * FROM " . static::$table . " ORDER BY $columna $orden ";
+        Database::open();
+        $object = Database::read($query);
+        Database::close();
+        return $object;
     }
     // Paginar registros
     public static function paginar($registros_por_pagina = 0, $offset = 0) {

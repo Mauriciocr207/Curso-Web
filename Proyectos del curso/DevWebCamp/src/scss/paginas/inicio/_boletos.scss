@@ -1,0 +1,130 @@
+@use '../../base/mixins' as m;
+@use '../../base/variables' as v;
+
+.boletos {
+    &__grid {
+        @include m.box-sm;
+        @include m.grid(1, 5rem);
+        justify-items: center;
+    }
+}
+
+.boleto {
+    width: 30rem;
+    height: 50rem;
+    padding: 10rem 3rem;
+    border-radius: 2rem;
+    color: v.$blanco;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include m.tablet {
+        width: 60rem;
+        height: 30rem;
+        padding: 6rem;
+    }
+
+    &--presencial {
+        background-color:hsla(209,100%,47%,1);
+        background-image:
+        radial-gradient(at 8% 9%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 31% 52%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 92% 88%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 49% 50%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(209,100%,47%,1) 0px, transparent 50%);
+    }
+    &--virtual {
+        background-color:hsla(178,100%,39%,1);
+        background-image:
+        radial-gradient(at 100% 0%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 54% 48%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 1% 99%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 82% 13%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(178,100%,39%,1) 0px, transparent 50%);
+    }
+    &--gratis {
+        background-color:hsla(209,100%,47%,1);
+        background-image:
+        radial-gradient(at 32% 79%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 31% 52%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 64% 41%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 82% 13%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(209,100%,47%,1) 0px, transparent 50%);
+    }
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        background-color: v.$blanco;
+        width: 5rem;
+        height: 5rem;
+        top: calc(50% - 2.5rem);
+    }
+    &__logo {
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+        text-align: left;
+    }
+    &__plan {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+    &__precio {
+        font-weight: v.$bold;
+        font-size: 4rem;
+        margin: 0;
+    }
+    &__enlace-contenedor {
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+    &__enlace {
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+    }
+    $modificador: &;
+    &--acceso {
+        #{$modificador}__logo {
+            text-align: left;
+        }
+        #{$modificador}__nombre {
+            font-size: 2.4rem;
+            text-transform: uppercase;
+            font-weight: v.$black;
+        }
+        #{$modificador}__codigo {
+            font-size: 4rem;
+            font-weight: v.$bold;
+            text-align: center;
+            @include m.tablet {
+                position: absolute;
+                top: calc(50% - 3rem);
+                right: -3rem;
+                transform: rotate(90deg);
+            }
+        }
+    } 
+    &::before {
+        clip-path: circle(50% at 50% 25%);
+        left: calc(50% - 2.5rem);
+        top: 0;
+        @include m.tablet {
+            clip-path: circle(50% at 25% 50%);
+            left: 0;
+            top: calc(50% - 2.5rem);
+        }
+    }
+    &::after {
+        clip-path: circle(50% at 50% 75%);
+        left: calc(50% - 2.5rem);
+        top: calc(100% - 5rem);
+        @include m.tablet {
+            clip-path: circle(50% at 75% 50%);
+            right: 0;
+            left: unset;
+            top: calc(50% - 2.5rem);
+        }
+    }
+}

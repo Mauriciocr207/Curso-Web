@@ -4,7 +4,7 @@ use DevWebCamp\MVC\Router;
 
 class RegistrosController {
     public static function index(Router $router ) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         $data["titulo"] = "Registros";
         $router -> render('admin/registros/index', $data);
     }
