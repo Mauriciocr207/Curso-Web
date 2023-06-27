@@ -1,0 +1,26 @@
+{
+    "name": "mauricio-carrillo/devwebcamp",
+    "description": "Proyecto PHP 8, MVC, SQL, SASS, Gulp",
+    "autoload": {
+        "psr-4": {
+            "DevWebCamp\\Models\\" : "./models/",
+            "DevWebCamp\\MVC\\": "./",
+            "DevWebCamp\\Controllers\\": "./controllers/",
+            "DevWebCamp\\Classes\\": "./classes/"
+        },
+        "classmap": [
+            "./controllers"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Mauricio CR",
+            "email": "mauriciocr123@outlook.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "vlucas/phpdotenv": "^5.5",
+        "intervention/image": "^2.7"
+    }
+}
