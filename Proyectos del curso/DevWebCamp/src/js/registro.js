@@ -90,7 +90,17 @@
                     body: datos,
                 });
                 const resultado = await respuesta.json();
-                console.log(resultado);
+                if(resultado.res) {
+                    Swal.fire({
+                        title: 'Tus conferencias se han almacenado y tu registro fue exitoso.\n Te esperamos en DevWebCamp',
+                        icon: 'success'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Hubo un error',
+                        icon: 'error'
+                    }); 
+                }
 
             }
         }

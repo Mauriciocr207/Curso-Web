@@ -10,6 +10,7 @@ use DevWebCamp\Models\Hora;
 use DevWebCamp\Models\Ponente;
 use DevWebCamp\MVC\Router;
 use DevWebCamp\Models\Evento;
+use DevWebCamp\Models\EventoRegistro;
 use DevWebCamp\Models\Regalo;
 
 class RegistroController {
@@ -136,13 +137,38 @@ class RegistroController {
             }
 
             // Validar la disponibilidad de los eventos seleccionados
+            $eventos_array = [];
             foreach($eventosId as $eventoId) {
                 $eventoData = Evento::getById($eventoId);
                 // Comprobar que el evento exista
                 if(!$eventoData || $eventoData["disponibles"] === 0) {
                     echo json_encode(["resulato" => false]);
                 }
+                $eventos_array[] = $eventoData;
             }
+            foreach($eventos_array as $eventoData) {
+                $eventoData["disponibles"] -= 1;
+                $evento = new Evento($eventoData);
+                $evento -> update();
+
+                // Almacenar el registro
+                $datos = [
+                    "id_evento" => (int)$evento -> getId(),
+                    "id_registro" => (int)$registro["id"],
+                ];
+                $registro_usuario = new EventoRegistro($datos);
+                $registro_usuario -> save();
+            }
+            // Almacenar el regalo
+            $registroData["id_regalo"] = $_POST["id_regalo"];
+            $registro = new Registro($registroData);
+            $resultado = $registro -> update();
+            if($resultado["res"]) {
+                echo json_encode($resultado);
+            }
+            
+            
+            
             
             exit;
         }

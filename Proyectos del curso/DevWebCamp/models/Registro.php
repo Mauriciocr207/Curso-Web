@@ -6,6 +6,7 @@ class Registro extends ActiveRecord{
     protected $id_paquete;
     protected $id_pago;
     protected $id_usuario;
+    protected $id_regalo;
     protected static $table = "registros";
 
     public function __construct($args = [])
@@ -15,6 +16,7 @@ class Registro extends ActiveRecord{
         $this -> id_paquete = $args["id_paquete"] ?? "";
         $this -> id_pago = $args["id_pago"] ?? "";
         $this -> id_usuario = $args["id_usuario"] ?? "";
+        $this -> id_regalo = $args["id_regalo"] ?? "";
     }
     // Getters
     public function getToken() {
@@ -29,6 +31,9 @@ class Registro extends ActiveRecord{
     public function getIdUsuario() {
         return $this -> id_usuario;
     }
+    public function getIdRegalo() {
+        return $this -> id_regalo;
+    }
     // Setters
     public function setAll($args = []) {
         $this -> id = $args["id"] ?? $this -> id;
@@ -36,5 +41,6 @@ class Registro extends ActiveRecord{
         $this -> id_paquete = $args["id_paquete"] ?? $this -> id_paquete;
         $this -> id_pago = $args["id_pago"] ?? $this -> id_pago;
         $this -> id_usuario = $args["id_usuario"] ?? $this -> id_usuario;
+        $this -> id_regalo = $args["id_regalo"] ?? $this -> id_regalo;
     }
 }
