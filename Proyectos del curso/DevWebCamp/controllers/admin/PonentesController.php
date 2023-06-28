@@ -8,7 +8,7 @@ use DevWebCamp\MVC\Router;
 class PonentesController {
     public static function index(Router $router ) {
         // Verificamos si es administrador
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         // Paginación
         $pagina_actual = $_GET["page"] ?? 0;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -37,7 +37,7 @@ class PonentesController {
         $router -> render('admin/ponentes/index', $data);
     }
     public static function crear(Router $router ) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         $ponente = new Ponente();
         $errores = [];
         if($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -60,7 +60,7 @@ class PonentesController {
         $router -> render('admin/ponentes/crear', $data);
     }
     public static function editar(Router $router ) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         $id = $_GET["id"] ?? "";
         $id = filter_var($id, FILTER_VALIDATE_INT);
         $ponenteData = Ponente::getById($id);
@@ -94,7 +94,7 @@ class PonentesController {
         $router -> render('admin/ponentes/editar', $data);
     }
     public static function eliminar(Router $router) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             $ponente = new Ponente($_POST);
             $ponente -> delete();

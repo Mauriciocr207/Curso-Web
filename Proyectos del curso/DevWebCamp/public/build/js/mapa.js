@@ -1,0 +1,2 @@
+(()=>{if(document.querySelector("#mapa")){const e=21.033610221907715,p=-89.62932559786971,a=16,t=L.map("mapa").setView([e,p],a);L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(t),L.marker([e,p]).addTo(t).bindPopup('\n            <h2 class="mapa__heading">DevWebCamp</h2>\n            <p class="mapa__descripcion">Centro de Convensiones Siglo XXI</p>\n            ').openPopup()}})();
+//# sourceMappingURL=mapa.js.map

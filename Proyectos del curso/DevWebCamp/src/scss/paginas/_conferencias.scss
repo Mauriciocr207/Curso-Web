@@ -1,0 +1,100 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.agenda {
+    padding: 5rem;
+    @include m.box;
+}
+
+.eventos {
+    &__heading {
+        color: v.$azul;
+        margin: 5rem 0 0 0;
+        text-align: left;
+        font-size: clamp(2rem , -.8rem + 8vw, 6rem);
+    }
+    &__fecha {
+        color: v.$gris;
+        margin: 2rem 0;
+        display: inline-block;
+    }
+    $modificador: &;
+    &--workshops {
+        #{$modificador}__heading {
+            color: v.$secundario;
+        }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: rgba(v.$blanco, 1.5);
+    }
+
+}
+
+.evento {
+    &__hora {
+        font-weight: v.$bold;
+    }
+    &__informacion {
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: v.$azul;
+        color: v.$blanco;
+        transition: background-color .3s ease;
+
+        &:hover {
+            background-color: darken($color: v.$azul, $amount: 10);
+        }
+
+        &--workshops {
+            background-color: v.$secundario;
+            &:hover {
+                background-color: darken($color: v.$secundario, $amount: 10);
+            }
+        }
+    }
+
+    &__nombre {
+        font-size: 2rem;
+        margin: 0;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @include m.tablet {
+            -webkit-line-clamp: 2;
+        }
+    }
+    &__introduccion {
+        font-size: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @include m.tablet {
+            -webkit-line-clamp: 2;
+        }
+    }
+    &__autor-info {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__imagen-autor {
+        width: 5rem;
+        background-color: v.$blanco;
+        border-radius: 50%;
+    }
+    &__autor-nombre {
+        font-weight: v.$bold;
+    }
+    &__agregar {
+        @include m.boton(v.$blanco, v.$negro);
+        margin-top: 1rem;
+        border-radius: 1rem;
+        &:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+    }
+}

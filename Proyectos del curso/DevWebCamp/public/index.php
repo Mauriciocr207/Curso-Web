@@ -4,19 +4,21 @@ require_once __DIR__ . '/../includes/app.php';
 
 use DevWebCamp\Controllers\ApiEventosHorariosController;
 use DevWebCamp\Controllers\ApiPonentesController;
+use DevWebCamp\Controllers\ApiRegalosController;
 use DevWebCamp\Controllers\DashboardController;
 use DevWebCamp\Controllers\EventosController;
-use DevWebCamp\MVC\Router;
 use DevWebCamp\Controllers\LoginController;
+use DevWebCamp\Controllers\PaginasController;
 use DevWebCamp\Controllers\PonentesController;
 use DevWebCamp\Controllers\RegalosController;
 use DevWebCamp\Controllers\RegistrosController;
+use DevWebCamp\Controllers\RegistroController;
+use DevWebCamp\MVC\Router;
 
 $router = new Router();
 
 //== AUTENTICACIÓN ==//
 // Login
-$router->get('/', [LoginController::class, 'login']);
 $router->get('/login', [LoginController::class, 'login']);
 $router->post('/login', [LoginController::class, 'login']);
 $router->post('/logout', [LoginController::class, 'logout']);
@@ -63,10 +65,28 @@ $router->get('/admin/registrados', [RegistrosController::class, 'index']);
 // Regalos
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
 
+//== Paginas Principales ==//
+$router -> get('/', [PaginasController::class, 'index']);
+$router -> get('/devwebcamp', [PaginasController::class, 'evento']);
+$router -> get('/paquetes', [PaginasController::class, 'paquetes']);
+$router -> get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
+$router -> get('/404', [PaginasController::class, 'error']);
+
+//== Registro de Usuarios  ==//
+$router -> get('/finalizar-registro', [Registrocontroller::class, 'crear']);
+$router -> post('/finalizar-registro/gratis', [Registrocontroller::class, 'gratis']);
+$router -> post('/finalizar-registro/pagar', [Registrocontroller::class, 'pagar']);
+$router -> get('/finalizar-registro/conferencias', [Registrocontroller::class, 'conferencias']);
+$router -> post('/finalizar-registro/conferencias', [Registrocontroller::class, 'conferencias']);
+
+// Boleto Virtual
+$router -> get('/boleto', [Registrocontroller::class, 'boleto']);
+
 //== API ==//
 // Eventos-Horario
 $router->get('/api/eventos-horarios', [ApiEventosHorariosController::class, 'index']);
 $router->get('/api/ponentes', [ApiPonentesController::class, 'index']);
+$router->get('/api/regalos', [ApiRegalosController::class, 'index']);
 
 
 

@@ -25,9 +25,8 @@
                 ?> 
             </main>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/build/js/regalos.js"></script>
 
-    <script src="/build/js/tags.js" defer></script>
-    <script src="/build/js/horas.js" defer></script>
-    <script src="/build/js/ponentes.js" defer></script>
 </body>
 </html>

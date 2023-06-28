@@ -12,7 +12,7 @@ use DevWebCamp\Models\Ponente;
 class EventosController {
     public static function index(Router $router ) {
         // Verificamos si es administrador
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         // Paginación
         $pagina_actual = $_GET["page"] ?? 0;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -35,7 +35,7 @@ class EventosController {
         $eventos = array_map(function($dataPonente) {
             return new Evento($dataPonente);
         }, Evento::paginar($registor_por_pagina, $paginacion -> offset()));
-        foreach($eventos as $evento) {
+        foreach($eventos as $evento) { 
             $evento -> setAll([
                 "id_categoria" => Categoria::getById($evento -> getIdCategoria())["nombre"],
                 "id_dia" => Dia::getById($evento -> getIdDia())["nombre"],
@@ -49,7 +49,7 @@ class EventosController {
         $router -> render('admin/eventos/index', $data);
     }
     public static function crear(Router $router ) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         $errores = [];
         $categorias = Categoria::getAll();
         $dias = Dia::getAll();
@@ -74,7 +74,7 @@ class EventosController {
         $router -> render('admin/eventos/crear', $data);
     }
     public static function editar(Router $router ) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         $id = $_GET["id"] ?? "";
         $id = filter_var($id, FILTER_VALIDATE_INT);
         $eventoData = Evento::getById($id);
@@ -103,7 +103,7 @@ class EventosController {
         $router -> render('admin/eventos/editar', $data);
     }
     public static function eliminar(Router $router ) {
-        isAdmin();
+        if(!isAdmin()) header('Location: /');
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             $evento = new Evento($_POST);
             $res = $evento -> delete();

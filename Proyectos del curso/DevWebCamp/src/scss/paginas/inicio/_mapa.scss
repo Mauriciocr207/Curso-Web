@@ -1,0 +1,14 @@
+@use '../../base/variables' as v;
+.mapa {
+    margin-top: 5rem;
+    height: 45rem;
+    &__heading {
+        text-align: left;
+        margin: 1rem 0;
+        color: v.$azul;
+    }
+    .mapa &__descripcion {
+        margin: unset;
+        color: lighten($color: v.$azul, $amount: 10);
+    }
+}

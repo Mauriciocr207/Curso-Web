@@ -13,6 +13,9 @@ const cache = require('gulp-cache');
 const webp = require('gulp-webp');
 const image_min = require('gulp-imagemin');
 const avif = require('gulp-avif');
+// WEBPACK
+const webpack = require('webpack-stream');
+
 
 // Rutas 
 const paths = {

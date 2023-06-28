@@ -13,8 +13,14 @@
         padding: 2rem;
         font-weight: v.$black;
         text-transform: uppercase;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:hover {
+            background-color: v.$blanco;
+            color: v.$azul;
+        }
+        &--actual {
             background-color: v.$blanco;
             color: v.$azul;
         }
